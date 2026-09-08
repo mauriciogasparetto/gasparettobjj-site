@@ -1,0 +1,2620 @@
+<!DOCTYPE html>
+<!--
+  FONTE UNICA do site. Edite este arquivo, nunca index.html / pt/ / en/,
+  que sao GERADOS por `python build.py`.
+
+  Convencoes:
+   - data-lang="es|pt|en"  -> o build mantem apenas o idioma da pagina
+   - [[es:...|pt:...|en:...]] -> traducao dentro de atributos e do <title>
+   - {{TOKEN}}             -> substituido pelo build (lang, canonical, hreflang...)
+-->
+<html lang="{{LANG}}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>
+      [[es:Jiu-Jitsu en Altorreal, Molina de Segura | Gasparetto BJJ|pt:Jiu-Jitsu em Altorreal, Molina de Segura | Gasparetto BJJ|en:Jiu-Jitsu in Altorreal, Molina de Segura | Gasparetto BJJ]]
+    </title>
+    <meta
+      name="description"
+      content="[[es:Clases de Brazilian Jiu-Jitsu en Altorreal, Molina de Segura (Murcia): Gi, No-Gi, Kids, defensa personal femenina y clases particulares, con el profesor Mauricio Gasparetto, cinturón negro de XCOACH.|pt:Aulas de Brazilian Jiu-Jitsu em Altorreal, Molina de Segura (Murcia): Gi, No-Gi, Kids, defesa pessoal feminina e aulas particulares, com o professor Mauricio Gasparetto, faixa-preta da XCOACH.|en:Brazilian Jiu-Jitsu classes in Altorreal, Molina de Segura (Murcia): Gi, No-Gi, Kids, women's self-defense and private lessons, with coach Mauricio Gasparetto, XCOACH black belt.]]"
+    />
+    <meta name="theme-color" content="#e30613" />
+    <link rel="canonical" href="{{CANONICAL}}" />
+    {{HEAD_ALTERNATES}}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Gasparetto BJJ" />
+    <meta property="og:url" content="{{CANONICAL}}" />
+    <meta
+      property="og:title"
+      content="[[es:Jiu-Jitsu en Altorreal, Molina de Segura | Gasparetto BJJ|pt:Jiu-Jitsu em Altorreal, Molina de Segura | Gasparetto BJJ|en:Jiu-Jitsu in Altorreal, Molina de Segura | Gasparetto BJJ]]"
+    />
+    <meta
+      property="og:description"
+      content="[[es:XCOACH en España. Gi, No-Gi, Kids, defensa personal y clases particulares en Altorreal, Molina de Segura.|pt:XCOACH na Espanha. Gi, No-Gi, Kids, defesa pessoal e aulas particulares em Altorreal, Molina de Segura.|en:XCOACH in Spain. Gi, No-Gi, Kids, self-defense and private classes in Altorreal, Molina de Segura.]]"
+    />
+    <meta property="og:image" content="{{SITE_URL}}/assets/img/opt/mau_world_cup_2025-1120.jpg" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="1429" />
+    <meta property="og:locale" content="{{OG_LOCALE}}" />
+    {{OG_ALT_LOCALES}}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicons / manifest -->
+    <link rel="icon" href="/assets/img/logos/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/logos/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/logos/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonte propria: 47 KB nos dois subsets, sem host externo -->
+    <link
+      rel="preload"
+      href="/assets/fonts/outfit-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <!-- LCP: o navegador so descobriria esta imagem depois do CSS -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/img/opt/mau_world_cup_2025-560.avif"
+      imagesrcset="/assets/img/opt/mau_world_cup_2025-560.avif 560w, /assets/img/opt/mau_world_cup_2025-760.avif 760w, /assets/img/opt/mau_world_cup_2025-1120.avif 1120w"
+      imagesizes="(min-width: 48rem) 513px, calc(100vw - 2rem)"
+      type="image/avif"
+      fetchpriority="high"
+    />
+
+    <style>
+      /* ================================================================
+         1. Fonte
+         Outfit e variable font: um arquivo cobre 400-900.
+         latin-ext so e baixado quando a pagina usa ō / ū (Kanō, Fusen-ryū).
+         ================================================================ */
+      @font-face {
+        font-family: "Outfit";
+        font-style: normal;
+        font-weight: 300 900;
+        font-display: swap;
+        src: url("/assets/fonts/outfit-latin.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+          U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Outfit";
+        font-style: normal;
+        font-weight: 300 900;
+        font-display: swap;
+        src: url("/assets/fonts/outfit-latin-ext.woff2") format("woff2");
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+          U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+          U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+          U+A720-A7FF;
+      }
+
+      /* ================================================================
+         2. Tokens
+         ================================================================ */
+      :root {
+        --brand: #e30613;
+        --brand-dark: #be0a14;
+        --ink: #0a0a0a;
+        --ink-2: #27272a;
+        --ink-3: #3f3f46;
+        --muted: #6b7280;
+        --line: #e5e7eb;
+        --surface: #fff;
+        --surface-2: #fafafa;
+        --radius: 1rem;
+        --radius-sm: 0.75rem;
+        --radius-lg: 1.25rem;
+        --wrap: 71.25rem; /* 1140px */
+        --header-h: 5.5rem;
+        --shadow: 0 12px 30px rgb(0 0 0 / 0.1);
+        --shadow-hover: 0 16px 30px rgb(0 0 0 / 0.08);
+      }
+
+      /* ================================================================
+         3. Reset
+         ================================================================ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      * {
+        margin: 0;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+        /* o header sticky muda de altura ao compactar; sem isto o navegador
+           reajusta o scroll para compensar, cruza o limiar de volta e o logo
+           entra em looping de crescer/encolher. Todas as imagens do site
+           declaram width/height, entao nao dependemos do ancoramento. */
+        overflow-anchor: none;
+      }
+      body {
+        font-family: "Outfit", system-ui, -apple-system, "Segoe UI", Roboto,
+          sans-serif;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--ink);
+        background: var(--surface);
+        -webkit-font-smoothing: antialiased;
+      }
+      img,
+      picture,
+      svg,
+      iframe {
+        display: block;
+        max-width: 100%;
+      }
+      img {
+        height: auto;
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.15;
+        text-wrap: balance;
+      }
+      p {
+        text-wrap: pretty;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+        color: inherit;
+        background: none;
+        border: 0;
+        cursor: pointer;
+      }
+      input,
+      textarea {
+        font: inherit;
+        color: inherit;
+      }
+      ul {
+        padding: 0;
+        list-style: none;
+      }
+
+      /* foco visivel e consistente em tudo que recebe teclado */
+      :focus-visible {
+        outline: 3px solid var(--brand);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+        }
+      }
+
+      /* ================================================================
+         4. Layout
+         ================================================================ */
+      .wrap {
+        width: 100%;
+        max-width: var(--wrap);
+        margin-inline: auto;
+        padding-inline: 1rem;
+      }
+      .section {
+        padding-block: 3rem;
+      }
+      .section + .section {
+        padding-top: 0;
+      }
+      .grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border: 0;
+      }
+      .skip-link {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 100;
+        padding: 0.75rem 1.25rem;
+        font-weight: 700;
+        color: #fff;
+        background: var(--ink);
+        border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+        transform: translate(-50%, -110%);
+        transition: transform 0.16s ease;
+      }
+      .skip-link:focus {
+        transform: translate(-50%, 0);
+      }
+
+      /* ================================================================
+         5. Tipografia
+         ================================================================ */
+      .h1 {
+        font-size: clamp(1.875rem, 1.35rem + 2.4vw, 2.5rem);
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+      .h2 {
+        font-size: clamp(1.5rem, 1.2rem + 1.4vw, 1.875rem);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .lead {
+        margin-top: 1rem;
+        color: var(--ink-3);
+      }
+      .lead + .lead {
+        margin-top: 1rem;
+      }
+      .muted {
+        color: var(--muted);
+      }
+
+      /* ================================================================
+         6. Botoes
+         Identidade: 60% preto + 30% vermelho + 10% preto
+         ================================================================ */
+      .btn {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        padding: 0.85rem 1.15rem;
+        font-weight: 700;
+        text-align: center;
+        white-space: nowrap;
+        border-radius: 0.9rem;
+        transition: transform 0.16s ease, box-shadow 0.16s ease,
+          background-color 0.16s ease;
+      }
+      .btn--primary {
+        color: #fff;
+        /* a ponta da faixa preta: o vermelho tem largura fixa, senao num
+           botao de largura total ele vira um bloco desproporcional */
+        background: linear-gradient(
+          90deg,
+          #000 calc(100% - 3.25rem),
+          var(--brand) calc(100% - 3.25rem) calc(100% - 0.9rem),
+          #000 calc(100% - 0.9rem)
+        );
+        border: 1px solid rgb(0 0 0 / 0.12);
+      }
+      .btn--ghost {
+        border: 1px solid rgb(0 0 0 / 0.14);
+      }
+      .btn svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        fill: currentColor;
+        flex: none;
+      }
+      .btn--block {
+        width: 100%;
+      }
+      @media (hover: hover) {
+        .btn--primary:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 10px 18px rgb(0 0 0 / 0.18);
+        }
+        .btn--ghost:hover {
+          background: #f6f6f6;
+          transform: translateY(-1px);
+        }
+      }
+
+      /* ================================================================
+         7. Header e navegacao
+         ================================================================ */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgb(255 255 255 / 0.92);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(8px);
+      }
+      .header__row {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: space-between;
+        padding-block: 0.5rem;
+      }
+      /* o logo e o portador da marca: dobrado em relacao ao refactor anterior,
+         que o tinha encolhido demais. Como o header e fixo, um logo desse
+         tamanho comeria 1/5 da tela o tempo todo -- por isso ele encolhe
+         assim que a pessoa comeca a ler (.is-compact) */
+      .header__logo img {
+        height: 7rem;
+        width: auto;
+        transition: height 0.22s ease;
+      }
+      .header.is-compact .header__logo img {
+        height: 3.75rem;
+      }
+      @media (min-width: 40rem) {
+        .header__logo img {
+          height: 8.5rem;
+        }
+        .header.is-compact .header__logo img {
+          height: 4rem;
+        }
+      }
+      .nav {
+        display: none;
+      }
+      .nav__list {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        font-size: 0.875rem;
+      }
+      .nav__list a {
+        font-weight: 600;
+        transition: color 0.15s ease;
+      }
+      @media (hover: hover) {
+        .nav__list a:hover {
+          color: var(--brand);
+        }
+      }
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+      }
+      .nav-toggle svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+      .nav-toggle[aria-expanded="true"] .icon-open,
+      .nav-toggle[aria-expanded="false"] .icon-close {
+        display: none;
+      }
+      .menu-mobile {
+        display: grid;
+        gap: 0.25rem;
+        padding: 0.5rem 1rem 1.25rem;
+        border-top: 1px solid var(--line);
+      }
+      .menu-mobile[hidden] {
+        display: none;
+      }
+      .menu-mobile a {
+        padding: 0.7rem 0.25rem;
+        font-weight: 600;
+        border-bottom: 1px solid var(--surface-2);
+      }
+
+      /* seletor de idioma: links reais, uma URL por idioma */
+      .lang {
+        display: flex;
+        padding: 0.25rem;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 9999px;
+      }
+      .lang a {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.8125rem;
+        font-weight: 800;
+        color: #374151;
+        border-radius: 9999px;
+        transition: background-color 0.16s ease, color 0.16s ease;
+      }
+      .lang a[aria-current="page"] {
+        color: #fff;
+        background: var(--brand);
+      }
+      .menu-mobile .lang {
+        width: fit-content;
+        margin-bottom: 0.5rem;
+      }
+
+      @media (min-width: 64rem) {
+        .nav {
+          display: block;
+        }
+        .nav-toggle,
+        .menu-mobile {
+          display: none !important;
+        }
+        .header__logo img {
+          height: 10rem;
+        }
+        .header.is-compact .header__logo img {
+          height: 4.5rem;
+        }
+      }
+
+      /* ancoras nao ficam escondidas atras do header fixo */
+      section[id] {
+        scroll-margin-top: calc(var(--header-h) + 1rem);
+      }
+
+      /* ================================================================
+         8. Hero
+         ================================================================ */
+      @media (min-width: 48rem) {
+        .hero {
+          grid-template-columns: 1fr 1fr;
+          gap: 2.5rem;
+          align-items: center;
+        }
+      }
+      .hero__media {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+      }
+      .hero__media img {
+        width: 100%;
+      }
+      .facts {
+        display: grid;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+      }
+      .facts li {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .facts li::before {
+        content: "•";
+        color: var(--brand);
+        font-weight: 800;
+      }
+      .facts img {
+        height: 2.125rem;
+        width: auto;
+        opacity: 0.9;
+      }
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+      }
+
+      /* ================================================================
+         9. Cards do metodo
+         <details> nativo: funciona sem JS e ja vem acessivel
+         ================================================================ */
+      @media (min-width: 40rem) {
+        .cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 64rem) {
+        .cards {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        padding: 1.25rem;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        transition: box-shadow 0.18s ease, border-color 0.18s ease;
+      }
+      @media (hover: hover) {
+        .card:hover {
+          border-color: #d4d4d8;
+          box-shadow: var(--shadow-hover);
+        }
+      }
+      .card h3 {
+        font-size: 1.125rem;
+        font-weight: 800;
+      }
+      .card__teaser {
+        margin-top: 0.5rem;
+        color: var(--ink-3);
+      }
+      .card details {
+        margin-top: auto;
+        padding-top: 1rem;
+      }
+      .card summary {
+        display: inline-flex;
+        list-style: none;
+      }
+      .card summary::-webkit-details-marker {
+        display: none;
+      }
+      .card details[open] .lbl-closed,
+      .card details:not([open]) .lbl-open {
+        display: none;
+      }
+      .card__body {
+        padding-top: 1rem;
+        color: var(--ink-3);
+      }
+      .card__body p + p,
+      .card__body ul + p {
+        margin-top: 0.75rem;
+      }
+      .card__body ul {
+        display: grid;
+        gap: 0.25rem;
+        margin-top: 0.5rem;
+      }
+      .card__body li {
+        padding-left: 1rem;
+        position: relative;
+      }
+      .card__body li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--brand);
+      }
+
+      /* ================================================================
+         10. Historia + carrossel
+         ================================================================ */
+      @media (min-width: 64rem) {
+        .history-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 2.5rem;
+          align-items: start;
+        }
+      }
+      .history {
+        position: relative;
+        margin-top: 1rem;
+        padding: 1.25rem;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+      }
+      .history__content {
+        max-height: 20rem;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+      .history.is-open .history__content {
+        max-height: 250rem;
+      }
+      .history__content h3 {
+        margin-top: 1.25rem;
+        font-size: 1rem;
+        font-weight: 800;
+      }
+      .history__content h3:first-child {
+        margin-top: 0;
+      }
+      .history__content p {
+        margin-top: 0.5rem;
+        color: var(--ink-3);
+      }
+      .history__fade {
+        position: absolute;
+        inset-inline: 1px;
+        bottom: 4.75rem;
+        height: 4rem;
+        pointer-events: none;
+        background: linear-gradient(to bottom, rgb(255 255 255 / 0), #fff 75%);
+        transition: opacity 0.2s ease;
+      }
+      .history.is-open .history__fade {
+        opacity: 0;
+      }
+      .history__toggle {
+        margin-top: 1rem;
+      }
+
+      .carousel {
+        position: relative;
+        margin-top: 1rem;
+        overflow: hidden;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+      }
+      .carousel__slide {
+        display: none;
+        padding: 0.75rem;
+      }
+      .carousel__slide.is-active {
+        display: block;
+      }
+      .carousel__media {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 20rem;
+      }
+      .carousel__media img {
+        width: auto;
+        max-height: 100%;
+        object-fit: contain;
+      }
+      .carousel__legend {
+        padding: 0.5rem 0.75rem 0;
+        text-align: center;
+      }
+      .carousel__legend strong {
+        display: block;
+        font-weight: 700;
+      }
+      .carousel__legend span {
+        display: block;
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+      .carousel__nav {
+        position: absolute;
+        /* padding do slide + metade da altura da imagem = centro exato */
+        top: calc(0.75rem + 10rem);
+        inset-inline: 0.25rem;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+      .carousel__btn {
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        color: #fff;
+        pointer-events: auto;
+        background: #111827;
+        border-radius: var(--radius-sm);
+        opacity: 0.9;
+      }
+      .carousel__controls {
+        display: flex;
+        gap: 0.25rem;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 0;
+      }
+      /* o ponto e pequeno por design, mas a area de toque tem 24px:
+         WCAG 2.5.8 mede o alvo, nao o desenho */
+      .carousel__dot {
+        display: grid;
+        place-items: center;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+      .carousel__dot::before {
+        content: "";
+        width: 0.5rem;
+        height: 0.5rem;
+        background: #d1d5db;
+        border-radius: 9999px;
+        transition: background-color 0.16s ease;
+      }
+      .carousel__dot[aria-current="true"]::before {
+        background: var(--brand);
+      }
+      .carousel__play {
+        display: grid;
+        place-items: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        margin-left: 0.5rem;
+        font-size: 0.75rem;
+        line-height: 1;
+        color: var(--muted);
+        border: 1px solid var(--line);
+        border-radius: 9999px;
+      }
+
+      /* ================================================================
+         11. Galeria + lightbox
+         ================================================================ */
+      @media (min-width: 40rem) {
+        .gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 64rem) {
+        .gallery {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .gallery figure {
+        overflow: hidden;
+        background: var(--surface);
+        border-radius: var(--radius-sm);
+        box-shadow: var(--shadow);
+      }
+      .gallery button {
+        display: block;
+        width: 100%;
+        cursor: zoom-in;
+      }
+      .gallery img {
+        width: 100%;
+        height: 13rem;
+        object-fit: cover;
+      }
+      .gallery figcaption {
+        padding: 0.5rem 0.75rem 0.75rem;
+        font-size: 0.9375rem;
+      }
+
+      .lightbox {
+        width: min(92vw, 68.75rem);
+        max-width: none;
+        max-height: 92vh;
+        padding: 0;
+        color: #f3f4f6;
+        background: transparent;
+        border: 0;
+      }
+      .lightbox::backdrop {
+        background: rgb(0 0 0 / 0.88);
+      }
+      .lightbox__inner {
+        position: relative;
+      }
+      .lightbox img {
+        width: auto;
+        max-height: 78vh;
+        margin-inline: auto;
+        border-radius: 0.5rem;
+      }
+      .lightbox__cap {
+        padding-top: 0.75rem;
+        font-size: 0.9375rem;
+        text-align: center;
+      }
+      .lightbox button {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        color: #fff;
+        background: rgb(255 255 255 / 0.14);
+        border: 1px solid rgb(255 255 255 / 0.25);
+        border-radius: var(--radius-sm);
+        backdrop-filter: blur(2px);
+      }
+      .lightbox__close {
+        top: 0.5rem;
+        right: 0.5rem;
+      }
+      .lightbox__prev,
+      .lightbox__next {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .lightbox__prev {
+        left: 0.5rem;
+      }
+      .lightbox__next {
+        right: 0.5rem;
+      }
+
+      /* ================================================================
+         12. Agenda / mapa
+         ================================================================ */
+      @media (min-width: 48rem) {
+        .split {
+          grid-template-columns: 1fr 1fr;
+          gap: 2.5rem;
+          align-items: start;
+        }
+      }
+      .panel {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+      }
+      .panel__row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        justify-content: space-between;
+      }
+      /* facade do mapa: o iframe do Google (~700 KB + cookies de terceiros)
+         so entra depois do clique */
+      .map {
+        position: relative;
+        display: grid;
+        place-items: center;
+        min-height: 22.5rem;
+        padding: 1.5rem;
+        overflow: hidden;
+        text-align: center;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+      }
+      .map iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .map--loaded {
+        padding: 0;
+        place-items: stretch;
+      }
+      .map__pin {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-inline: auto;
+        color: var(--brand);
+      }
+
+      /* ================================================================
+         13. Formulario
+         ================================================================ */
+      .form {
+        display: grid;
+        gap: 1rem;
+        padding: 1.5rem;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+      }
+      .field label {
+        display: block;
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+      .field input,
+      .field textarea {
+        width: 100%;
+        margin-top: 0.25rem;
+        padding: 0.75rem 1rem;
+        background: var(--surface);
+        border: 1px solid #d4d4d8;
+        border-radius: var(--radius-sm);
+      }
+      .field input:focus-visible,
+      .field textarea:focus-visible {
+        border-color: var(--brand);
+      }
+      .form__msg {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        text-align: center;
+      }
+      .form__msg--ok {
+        color: #15803d;
+      }
+      .form__msg--err {
+        color: var(--brand-dark);
+      }
+      .form__msg:empty {
+        display: none;
+      }
+      /* honeypot: invisivel para gente, preenchido por bot */
+      .hp {
+        position: absolute;
+        left: -9999px;
+      }
+
+      /* ================================================================
+         14. Footer
+         ================================================================ */
+      .footer {
+        margin-top: 3rem;
+        background: var(--surface);
+        border-top: 1px solid var(--line);
+      }
+      .footer__row {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-block: 2.5rem;
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+      .footer img {
+        height: 2.5rem;
+        width: auto;
+      }
+      .social {
+        display: flex;
+        gap: 1.25rem;
+        align-items: center;
+      }
+      .social svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        transition: opacity 0.16s ease;
+      }
+      @media (hover: hover) {
+        .social a:hover svg {
+          opacity: 0.75;
+        }
+      }
+      @media (min-width: 48rem) {
+        .footer__row {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .section {
+          padding-block: 4.5rem;
+        }
+      }
+
+      /* utilitarios pontuais */
+      .mt-1 {
+        margin-top: 0.75rem;
+      }
+      .mt-2 {
+        margin-top: 1.5rem;
+      }
+      .stack > * + * {
+        margin-top: 0.75rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="topSentinel" aria-hidden="true" style="position:absolute;top:0;height:96px;width:1px;pointer-events:none"></div>
+    <a class="skip-link" href="#inicio"
+      >[[es:Saltar al contenido|pt:Ir para o conteúdo|en:Skip to content]]</a
+    >
+
+    <!-- ============================ HEADER ============================ -->
+    <header class="header">
+      <div class="wrap header__row">
+        <a href="#inicio" class="header__logo" aria-label="Gasparetto BJJ">
+          <picture>
+            <source type="image/avif" srcset="/assets/img/opt/logo_circular-384.avif" />
+            <source type="image/webp" srcset="/assets/img/opt/logo_circular-384.webp" />
+            <img
+              src="/assets/img/opt/logo_circular-384.png"
+              width="384"
+              height="384"
+              alt="[[es:Logotipo Gasparetto BJJ|pt:Logotipo Gasparetto BJJ|en:Gasparetto BJJ logo]]"
+              fetchpriority="high"
+            />
+          </picture>
+        </a>
+
+        <nav class="nav" aria-label="[[es:Navegación principal|pt:Navegação principal|en:Main navigation]]">
+          <ul class="nav__list">
+            <li><a href="#inicio">[[es:Inicio|pt:Início|en:Home]]</a></li>
+            <li><a href="#metodo">[[es:Método|pt:Método|en:Method]]</a></li>
+            <li><a href="#historia">[[es:Historia del Jiu-Jitsu|pt:História do Jiu-Jitsu|en:Jiu-Jitsu History]]</a></li>
+            <li><a href="#galeria">[[es:Trayectoria|pt:Trajetória|en:Journey]]</a></li>
+            <li><a href="#agenda">[[es:Agenda y Ubicación|pt:Agenda e Local|en:Schedule &amp; Location]]</a></li>
+            <li><a href="#contacto">[[es:Contacto|pt:Contato|en:Contact]]</a></li>
+            <li>{{LANG_SWITCH}}</li>
+          </ul>
+        </nav>
+
+        <button
+          id="navToggle"
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="menuMobile"
+          aria-label="[[es:Abrir menú|pt:Abrir menu|en:Open menu]]"
+        >
+          <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" />
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+
+      <nav id="menuMobile" class="menu-mobile wrap" hidden aria-label="[[es:Navegación|pt:Navegação|en:Navigation]]">
+        {{LANG_SWITCH}}
+        <a href="#inicio">[[es:Inicio|pt:Início|en:Home]]</a>
+        <a href="#metodo">[[es:Método de Enseñanza|pt:Método de Ensino|en:Teaching Method]]</a>
+        <a href="#historia">[[es:Historia del Jiu-Jitsu|pt:História do Jiu-Jitsu|en:Jiu-Jitsu History]]</a>
+        <a href="#galeria">[[es:Trayectoria y Certificados|pt:Trajetória e Certificados|en:Journey &amp; Certificates]]</a>
+        <a href="#agenda">[[es:Agenda y Ubicación|pt:Agenda e Local|en:Schedule &amp; Location]]</a>
+        <a href="#contacto">[[es:Contacto|pt:Contato|en:Contact]]</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ============================ INICIO ============================ -->
+      <section id="inicio" class="section wrap grid hero">
+        <div class="hero__media">
+          <picture>
+            <source
+              type="image/avif"
+              srcset="
+                /assets/img/opt/mau_world_cup_2025-560.avif   560w,
+                /assets/img/opt/mau_world_cup_2025-760.avif   760w,
+                /assets/img/opt/mau_world_cup_2025-1120.avif 1120w
+              "
+              sizes="(min-width: 48rem) 513px, calc(100vw - 2rem)"
+            />
+            <source
+              type="image/webp"
+              srcset="
+                /assets/img/opt/mau_world_cup_2025-560.webp   560w,
+                /assets/img/opt/mau_world_cup_2025-760.webp   760w,
+                /assets/img/opt/mau_world_cup_2025-1120.webp 1120w
+              "
+              sizes="(min-width: 48rem) 513px, calc(100vw - 2rem)"
+            />
+            <img
+              src="/assets/img/opt/mau_world_cup_2025-560.jpg"
+              width="560"
+              height="715"
+              alt="[[es:Mauricio Gasparetto en el podio de la World Cup 2025 de Jiu-Jitsu|pt:Mauricio Gasparetto no pódio da World Cup 2025 de Jiu-Jitsu|en:Mauricio Gasparetto on the podium of the 2025 Jiu-Jitsu World Cup]]"
+              fetchpriority="high"
+              decoding="sync"
+            />
+          </picture>
+        </div>
+
+        <div>
+          <h1 class="h1" data-lang="pt">
+            Descubra o Jiu-Jitsu — a arte que transforma vidas.
+          </h1>
+          <h1 class="h1" data-lang="es">
+            Descubre el Jiu-Jitsu — el arte que transforma vidas.
+          </h1>
+          <h1 class="h1" data-lang="en">
+            Discover Jiu-Jitsu — the art that transforms lives.
+          </h1>
+
+          <p class="lead" data-lang="pt">
+            Sou <strong>Mauricio Gasparetto Fonseca</strong>, faixa-preta
+            graduado no Brasil pelo mestre <strong>Guga Fraga</strong>, e hoje
+            represento a <strong>XCOACH</strong> — equipe fundada por
+            <strong>Celsinho Venicius</strong> — aqui na Espanha, à frente do
+            <strong>Gasparetto BJJ</strong>, na academia
+            <strong>LEVSPORT Altorreal</strong>, em Molina de Segura.
+          </p>
+          <p class="lead" data-lang="pt">
+            Para mim, o Jiu-Jitsu é a arte que ensina confiança, segurança e
+            defesa pessoal. A arte que desenvolve foco, disciplina e controle. A
+            arte onde aprendemos a cair e levantar, a ganhar e a perder. É a
+            arte da aceitação — que equilibra o mais fraco fisicamente diante do
+            mais forte. A arte marcial que superou todas as outras quando o
+            mundo ainda nem a conhecia. O Jiu-Jitsu é mais do que um esporte — é
+            um <em>lifestyle</em>, um propósito de vida.
+          </p>
+          <p class="lead" data-lang="pt">
+            Meu mestre sempre me disse:
+            <em>“Os detalhes fazem o Jiu-Jitsu.”</em>
+            É com essa filosofia que ensino e vivo a arte suave todos os dias —
+            porque são os detalhes que transformam, inspiram e formam pessoas
+            dentro e fora dos tatames.
+          </p>
+
+          <p class="lead" data-lang="es">
+            Soy <strong>Mauricio Gasparetto Fonseca</strong>, cinturón negro
+            formado en Brasil por el maestro <strong>Guga Fraga</strong>, y hoy
+            represento a <strong>XCOACH</strong> — el equipo fundado por
+            <strong>Celsinho Venicius</strong> — aquí en España, al frente de
+            <strong>Gasparetto BJJ</strong>, en el gimnasio
+            <strong>LEVSPORT Altorreal</strong>, en Molina de Segura.
+          </p>
+          <p class="lead" data-lang="es">
+            Para mí, el Jiu-Jitsu es el arte que enseña confianza, seguridad y
+            defensa personal. El arte que desarrolla enfoque, disciplina y
+            control. El arte en el que aprendemos a caer y levantarnos, a ganar
+            y a perder. Es el arte de la aceptación — que equilibra al más débil
+            físicamente frente al más fuerte. El arte marcial que superó a todas
+            las demás cuando el mundo aún ni la conocía. El Jiu-Jitsu es más que
+            un deporte — es un <em>estilo de vida</em>, un propósito.
+          </p>
+          <p class="lead" data-lang="es">
+            Mi maestro siempre me dijo:
+            <em>«Los detalles hacen el Jiu-Jitsu.»</em>
+            Con esa filosofía enseño y vivo el arte suave cada día — porque son
+            los detalles los que transforman, inspiran y forman personas dentro
+            y fuera del tatami.
+          </p>
+
+          <p class="lead" data-lang="en">
+            I’m <strong>Mauricio Gasparetto Fonseca</strong>, a black belt under
+            <strong>Guga Fraga</strong> (Brazil). I represent
+            <strong>XCOACH</strong> — the team founded by
+            <strong>Celsinho Venicius</strong> — here in Spain, leading
+            <strong>Gasparetto BJJ</strong> at
+            <strong>LEVSPORT Altorreal</strong>, in Molina de Segura.
+          </p>
+          <p class="lead" data-lang="en">
+            For me, Jiu-Jitsu is the art that teaches confidence, safety and
+            self-defense. The art that develops focus, discipline and control.
+            The art where we learn to fall and rise, to win and to lose. It is
+            the art of acceptance — balancing the physically weaker against the
+            stronger. The martial art that surpassed all others when the world
+            barely knew it. Jiu-Jitsu is more than a sport — it’s a
+            <em>lifestyle</em>, a purpose.
+          </p>
+          <p class="lead" data-lang="en">
+            My master always told me: <em>“Details make Jiu-Jitsu.”</em>
+            This is the philosophy I teach and live every day — because details
+            are what transform, inspire and shape people on and off the mats.
+          </p>
+
+          <ul class="facts">
+            <li>
+              <span data-lang="es">Cinturón negro desde <strong>2020</strong></span>
+              <span data-lang="pt">Faixa-preta desde <strong>2020</strong></span>
+              <span data-lang="en">Black belt since <strong>2020</strong></span>
+            </li>
+            <li>
+              <span data-lang="es"><strong>20+ años</strong> en los tatamis</span>
+              <span data-lang="pt"><strong>20+ anos</strong> nos tatames</span>
+              <span data-lang="en"><strong>20+ years</strong> on the mats</span>
+            </li>
+            <li>
+              <span data-lang="es">Representante de <strong>XCOACH</strong> en España</span>
+              <span data-lang="pt">Representante da <strong>XCOACH</strong> na Espanha</span>
+              <span data-lang="en"><strong>XCOACH</strong> representative in Spain</span>
+            </li>
+            <li>
+              <span data-lang="es">Clases en <strong>LEVSPORT Altorreal</strong>, Molina de Segura</span>
+              <span data-lang="pt">Aulas na <strong>LEVSPORT Altorreal</strong>, Molina de Segura</span>
+              <span data-lang="en">Classes at <strong>LEVSPORT Altorreal</strong>, Molina de Segura</span>
+            </li>
+            <!-- gratidao a casa anterior: menciona sem logo e sem link, que
+                 enviaria alunos a uma escola concorrente a 15 min daqui -->
+            <li>
+              <span data-lang="es"><strong>2024–2026</strong>: profesor en Central Training Murcia</span>
+              <span data-lang="pt"><strong>2024–2026</strong>: professor na Central Training Murcia</span>
+              <span data-lang="en"><strong>2024–2026</strong>: coach at Central Training Murcia</span>
+            </li>
+          </ul>
+
+          <div class="cta-row">
+            <a href="#metodo" class="btn btn--primary" data-lang="es">Conocer el método</a>
+            <a href="#metodo" class="btn btn--primary" data-lang="pt">Conhecer o método</a>
+            <a href="#metodo" class="btn btn--primary" data-lang="en">See the method</a>
+            <a
+              class="btn btn--primary"
+              href="https://wa.me/34635437530"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ METODO ============================ -->
+      <section id="metodo" class="section wrap">
+        <h2 class="h2" data-lang="es">Método de Enseñanza</h2>
+        <h2 class="h2" data-lang="pt">Método de Ensino</h2>
+        <h2 class="h2" data-lang="en">Teaching Method</h2>
+
+        <p class="lead" data-lang="pt">
+          Eficiência, segurança e atenção aos detalhes. Meu trabalho no Jiu-Jitsu
+          é guiado por uma didática clara, fundamentada nos princípios da arte
+          suave: técnica precisa, progresso inteligente e compreensão real dos
+          movimentos. Cada aula, independente da modalidade, segue essa filosofia
+          — respeitando o ritmo, a evolução e o propósito de cada aluno.
+        </p>
+        <p class="lead" data-lang="es">
+          Eficiencia, seguridad y atención a los detalles. Mi trabajo en el
+          Jiu-Jitsu se guía por una didáctica clara, basada en los principios del
+          arte suave: técnica precisa, progreso inteligente y comprensión real de
+          los movimientos. Cada clase, independientemente de la modalidad, sigue
+          esta filosofía — respetando el ritmo, la evolución y el propósito de
+          cada alumno.
+        </p>
+        <p class="lead" data-lang="en">
+          Efficiency, safety, and attention to detail. My Jiu-Jitsu teaching is
+          guided by a clear methodology rooted in the principles of the gentle
+          art: precise technique, intelligent progression, and real understanding
+          of movement. Every class, regardless of the modality, follows this
+          philosophy — respecting each student’s pace, evolution, and purpose.
+        </p>
+
+        <div class="grid cards mt-2">
+          <!-- 1. Defensa Personal (unificada: geral, mujeres, ninos, profesional) -->
+          <article class="card">
+            <h3 data-lang="es">Defensa Personal</h3>
+            <h3 data-lang="pt">Defesa Pessoal</h3>
+            <h3 data-lang="en">Self-Defense</h3>
+            <p class="card__teaser" data-lang="es">
+              El origen del Jiu-Jitsu: técnica, palanca y calma para que el tamaño
+              y la fuerza dejen de decidir el resultado.
+            </p>
+            <p class="card__teaser" data-lang="pt">
+              A origem do Jiu-Jitsu: técnica, alavanca e calma para que tamanho e
+              força deixem de decidir o resultado.
+            </p>
+            <p class="card__teaser" data-lang="en">
+              Where Jiu-Jitsu began: technique, leverage and composure, so that
+              size and strength stop deciding the outcome.
+            </p>
+            <details>
+              <summary class="btn btn--primary">
+                <span class="lbl-closed">[[es:Saber más|pt:Saiba mais|en:Learn more]]</span>
+                <span class="lbl-open">[[es:Ver menos|pt:Ver menos|en:Show less]]</span>
+              </summary>
+              <div class="card__body">
+                <!-- ES -->
+                <div data-lang="es">
+                  <p>
+                    Antes de ser deporte, el Jiu-Jitsu fue creado para resolver un
+                    problema concreto: cómo puede defenderse alguien que no tiene
+                    ventaja física. La respuesta no fue más fuerza, sino mejor
+                    posición, palanca y control — y la calma para pensar mientras
+                    el otro se agota.
+                  </p>
+                  <p>
+                    Por eso la defensa personal no es una clase aparte para cada
+                    persona: es la misma base, aplicada a la situación de cada uno.
+                  </p>
+                  <p><strong>A quién le sirve, y para qué:</strong></p>
+                  <ul>
+                    <li>
+                      <strong>Adultos que nunca entrenaron</strong> — recuperar la
+                      confianza de saber reaccionar, sin necesidad de estar en forma
+                      para empezar.
+                    </li>
+                    <li>
+                      <strong>Mujeres</strong> — salir de agarres, del suelo y de
+                      situaciones de control con técnica, no con fuerza; y leer el
+                      riesgo antes de que se convierta en agresión.
+                    </li>
+                    <li>
+                      <strong>Niños y adolescentes</strong> — responder al acoso sin
+                      pelear: postura, palabra y, si no queda otra, la capacidad de
+                      controlar sin lastimar. Un niño que sabe defenderse rara vez
+                      necesita hacerlo.
+                    </li>
+                    <li>
+                      <strong>Cuerpos de seguridad</strong> — controlar y reducir con
+                      el mínimo daño para ambas partes.
+                    </li>
+                  </ul>
+                  <p>En clase trabajamos:</p>
+                  <ul>
+                    <li>distancia y postura: la mayoría de los problemas se evitan aquí</li>
+                    <li>salidas de agarres, estrangulamientos e inmovilizaciones</li>
+                    <li>qué hacer si terminas en el suelo — el peor lugar para quien no sabe</li>
+                    <li>palanca y control en lugar de golpes e impacto</li>
+                    <li>respiración y calma: sin ellas, ninguna técnica funciona</li>
+                  </ul>
+                  <p>
+                    Se entrena de forma progresiva y segura, sin competir contra
+                    nadie y sin necesidad de experiencia previa. El objetivo no es
+                    ganar una pelea: es no tener que pelear — y saber resolverlo si
+                    ocurre.
+                  </p>
+                </div>
+
+                <!-- PT -->
+                <div data-lang="pt">
+                  <p>
+                    Antes de ser esporte, o Jiu-Jitsu foi criado para resolver um
+                    problema concreto: como se defende quem não tem vantagem física.
+                    A resposta não foi mais força, e sim melhor posição, alavanca e
+                    controle — e a calma para pensar enquanto o outro se cansa.
+                  </p>
+                  <p>
+                    Por isso a defesa pessoal não é uma aula separada para cada
+                    pessoa: é a mesma base, aplicada à situação de cada um.
+                  </p>
+                  <p><strong>Para quem serve, e para quê:</strong></p>
+                  <ul>
+                    <li>
+                      <strong>Adultos que nunca treinaram</strong> — recuperar a
+                      confiança de saber reagir, sem precisar estar em forma para
+                      começar.
+                    </li>
+                    <li>
+                      <strong>Mulheres</strong> — sair de agarrões, do chão e de
+                      situações de controle com técnica, não com força; e enxergar o
+                      risco antes que ele vire agressão.
+                    </li>
+                    <li>
+                      <strong>Crianças e adolescentes</strong> — responder ao bullying
+                      sem brigar: postura, palavra e, se não houver saída, a
+                      capacidade de controlar sem machucar. Uma criança que sabe se
+                      defender raramente precisa fazê-lo.
+                    </li>
+                    <li>
+                      <strong>Forças de segurança</strong> — controlar e conter com o
+                      menor dano possível para os dois lados.
+                    </li>
+                  </ul>
+                  <p>Nas aulas trabalhamos:</p>
+                  <ul>
+                    <li>distância e postura: a maior parte dos problemas se evita aqui</li>
+                    <li>saídas de agarrões, estrangulamentos e imobilizações</li>
+                    <li>o que fazer se você for ao chão — o pior lugar para quem não sabe</li>
+                    <li>alavanca e controle no lugar de golpes e impacto</li>
+                    <li>respiração e calma: sem elas, nenhuma técnica funciona</li>
+                  </ul>
+                  <p>
+                    O treino é progressivo e seguro, sem competir com ninguém e sem
+                    exigir experiência anterior. O objetivo não é vencer uma briga: é
+                    não precisar brigar — e saber resolver se acontecer.
+                  </p>
+                </div>
+
+                <!-- EN -->
+                <div data-lang="en">
+                  <p>
+                    Before it was a sport, Jiu-Jitsu was built to solve one concrete
+                    problem: how does someone without a physical advantage defend
+                    themselves? The answer was never more strength — it was better
+                    position, leverage and control, plus the composure to think while
+                    the other person tires out.
+                  </p>
+                  <p>
+                    That is why self-defense isn't a separate class for each kind of
+                    person: it is the same foundation, applied to each situation.
+                  </p>
+                  <p><strong>Who it serves, and for what:</strong></p>
+                  <ul>
+                    <li>
+                      <strong>Adults who never trained</strong> — the confidence of
+                      knowing how to react, with no need to be fit before starting.
+                    </li>
+                    <li>
+                      <strong>Women</strong> — escaping grabs, holds and being pinned,
+                      through technique rather than strength; and reading risk before
+                      it becomes an assault.
+                    </li>
+                    <li>
+                      <strong>Children and teens</strong> — answering bullying without
+                      fighting: posture, words, and if there is no other way, the
+                      ability to control without hurting. A child who can defend
+                      themselves rarely has to.
+                    </li>
+                    <li>
+                      <strong>Security professionals</strong> — controlling and
+                      restraining with the least possible harm to either side.
+                    </li>
+                  </ul>
+                  <p>In class we work on:</p>
+                  <ul>
+                    <li>distance and posture — most problems are avoided right here</li>
+                    <li>escaping grabs, chokes and pins</li>
+                    <li>what to do if you end up on the ground — the worst place for the untrained</li>
+                    <li>leverage and control instead of strikes and impact</li>
+                    <li>breathing and composure: without them, no technique holds up</li>
+                  </ul>
+                  <p>
+                    Training is progressive and safe, with no competition against
+                    anyone and no experience required. The goal isn't to win a fight —
+                    it's not to need one, and to handle it if it comes.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- 3. Gi -->
+          <article class="card">
+            <h3>Jiu-Jitsu Gi</h3>
+            <p class="card__teaser" data-lang="es">
+              Técnica completa: base, postura, agarres, transiciones y
+              finalizaciones con progresión clara.
+            </p>
+            <p class="card__teaser" data-lang="pt">
+              Construção técnica completa: base, postura, pegadas, quedas e
+              finalizações com progressão clara.
+            </p>
+            <p class="card__teaser" data-lang="en">
+              Complete technical development: base, posture, grips, takedowns and
+              submissions with clear progression.
+            </p>
+            <details>
+              <summary class="btn btn--primary">
+                <span class="lbl-closed">[[es:Saber más|pt:Saiba mais|en:Learn more]]</span>
+                <span class="lbl-open">[[es:Ver menos|pt:Ver menos|en:Show less]]</span>
+              </summary>
+              <div class="card__body">
+                <div data-lang="es">
+                  <p>
+                    El Jiu-Jitsu con kimono es donde el arte gana profundidad.
+                    Aquí, cada detalle importa — del agarre correcto a la postura
+                    precisa — y el kimono se convierte en una herramienta
+                    estratégica para defensa, control y finalización.
+                  </p>
+                  <p>En clase trabajamos:</p>
+                  <ul>
+                    <li>base, equilibrio y postura sólida</li>
+                    <li>agarres técnicos y eficientes</li>
+                    <li>guardias, reposiciones y transiciones</li>
+                    <li>paso de guardia con estabilidad</li>
+                    <li>finalizaciones con control y seguridad</li>
+                  </ul>
+                  <p>
+                    El entrenamiento está estructurado para principiantes,
+                    intermedios y avanzados, respetando el ritmo de cada persona
+                    sin perder la esencia del Jiu-Jitsu real: técnica consistente,
+                    estudio, aplicación práctica y evolución continua.
+                  </p>
+                </div>
+                <div data-lang="pt">
+                  <p>
+                    O Jiu-Jitsu com kimono é onde a arte ganha profundidade. Aqui,
+                    cada detalhe importa — da pegada certa ao posicionamento
+                    preciso — e o kimono se torna uma ferramenta estratégica para
+                    defesa, controle e finalização.
+                  </p>
+                  <p>Nas aulas trabalhamos:</p>
+                  <ul>
+                    <li>base, equilíbrio e postura sólida</li>
+                    <li>pegadas técnicas e eficientes</li>
+                    <li>guardas, reposições e transições</li>
+                    <li>passagem de guarda com estabilidade</li>
+                    <li>finalizações com controle e segurança</li>
+                  </ul>
+                  <p>
+                    O treino é estruturado para iniciantes, intermediários e
+                    avançados, sempre respeitando o ritmo de cada pessoa, sem
+                    perder a essência do Jiu-Jitsu real: técnica consistente,
+                    estudo, aplicação prática e evolução contínua.
+                  </p>
+                </div>
+                <div data-lang="en">
+                  <p>
+                    Gi Jiu-Jitsu is where the art gains depth. Every detail
+                    matters — from the correct grip to the precise positioning —
+                    and the gi becomes a strategic tool for defense, control and
+                    submissions.
+                  </p>
+                  <p>In class we work on:</p>
+                  <ul>
+                    <li>solid base, balance and posture</li>
+                    <li>technical, efficient grips</li>
+                    <li>guards, transitions and recoveries</li>
+                    <li>stable, precise guard passing</li>
+                    <li>controlled, safe submissions</li>
+                  </ul>
+                  <p>
+                    Training is structured for beginners, intermediates and
+                    advanced students, always respecting each person’s pace while
+                    maintaining the essence of real Jiu-Jitsu: consistent
+                    technique, study, practical application and continuous
+                    evolution.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- 4. No-Gi -->
+          <article class="card">
+            <h3>Jiu-Jitsu No-Gi</h3>
+            <p class="card__teaser" data-lang="es">
+              Entradas, derribos, control de cadera y sumisiones sin kimono.
+            </p>
+            <p class="card__teaser" data-lang="pt">
+              Entradas, quedas, controle de quadril e finalizações sem kimono.
+            </p>
+            <p class="card__teaser" data-lang="en">
+              Entries, takedowns, hip control and submissions without gi.
+            </p>
+            <details>
+              <summary class="btn btn--primary">
+                <span class="lbl-closed">[[es:Saber más|pt:Saiba mais|en:Learn more]]</span>
+                <span class="lbl-open">[[es:Ver menos|pt:Ver menos|en:Show less]]</span>
+              </summary>
+              <div class="card__body">
+                <div data-lang="es">
+                  <p>
+                    Enfoque en clinch, scrambles y control del cuerpo con
+                    finalizaciones eficientes: trabajo de entradas, derribos sin
+                    gi, control dinámico de cadera y finalizaciones versátiles.
+                  </p>
+                </div>
+                <div data-lang="pt">
+                  <p>
+                    Foco em clinch, scrambles e controle corporal com finalizações
+                    eficientes: entradas, quedas sem gi, controle dinâmico de
+                    quadril e finalizações versáteis.
+                  </p>
+                </div>
+                <div data-lang="en">
+                  <p>
+                    Focus on clinch, scrambles and body control with efficient
+                    finishes: entries, gi-free takedowns, dynamic hip control and
+                    versatile submissions.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- 5. Kids -->
+          <article class="card">
+            <h3>Jiu-Jitsu Kids</h3>
+            <p class="card__teaser" data-lang="es">
+              Coordinación, juegos de base, respeto y disciplina con seguridad
+              total.
+            </p>
+            <p class="card__teaser" data-lang="pt">
+              Coordenação, jogos de base, respeito e disciplina com segurança
+              total.
+            </p>
+            <p class="card__teaser" data-lang="en">
+              Coordination, base games, respect and discipline with full safety.
+            </p>
+            <details>
+              <summary class="btn btn--primary">
+                <span class="lbl-closed">[[es:Saber más|pt:Saiba mais|en:Learn more]]</span>
+                <span class="lbl-open">[[es:Ver menos|pt:Ver menos|en:Show less]]</span>
+              </summary>
+              <div class="card__body">
+                <div data-lang="es">
+                  <p>
+                    Clases lúdicas que desarrollan motricidad, trabajo en pareja,
+                    caídas seguras y autocontrol, con juego cooperativo,
+                    integración de valores y técnicas básicas.
+                  </p>
+                </div>
+                <div data-lang="pt">
+                  <p>
+                    Aulas lúdicas que desenvolvem motricidade, trabalho em dupla,
+                    quedas seguras e autocontrole, com jogo cooperativo,
+                    integração de valores e técnicas básicas.
+                  </p>
+                </div>
+                <div data-lang="en">
+                  <p>
+                    Playful sessions building motor skills, partner work, safe
+                    falls and self-control, with cooperative play, value
+                    integration and basic techniques.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- 6. Clases particulares -->
+          <article class="card">
+            <h3 data-lang="es">Clases Particulares</h3>
+            <h3 data-lang="pt">Aulas Particulares</h3>
+            <h3 data-lang="en">Private Lessons</h3>
+            <p class="card__teaser" data-lang="es">
+              Plan 1:1, análisis de sparrings y periodización semanal.
+            </p>
+            <p class="card__teaser" data-lang="pt">
+              Plano 1:1, análise de rolas e periodização semanal.
+            </p>
+            <p class="card__teaser" data-lang="en">
+              1:1 plan, sparring analysis and weekly periodization.
+            </p>
+            <details>
+              <summary class="btn btn--primary">
+                <span class="lbl-closed">[[es:Saber más|pt:Saiba mais|en:Learn more]]</span>
+                <span class="lbl-open">[[es:Ver menos|pt:Ver menos|en:Show less]]</span>
+              </summary>
+              <div class="card__body">
+                <div data-lang="es">
+                  <p>
+                    Correcciones específicas, seguimiento y metas claras para
+                    acelerar tu progreso: plan 1:1, análisis de vídeo,
+                    seguimiento personalizado y metas de rendimiento.
+                  </p>
+                </div>
+                <div data-lang="pt">
+                  <p>
+                    Correções específicas, acompanhamento e metas claras para
+                    acelerar seu progresso: plano 1:1, análise de vídeo,
+                    acompanhamento personalizado e metas de desempenho.
+                  </p>
+                </div>
+                <div data-lang="en">
+                  <p>
+                    Specific corrections, tracking and clear goals to accelerate
+                    your progress: 1:1 plan, video analysis, personalized
+                    tracking and performance goals.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============================ HISTORIA ============================ -->
+      <section id="historia" class="section wrap grid history-grid">
+        <div>
+          <h2 class="h2" data-lang="es">Historia del Jiu-Jitsu</h2>
+          <h2 class="h2" data-lang="pt">História do Jiu-Jitsu</h2>
+          <h2 class="h2" data-lang="en">History of Jiu-Jitsu</h2>
+
+          <div id="history" class="history">
+            <div id="historyContent" class="history__content">
+              <div data-lang="pt">
+                <h3>
+                  A História do Jiu-Jitsu: das montanhas da Índia ao mundo com o
+                  Gracie Jiu-Jitsu
+                </h3>
+                <p>
+                  A origem do jiu-jitsu remonta a cerca de 2.500 anos atrás, nas
+                  montanhas da Índia, onde monges budistas desenvolveram técnicas
+                  de defesa pessoal baseadas em equilíbrio, alavanca e uso
+                  inteligente da energia do oponente. Essas práticas se
+                  espalharam pela China e, posteriormente, chegaram ao Japão, onde
+                  a arte marcial encontrou o ambiente ideal para se refinar e
+                  evoluir.
+                </p>
+                <h3>A evolução no Japão</h3>
+                <p>
+                  No Japão, o jiu-jitsu foi amplamente praticado por samurais como
+                  forma de combate desarmado. No século XIX, o mestre Jigorō Kanō
+                  (1860–1938) destacou-se ao sistematizar e aperfeiçoar as
+                  técnicas tradicionais, criando o Judô e fundando a Kōdōkan. Kanō
+                  priorizou quedas e técnicas de controle no solo, introduzindo
+                  uma abordagem mais científica e educacional às artes marciais.
+                </p>
+                <p>
+                  Entre seus alunos estava Mitsuyo Maeda (1878–1941), conhecido
+                  como Conde Koma, que também aprendeu com Mataemon Tanabe
+                  (1869–1942) — especialista do Fusen-ryū, célebre pelo trabalho
+                  de chão. A convivência entre Maeda, Kanō e Tanabe fez com que
+                  Maeda dominasse tanto as projeções quanto o solo,
+                  características que mais tarde seriam transmitidas no Brasil.
+                </p>
+                <h3>A chegada ao Brasil</h3>
+                <p>
+                  No início do século XX, o mestre japonês Mitsuyo Maeda,
+                  conhecido como Conde Koma, veio à América do Sul e se
+                  estabeleceu em Belém do Pará, no norte do Brasil. Ali, ele
+                  conheceu Gastão Gracie, um respeitado homem de negócios e figura
+                  influente da região.
+                </p>
+                <p>
+                  Gastão ajudou Maeda a se fixar em Belém e, em gratidão por essa
+                  ajuda, Maeda decidiu ensinar sua arte marcial ao filho mais
+                  velho de Gastão, Carlos Gracie.
+                </p>
+                <p>
+                  Carlos, então um jovem curioso e determinado, logo se apaixonou
+                  pelo jiu-jitsu. Encantado com a eficiência e a filosofia por
+                  trás da arte, dedicou toda a sua energia e disciplina ao
+                  aprendizado.
+                </p>
+                <p>
+                  Anos depois, já no Rio de Janeiro, Carlos passou a ensinar o
+                  jiu-jitsu como fonte de renda adicional. Ele aproveitou essa
+                  oportunidade para ganhar dinheiro com o que mais gostava:
+                  ensinar jiu-jitsu. Para firmar a credibilidade de seus
+                  ensinamentos, Carlos liderou seus irmãos em uma série de
+                  desafios.
+                </p>
+                <h3>O surgimento do Gracie Jiu-Jitsu</h3>
+                <p>
+                  Entre os irmãos Gracie, o mais novo, Hélio Gracie, era
+                  fisicamente mais frágil e enfrentava limitações de saúde desde
+                  criança. Por recomendação médica, ele ficou afastado de
+                  atividades físicas e passou anos apenas observando as aulas de
+                  seus irmãos.
+                </p>
+                <p>
+                  Certo dia, aos 16 anos, quando Carlos Gracie — seu irmão mais
+                  velho e instrutor — se atrasou para uma aula, Hélio se ofereceu
+                  para começar o treino no lugar dele. Surpreendentemente,
+                  conduziu a aula com tanta calma e clareza que o aluno, ao final,
+                  disse ter gostado muito e pediu para continuar treinando com
+                  Hélio dali em diante.
+                </p>
+                <p>
+                  Esse episódio marcou o início de sua jornada como professor e o
+                  nascimento de uma nova forma de praticar jiu-jitsu. Ao ensinar,
+                  Hélio percebeu que não conseguia executar algumas técnicas
+                  tradicionais com a mesma força e explosão dos demais.
+                  Determinado, começou a adaptar os movimentos, buscando maior
+                  eficiência por meio da alavanca, do posicionamento e do uso
+                  inteligente da energia.
+                </p>
+                <p>
+                  Com o tempo, essas adaptações deram origem a um estilo
+                  completamente novo — mais técnico, estratégico e acessível,
+                  capaz de permitir que uma pessoa menor e mais leve vencesse
+                  oponentes maiores e mais fortes. Assim nascia o Gracie
+                  Jiu-Jitsu, conhecido no mundo todo como o Jiu-Jitsu Brasileiro
+                  (BJJ).
+                </p>
+                <h3>Desafios e expansão</h3>
+                <p>
+                  Nas décadas seguintes, a família Gracie desafiou atletas de
+                  outras modalidades, demonstrando a eficácia do sistema em
+                  combates reais e sem muitas restrições. Esses desafios públicos
+                  consolidaram sua reputação no Brasil e no exterior.
+                </p>
+                <h3>Reconhecimento global — o UFC</h3>
+                <p>
+                  Em 1993, o BJJ ganhou projeção mundial com o
+                  <em>Ultimate Fighting Championship</em> (UFC). Representando a
+                  família, Royce Gracie venceu o UFC 1, 2 e 4, superando
+                  adversários maiores com técnica, estratégia e controle. A partir
+                  daí, o Gracie Jiu-Jitsu se difundiu globalmente e tornou-se base
+                  do MMA moderno.
+                </p>
+              </div>
+
+              <div data-lang="es">
+                <h3>
+                  La Historia del Jiu-Jitsu: de las montañas de la India al mundo
+                  con el Gracie Jiu-Jitsu
+                </h3>
+                <p>
+                  El origen del jiu-jitsu se remonta a unos 2.500 años, en las
+                  montañas de la India, donde monjes budistas desarrollaron
+                  técnicas de defensa personal basadas en el equilibrio, la
+                  palanca y el uso inteligente de la energía del oponente. Estas
+                  prácticas se expandieron por China y, posteriormente, llegaron a
+                  Japón, donde el arte encontró el ambiente ideal para refinarse y
+                  evolucionar.
+                </p>
+                <h3>La evolución en Japón</h3>
+                <p>
+                  En Japón, el jiu-jitsu fue practicado por los samuráis como
+                  combate sin armas. En el siglo XIX, Jigorō Kanō (1860–1938)
+                  sistematizó y perfeccionó las técnicas tradicionales, creando el
+                  Judo y fundando el Kōdōkan. Kanō priorizó proyecciones y control
+                  en el suelo, introduciendo un enfoque más científico y
+                  educativo.
+                </p>
+                <p>
+                  Entre sus alumnos estuvo Mitsuyo Maeda (1878–1941), el “Conde
+                  Koma”, quien también aprendió con Mataemon Tanabe (1869–1942),
+                  especialista del Fusen-ryū y célebre por su trabajo de suelo. La
+                  convivencia entre Maeda, Kanō y Tanabe llevó a Maeda a dominar
+                  tanto las proyecciones como el grappling, rasgos que luego
+                  transmitiría en Brasil.
+                </p>
+                <h3>La llegada a Brasil</h3>
+                <p>
+                  A inicios del siglo XX, el maestro japonés Mitsuyo Maeda,
+                  conocido como Conde Koma, llegó a Sudamérica y se estableció en
+                  Belém do Pará, en el norte de Brasil. Allí conoció a Gastão
+                  Gracie, un respetado hombre de negocios e influencia local.
+                </p>
+                <p>
+                  Gastão ayudó a Maeda a asentarse en Belém y, en agradecimiento,
+                  Maeda decidió enseñar su arte marcial al hijo mayor de Gastão,
+                  Carlos Gracie.
+                </p>
+                <p>
+                  Carlos, entonces un joven curioso y determinado, pronto se
+                  enamoró del jiu-jitsu. Fascinado por la eficiencia y la
+                  filosofía del arte, dedicó toda su energía y disciplina al
+                  aprendizaje.
+                </p>
+                <p>
+                  Años después, ya en Río de Janeiro, Carlos comenzó a enseñar
+                  jiu-jitsu como una fuente adicional de ingresos — la oportunidad
+                  de ganar dinero haciendo lo que más amaba. Para reforzar la
+                  credibilidad de sus enseñanzas, lideró a sus hermanos en una
+                  serie de desafíos.
+                </p>
+                <h3>El surgimiento del Gracie Jiu-Jitsu</h3>
+                <p>
+                  El menor de los Gracie, Hélio, era físicamente más frágil y tuvo
+                  limitaciones de salud desde niño. Por recomendación médica, pasó
+                  años solo observando clases.
+                </p>
+                <p>
+                  A los 16, sustituyó a Carlos en una clase y la condujo con calma
+                  y claridad; el alumno pidió seguir con él. Enseñando, Hélio
+                  empezó a adaptar técnicas para lograr eficiencia mediante
+                  palanca, posicionamiento y uso inteligente de la energía.
+                </p>
+                <p>
+                  Con el tiempo, esas adaptaciones dieron origen a un estilo más
+                  técnico, estratégico y accesible: el Gracie Jiu-Jitsu, conocido
+                  mundialmente como BJJ.
+                </p>
+                <h3>Desafíos y expansión</h3>
+                <p>
+                  Durante décadas, la familia Gracie retó a otras disciplinas,
+                  probando la eficacia del sistema en combates reales. Esto
+                  consolidó su reputación.
+                </p>
+                <h3>Reconocimiento global — el UFC</h3>
+                <p>
+                  En 1993, el BJJ ganó visibilidad mundial con el UFC. Royce
+                  Gracie ganó el UFC 1, 2 y 4 frente a oponentes más grandes,
+                  demostrando técnica, estrategia y control.
+                </p>
+              </div>
+
+              <div data-lang="en">
+                <h3>
+                  The History of Jiu-Jitsu: from India’s mountains to the world
+                  through Gracie Jiu-Jitsu
+                </h3>
+                <p>
+                  Jiu-Jitsu’s origins trace back roughly 2,500 years to the
+                  mountains of India, where Buddhist monks developed self-defense
+                  methods based on balance, leverage, and redirecting an
+                  opponent’s energy. These practices spread through China and
+                  eventually reached Japan, where the art was refined and
+                  systematized.
+                </p>
+                <h3>Evolution in Japan</h3>
+                <p>
+                  In Japan, Jiu-Jitsu was practiced by samurai as unarmed combat.
+                  In the 19th century, Jigorō Kanō (1860–1938) organized and
+                  enhanced traditional methods, creating Judo and founding the
+                  Kōdōkan. Kanō emphasized throws and groundwork, introducing a
+                  more scientific, educational approach.
+                </p>
+                <p>
+                  Among his students was Mitsuyo Maeda (1878–1941), known as
+                  “Count Koma,” who also trained with Mataemon Tanabe (1869–1942)
+                  of Fusen-ryū, renowned for ground fighting. Exposure to Kanō and
+                  Tanabe led Maeda to master both throwing and ground skills —
+                  which he later passed on in Brazil.
+                </p>
+                <h3>Arrival in Brazil</h3>
+                <p>
+                  In the early 20th century, Mitsuyo Maeda settled in Belém do
+                  Pará, northern Brazil, where he met Gastão Gracie, who helped
+                  him establish himself. In gratitude, Maeda taught Jiu-Jitsu to
+                  Gastão’s eldest son, Carlos Gracie.
+                </p>
+                <p>
+                  Carlos fell in love with the art and devoted himself to it.
+                  Later, in Rio de Janeiro, he began teaching as an extra income
+                  source and led his brothers in a series of challenge matches to
+                  build credibility.
+                </p>
+                <h3>The rise of Gracie Jiu-Jitsu</h3>
+                <p>
+                  The youngest brother, Hélio, faced health limitations and spent
+                  years observing. At 16, he started a class for Carlos and
+                  impressed the student. Teaching led him to adapt techniques for
+                  efficiency through leverage, positioning and smart energy use,
+                  giving birth to Gracie Jiu-Jitsu (BJJ).
+                </p>
+                <h3>Challenge matches and expansion</h3>
+                <p>
+                  The Gracies publicly tested their system for decades, cementing
+                  their reputation.
+                </p>
+                <h3>Global recognition — the UFC</h3>
+                <p>
+                  In 1993, Royce Gracie won UFC 1, 2 and 4, defeating larger
+                  opponents through technique, strategy and control, and BJJ went
+                  worldwide.
+                </p>
+              </div>
+            </div>
+
+            <div class="history__fade" aria-hidden="true"></div>
+            <button
+              id="historyToggle"
+              class="btn btn--ghost history__toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="historyContent"
+            >
+              <span class="lbl-closed">[[es:Leer más|pt:Ler mais|en:Read more]]</span>
+              <span class="lbl-open" hidden>[[es:Leer menos|pt:Ler menos|en:Read less]]</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Carrossel de mestres -->
+        <div
+          id="carousel"
+          class="carousel"
+          role="group"
+          aria-roledescription="[[es:carrusel|pt:carrossel|en:carousel]]"
+          aria-label="[[es:Maestros en el origen del Jiu-Jitsu|pt:Mestres na origem do Jiu-Jitsu|en:Masters at the origin of Jiu-Jitsu]]"
+          data-label-play="[[es:Reproducir|pt:Reproduzir|en:Play]]"
+          data-label-pause="[[es:Pausar|pt:Pausar|en:Pause]]"
+        >
+          <div class="carousel__slide is-active" role="group" aria-label="1 / 4">
+            <div class="carousel__media">
+              <picture>
+                <source type="image/avif" srcset="/assets/img/opt/kano.avif" />
+                <source type="image/webp" srcset="/assets/img/opt/kano.webp" />
+                <img src="/assets/img/opt/kano.jpg" width="250" height="365" alt="Jigorō Kanō" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <p class="carousel__legend">
+              <strong>Jigorō Kanō</strong>
+              <span data-lang="pt">Fundador do Judô (Japão)</span>
+              <span data-lang="es">Fundador del Judo (Japón)</span>
+              <span data-lang="en">Founder of Judo (Japan)</span>
+            </p>
+          </div>
+
+          <div class="carousel__slide" role="group" aria-label="2 / 4">
+            <div class="carousel__media">
+              <picture>
+                <source type="image/avif" srcset="/assets/img/opt/tanabe.avif" />
+                <source type="image/webp" srcset="/assets/img/opt/tanabe.webp" />
+                <img src="/assets/img/opt/tanabe.jpg" width="350" height="227" alt="Mataemon Tanabe" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <p class="carousel__legend">
+              <strong>Mataemon Tanabe</strong>
+              <span data-lang="pt">Mestre Fusen-ryū – precursor das técnicas de chão</span>
+              <span data-lang="es">Maestro Fusen-ryū – precursor de las técnicas de suelo</span>
+              <span data-lang="en">Fusen-ryū master – pioneer of ground techniques</span>
+            </p>
+          </div>
+
+          <div class="carousel__slide" role="group" aria-label="3 / 4">
+            <div class="carousel__media">
+              <picture>
+                <source type="image/avif" srcset="/assets/img/opt/maeda.avif" />
+                <source type="image/webp" srcset="/assets/img/opt/maeda.webp" />
+                <img src="/assets/img/opt/maeda.jpg" width="300" height="351" alt="Mitsuyo Maeda (Conde Koma)" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <p class="carousel__legend">
+              <strong data-lang="pt">Mitsuyo Maeda (Conde Koma)</strong>
+              <strong data-lang="es">Mitsuyo Maeda (Conde Koma)</strong>
+              <strong data-lang="en">Mitsuyo Maeda (Count Koma)</strong>
+              <span data-lang="pt">Aluno de Kanō e Tanabe – introdutor do Jiu-Jitsu no Brasil</span>
+              <span data-lang="es">Alumno de Kanō y Tanabe – introductor del Jiu-Jitsu en Brasil</span>
+              <span data-lang="en">Student of Kanō &amp; Tanabe – introduced Jiu-Jitsu to Brazil</span>
+            </p>
+          </div>
+
+          <div class="carousel__slide" role="group" aria-label="4 / 4">
+            <div class="carousel__media">
+              <picture>
+                <source type="image/avif" srcset="/assets/img/opt/helio_carlos_221x148.avif" />
+                <source type="image/webp" srcset="/assets/img/opt/helio_carlos_221x148.webp" />
+                <img src="/assets/img/opt/helio_carlos_221x148.jpg" width="221" height="148" alt="Hélio &amp; Carlos Gracie" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <p class="carousel__legend">
+              <strong>Hélio &amp; Carlos Gracie</strong>
+              <span data-lang="pt">Fundadores do Gracie Jiu-Jitsu (Brasil) — origem do BJJ</span>
+              <span data-lang="es">Fundadores del Gracie Jiu-Jitsu (Brasil) — origen del BJJ</span>
+              <span data-lang="en">Founders of Gracie Jiu-Jitsu (Brazil) — origin of BJJ</span>
+            </p>
+          </div>
+
+          <div class="carousel__nav">
+            <button class="carousel__btn" type="button" data-carousel="prev" aria-label="[[es:Anterior|pt:Anterior|en:Previous]]">‹</button>
+            <button class="carousel__btn" type="button" data-carousel="next" aria-label="[[es:Siguiente|pt:Próximo|en:Next]]">›</button>
+          </div>
+          <div class="carousel__controls" id="carouselDots"></div>
+        </div>
+      </section>
+
+      <!-- ============================ GALERIA ============================ -->
+      <section id="galeria" class="section wrap">
+        <h2 class="h2" data-lang="es">Trayectoria y Certificados</h2>
+        <h2 class="h2" data-lang="pt">Trajetória e Certificados</h2>
+        <h2 class="h2" data-lang="en">Journey &amp; Certificates</h2>
+        <p class="lead" data-lang="es">
+          Resultados recientes, raíces en Brasil y formación continua.
+        </p>
+        <p class="lead" data-lang="pt">
+          Resultados recentes, raízes no Brasil e formação contínua.
+        </p>
+        <p class="lead" data-lang="en">
+          Recent results, Brazilian roots and ongoing education.
+        </p>
+
+        <div class="grid gallery mt-2">
+          <!-- 1 -->
+          <figure>
+            <button
+              type="button"
+              data-lightbox="/assets/img/opt/equipe_murcia_central-1600"
+              aria-label="[[es:Ampliar imagen|pt:Ampliar imagem|en:Enlarge image]]"
+            >
+              <picture>
+                <source type="image/avif" srcset="/assets/img/opt/equipe_murcia_central-380.avif 380w, /assets/img/opt/equipe_murcia_central-760.avif 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
+                <source type="image/webp" srcset="/assets/img/opt/equipe_murcia_central-380.webp 380w, /assets/img/opt/equipe_murcia_central-760.webp 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
+                <img src="/assets/img/opt/equipe_murcia_central-760.jpg" width="760" height="385" alt="[[es:Equipo de Central Training Murcia reunido en el tatami|pt:Equipe da Central Training Murcia reunida no tatame|en:Central Training Murcia team gathered on the mat]]" loading="lazy" decoding="async" />
+              </picture>
+            </button>
+            <figcaption data-lang="es">Alumnos en Central Training Murcia (2024–2026)</figcaption>
+            <figcaption data-lang="pt">Alunos na Central Training Murcia (2024–2026)</figcaption>
+            <figcaption data-lang="en">Students at Central Training Murcia (2024–2026)</figcaption>
+          </figure>
+
+          <!-- 2 -->
+          <figure>
+            <button
+              type="button"
+              data-lightbox="/assets/img/opt/campeonatos_recientes-1588"
+              aria-label="[[es:Ampliar imagen|pt:Ampliar imagem|en:Enlarge image]]"
+            >
+              <picture>
+                <source type="image/avif" srcset="/assets/img/opt/campeonatos_recientes-380.avif 380w, /assets/img/opt/campeonatos_recientes-760.avif 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
+                <source type="image/webp" srcset="/assets/img/opt/campeonatos_recientes-380.webp 380w, /assets/img/opt/campeonatos_recientes-760.webp 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
+                <img src="/assets/img/opt/campeonatos_recientes-760.jpg" width="760" height="556" alt="[[es:Medallas y podios de campeonatos recientes|pt:Medalhas e pódios de campeonatos recentes|en:Medals and podiums from recent championships]]" loading="lazy" decoding="async" />
+              </picture>
+            </button>
+            <figcaption data-lang="es">Campeonatos recientes</figcaption>
+            <figcaption data-lang="pt">Campeonatos recentes</figcaption>
+            <figcaption data-lang="en">Recent championships</figcaption>
+          </figure>
+
+          <!-- 3 -->
+          <figure>
+            <button
+              type="button"
+              data-lightbox="/assets/img/opt/brasil_epoca-1600"
+              aria-label="[[es:Ampliar imagen|pt:Ampliar imagem|en:Enlarge image]]"
+            >
+              <picture>
+                <source type="image/avif" srcset="/assets/img/opt/brasil_epoca-380.avif 380w, /assets/img/opt/brasil_epoca-760.avif 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
+                <source type="image/webp" srcset="/assets/img/opt/brasil_epoca-380.webp 380w, /assets/img/opt/brasil_epoca-760.webp 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
+                <img src="/assets/img/opt/brasil_epoca-760.jpg" width="760" height="811" alt="[[es:Primer grado en el cinturón negro, en Brasil|pt:Primeiro grau na faixa preta, no Brasil|en:First degree on the black belt, in Brazil]]" loading="lazy" decoding="async" />
+              </picture>
+            </button>
+            <figcaption data-lang="es">Mi primer grado en el cinturón negro</figcaption>
+            <figcaption data-lang="pt">Meu primeiro grau na faixa preta</figcaption>
+            <figcaption data-lang="en">My first degree on the black belt</figcaption>
+          </figure>
+
+          <!-- 4 -->
+          <figure>
+            <button
+              type="button"
+              data-lightbox="/assets/img/opt/faixas_pretas_brasil-1600"
+              aria-label="[[es:Ampliar imagen|pt:Ampliar imagem|en:Enlarge image]]"
+            >
+              <picture>
+                <source type="image/avif" srcset="/assets/img/opt/faixas_pretas_brasil-380.avif 380w, /assets/img/opt/faixas_pretas_brasil-760.avif 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
+                <source type="image/webp" srcset="/assets/img/opt/faixas_pretas_brasil-380.webp 380w, /assets/img/opt/faixas_pretas_brasil-760.webp 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
+                <img src="/assets/img/opt/faixas_pretas_brasil-760.jpg" width="760" height="992" alt="[[es:Reunión de cinturones negros del XCoach Team Pirituba, Brasil|pt:Encontro de faixas-pretas do XCoach Team Pirituba, Brasil|en:Black belt gathering at XCoach Team Pirituba, Brazil]]" loading="lazy" decoding="async" />
+              </picture>
+            </button>
+            <figcaption data-lang="es">XCoach Team Pirituba — julio de 2025</figcaption>
+            <figcaption data-lang="pt">XCoach Team Pirituba — julho de 2025</figcaption>
+            <figcaption data-lang="en">XCoach Team Pirituba — July 2025</figcaption>
+          </figure>
+
+          <!-- 5 -->
+          <figure>
+            <button
+              type="button"
+              data-lightbox="/assets/img/opt/certificado_ajp-1080"
+              aria-label="[[es:Ampliar imagen|pt:Ampliar imagem|en:Enlarge image]]"
+            >
+              <picture>
+                <source type="image/avif" srcset="/assets/img/opt/certificado_ajp-380.avif 380w, /assets/img/opt/certificado_ajp-760.avif 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
+                <source type="image/webp" srcset="/assets/img/opt/certificado_ajp-380.webp 380w, /assets/img/opt/certificado_ajp-760.webp 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
+                <img src="/assets/img/opt/certificado_ajp-760.jpg" width="760" height="533" alt="[[es:Certificado de cinturón negro emitido por la AJP|pt:Certificado de faixa-preta emitido pela AJP|en:AJP-issued black belt certificate]]" loading="lazy" decoding="async" />
+              </picture>
+            </button>
+            <figcaption data-lang="es">Certificado AJP (cinturón negro)</figcaption>
+            <figcaption data-lang="pt">Certificado AJP (faixa-preta)</figcaption>
+            <figcaption data-lang="en">AJP black belt certificate</figcaption>
+          </figure>
+
+          <!-- 6 -->
+          <figure>
+            <button
+              type="button"
+              data-lightbox="/assets/img/opt/primeros_auxilios-1080"
+              aria-label="[[es:Ampliar imagen|pt:Ampliar imagem|en:Enlarge image]]"
+            >
+              <picture>
+                <source type="image/avif" srcset="/assets/img/opt/primeros_auxilios-380.avif 380w, /assets/img/opt/primeros_auxilios-760.avif 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
+                <source type="image/webp" srcset="/assets/img/opt/primeros_auxilios-380.webp 380w, /assets/img/opt/primeros_auxilios-760.webp 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
+                <img src="/assets/img/opt/primeros_auxilios-760.jpg" width="760" height="531" alt="[[es:Certificado de primeros auxilios|pt:Certificado de primeiros socorros|en:First aid certificate]]" loading="lazy" decoding="async" />
+              </picture>
+            </button>
+            <figcaption data-lang="es">Certificado de primeros auxilios</figcaption>
+            <figcaption data-lang="pt">Certificado de primeiros socorros</figcaption>
+            <figcaption data-lang="en">First aid certificate</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============================ AGENDA ============================ -->
+      <section id="agenda" class="section wrap grid split">
+        <div>
+          <h2 class="h2" data-lang="es">Agenda y Ubicación</h2>
+          <h2 class="h2" data-lang="pt">Agenda e Local</h2>
+          <h2 class="h2" data-lang="en">Schedule &amp; Location</h2>
+
+          <p class="lead">
+            <strong>LEVSPORT Altorreal</strong><br />
+            <span data-lang="es">C.C. Green Park, Av. del Golf, 117 — 30506 Molina de Segura, Murcia. Parking gratuito disponible.</span>
+            <span data-lang="pt">C.C. Green Park, Av. del Golf, 117 — 30506 Molina de Segura, Murcia. Estacionamento gratuito disponível.</span>
+            <span data-lang="en">C.C. Green Park, Av. del Golf, 117 — 30506 Molina de Segura, Murcia. Free parking available.</span>
+          </p>
+
+          <div class="panel">
+            <div class="panel__row">
+              <div>
+                <p><strong data-lang="es">Horarios populares</strong><strong data-lang="pt">Horários populares</strong><strong data-lang="en">Popular times</strong></p>
+                <p class="muted" data-lang="es">Mañanas (7–10 h), tardes (18–21 h) y sábados</p>
+                <p class="muted" data-lang="pt">Manhãs (7–10 h), noites (18–21 h) e sábados</p>
+                <p class="muted" data-lang="en">Mornings (7–10), evenings (18–21) and Saturdays</p>
+              </div>
+              <a href="#contacto" class="btn btn--primary" data-lang="es">Reservar</a>
+              <a href="#contacto" class="btn btn--primary" data-lang="pt">Reservar</a>
+              <a href="#contacto" class="btn btn--primary" data-lang="en">Book</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- facade: o mapa do Google so carrega no clique -->
+        <div
+          class="map"
+          id="map"
+          data-map-title="[[es:Mapa de LEVSPORT Altorreal|pt:Mapa da LEVSPORT Altorreal|en:Map of LEVSPORT Altorreal]]"
+        >
+          <div>
+            <svg class="map__pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+            </svg>
+            <p class="mt-1"><strong>LEVSPORT Altorreal</strong></p>
+            <p class="muted">C.C. Green Park, Av. del Golf, 117 — 30506 Molina de Segura, Murcia</p>
+            <div class="stack mt-1">
+              <button id="mapLoad" class="btn btn--ghost" type="button">
+                <span data-lang="es">Ver el mapa aquí</span>
+                <span data-lang="pt">Ver o mapa aqui</span>
+                <span data-lang="en">Show the map here</span>
+              </button>
+              <p class="muted" style="font-size: 0.8125rem">
+                <span data-lang="es">Al cargar el mapa, Google puede instalar cookies.</span>
+                <span data-lang="pt">Ao carregar o mapa, o Google pode instalar cookies.</span>
+                <span data-lang="en">Loading the map may let Google set cookies.</span>
+              </p>
+              <a
+                class="btn btn--primary"
+                href="https://www.google.com/maps/dir/?api=1&destination=LEVSPORT+Altorreal,+Av.+del+Golf+117,+30506+Molina+de+Segura,+Murcia"
+                target="_blank"
+                rel="noopener"
+              >
+                <span data-lang="es">Cómo llegar</span>
+                <span data-lang="pt">Como chegar</span>
+                <span data-lang="en">Get directions</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ CONTACTO ============================ -->
+      <section id="contacto" class="section wrap grid split">
+        <div>
+          <h2 class="h2" data-lang="es">¿Entrenamos?</h2>
+          <h2 class="h2" data-lang="pt">Vamos treinar?</h2>
+          <h2 class="h2" data-lang="en">Shall we train?</h2>
+          <p class="lead" data-lang="es">Escríbeme y recibe un plan a medida.</p>
+          <p class="lead" data-lang="pt">Mande uma mensagem e receba um plano sob medida.</p>
+          <p class="lead" data-lang="en">Message me to get a tailored plan.</p>
+
+          <div class="stack mt-2">
+            <a
+              class="btn btn--primary btn--block"
+              href="https://wa.me/34635437530"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+              WhatsApp
+            </a>
+            <a
+              class="btn btn--primary btn--block"
+              href="mailto:gasparettojiujitsu@gmail.com"
+              >Email</a
+            >
+          </div>
+        </div>
+
+        <form
+          id="contactForm"
+          class="form"
+          name="contacto"
+          method="POST"
+          action="/"
+          data-netlify="true"
+        >
+          <input type="hidden" name="form-name" value="contacto" />
+          <p class="hp">
+            <label for="bot-field">[[es:No rellenar|pt:Não preencher|en:Do not fill]]</label>
+            <input id="bot-field" name="bot-field" tabindex="-1" autocomplete="off" />
+          </p>
+
+          <div class="field">
+            <label for="f-nombre" data-lang="es">Nombre</label>
+            <label for="f-nombre" data-lang="pt">Nome</label>
+            <label for="f-nombre" data-lang="en">Name</label>
+            <input id="f-nombre" name="nombre" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="field">
+            <label for="f-mensaje" data-lang="es">Mensaje</label>
+            <label for="f-mensaje" data-lang="pt">Mensagem</label>
+            <label for="f-mensaje" data-lang="en">Message</label>
+            <textarea id="f-mensaje" name="mensaje" rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block">
+            <span data-lang="es">Enviar</span>
+            <span data-lang="pt">Enviar</span>
+            <span data-lang="en">Send</span>
+          </button>
+
+          <p id="formMsg" class="form__msg" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <!-- ============================ FOOTER ============================ -->
+    <footer class="footer">
+      <div class="wrap footer__row">
+        <picture>
+          <source type="image/avif" srcset="/assets/img/opt/logo_horizontal-356.avif" />
+          <source type="image/webp" srcset="/assets/img/opt/logo_horizontal-356.webp" />
+          <img
+            src="/assets/img/opt/logo_horizontal-356.png"
+            width="356"
+            height="80"
+            alt="Gasparetto BJJ"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+        <p>
+          © <span id="year">{{YEAR}}</span> Gasparetto BJJ —
+          <span data-lang="es">Todos los derechos reservados</span>
+          <span data-lang="pt">Todos os direitos reservados</span>
+          <span data-lang="en">All rights reserved</span>
+        </p>
+        <div class="social">
+          <a
+            href="https://www.instagram.com/mauricio_gasparetto"
+            aria-label="Instagram"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 24 24" fill="#E4405F" aria-hidden="true">
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 14.8 2.8 2.8 0 0 0 12 9.2zM17.8 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </svg>
+          </a>
+          <a
+            href="https://www.youtube.com/@gasparettojiujitsu"
+            aria-label="YouTube"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 24 24" fill="#FF0000" aria-hidden="true">
+              <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c2.2.6 9.4.6 9.4.6s7.2 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.6V8.4L15.8 12l-6.1 3.6z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Lightbox: <dialog> nativo traz foco preso, Esc e backdrop de graca -->
+    <dialog
+      id="lightbox"
+      class="lightbox"
+      aria-label="[[es:Visor de imágenes|pt:Visualizador de imagens|en:Image viewer]]"
+    >
+      <div class="lightbox__inner">
+        <img id="lbImg" alt="" />
+        <p id="lbCap" class="lightbox__cap"></p>
+        <button class="lightbox__close" type="button" data-lb="close" aria-label="[[es:Cerrar|pt:Fechar|en:Close]]">✕</button>
+        <button class="lightbox__prev" type="button" data-lb="prev" aria-label="[[es:Anterior|pt:Anterior|en:Previous]]">‹</button>
+        <button class="lightbox__next" type="button" data-lb="next" aria-label="[[es:Siguiente|pt:Próxima|en:Next]]">›</button>
+      </div>
+    </dialog>
+
+    {{JSONLD}}
+
+    <!-- strings usadas pelo JS; precisa vir ANTES do script que as le -->
+    <script type="application/json" id="i18n">
+      {{I18N_JSON}}
+    </script>
+
+    <script>
+      "use strict";
+
+      /* ---------- ano no rodape (o HTML ja traz o ano do build) ---------- */
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      /* ---------- altura real do header para o scroll-margin das ancoras ---------- */
+      const header = document.querySelector(".header");
+      const syncHeaderHeight = () =>
+        document.documentElement.style.setProperty(
+          "--header-h",
+          header.offsetHeight + "px"
+        );
+      syncHeaderHeight();
+      addEventListener("resize", syncHeaderHeight);
+      // a fonte propria muda a altura do header ao trocar o fallback
+      document.fonts?.ready.then(syncHeaderHeight);
+
+      /* ---------- header compacto ao rolar ----------
+         o logo grande domina a chegada, mas encolhe assim que a pessoa
+         comeca a ler -- senao ocuparia 1/5 da tela o tempo todo */
+      function setCompact(on) {
+        if (header.classList.contains("is-compact") === on) return;
+        header.classList.toggle("is-compact", on);
+        setTimeout(syncHeaderHeight, 240); // a altura mudou: ancoras precisam do valor novo
+      }
+
+      // UM mecanismo so. Com o observer e o scroll ativos ao mesmo tempo, os
+      // dois brigavam pelo estado e o logo tremia: ao encolher, o header
+      // sticky encurta o documento, o scroll recua e o limiar era cruzado de
+      // novo, em looping.
+      const sentinel = document.getElementById("topSentinel");
+      if (sentinel && "IntersectionObserver" in window) {
+        // o sentinel e absoluto no documento: a altura do header nao o move,
+        // entao nao ha realimentacao
+        new IntersectionObserver(([entry]) => setCompact(!entry.isIntersecting), {
+          threshold: 0,
+        }).observe(sentinel);
+      } else {
+        // navegador sem IntersectionObserver: histerese larga o bastante para
+        // absorver o recuo de scroll causado pelo proprio encolhimento
+        let ticking = false;
+        addEventListener(
+          "scroll",
+          () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+              const compacto = header.classList.contains("is-compact");
+              if (!compacto && scrollY > 160) setCompact(true);
+              else if (compacto && scrollY < 20) setCompact(false);
+              ticking = false;
+            });
+          },
+          { passive: true }
+        );
+      }
+
+      /* ---------- menu mobile ---------- */
+      const navToggle = document.getElementById("navToggle");
+      const menuMobile = document.getElementById("menuMobile");
+      navToggle.addEventListener("click", () => {
+        const open = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!open));
+        menuMobile.hidden = open;
+        syncHeaderHeight();
+      });
+      menuMobile.addEventListener("click", (e) => {
+        if (e.target.closest("a")) {
+          navToggle.setAttribute("aria-expanded", "false");
+          menuMobile.hidden = true;
+          // sem isto o --header-h fica travado na altura do menu aberto e o
+          // scroll-margin das secoes passa a parar longe demais da ancora
+          syncHeaderHeight();
+        }
+      });
+
+      /* ---------- historia: ler mais / ler menos ---------- */
+      const historyBox = document.getElementById("history");
+      const historyToggle = document.getElementById("historyToggle");
+      historyToggle.addEventListener("click", () => {
+        const open = historyBox.classList.toggle("is-open");
+        historyToggle.setAttribute("aria-expanded", String(open));
+        historyToggle.querySelector(".lbl-closed").hidden = open;
+        historyToggle.querySelector(".lbl-open").hidden = !open;
+        if (!open) historyBox.scrollIntoView({ block: "start" });
+      });
+
+      /* ---------- carrossel de mestres ---------- */
+      (() => {
+        const root = document.getElementById("carousel");
+        const slides = [...root.querySelectorAll(".carousel__slide")];
+        const dotsWrap = document.getElementById("carouselDots");
+        const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let index = 0;
+        let timer = null;
+        let userPaused = reduceMotion; // uma pausa manual nao deve voltar sozinha
+
+        const dots = slides.map((_, i) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "carousel__dot";
+          b.setAttribute("aria-label", `${i + 1} / ${slides.length}`);
+          b.addEventListener("click", () => {
+            show(i);
+            pause();
+          });
+          dotsWrap.append(b);
+          return b;
+        });
+
+        // botao de pausa: autoplay sem controle falha o WCAG 2.2.2
+        const playBtn = document.createElement("button");
+        playBtn.type = "button";
+        playBtn.className = "carousel__play";
+        dotsWrap.append(playBtn);
+
+        function show(i) {
+          index = (i + slides.length) % slides.length;
+          slides.forEach((s, n) => s.classList.toggle("is-active", n === index));
+          dots.forEach((d, n) =>
+            d.setAttribute("aria-current", String(n === index))
+          );
+        }
+        function play() {
+          if (reduceMotion) return;
+          if (!timer) timer = setInterval(() => show(index + 1), 5000);
+          playBtn.setAttribute("aria-label", root.dataset.labelPause);
+          playBtn.textContent = "❙❙";
+        }
+        function pause() {
+          clearInterval(timer);
+          timer = null;
+          playBtn.setAttribute("aria-label", root.dataset.labelPlay);
+          playBtn.textContent = "▶";
+        }
+        playBtn.addEventListener("click", () => {
+          userPaused = Boolean(timer);
+          userPaused ? pause() : play();
+        });
+
+        root.addEventListener("click", (e) => {
+          const dir = e.target.closest("[data-carousel]")?.dataset.carousel;
+          if (!dir) return;
+          show(index + (dir === "next" ? 1 : -1));
+          userPaused = true;
+          pause();
+        });
+
+        // parar em hover e no foco de teclado, sem marcar como pausa manual
+        root.addEventListener("mouseenter", pause);
+        root.addEventListener("focusin", pause);
+        root.addEventListener("mouseleave", () => !userPaused && play());
+        document.addEventListener("visibilitychange", () =>
+          document.hidden || userPaused ? pause() : play()
+        );
+
+        show(0);
+        userPaused ? pause() : play();
+      })();
+
+      /* ---------- galeria + lightbox ---------- */
+      (() => {
+        const dialog = document.getElementById("lightbox");
+        const img = document.getElementById("lbImg");
+        const cap = document.getElementById("lbCap");
+        const triggers = [...document.querySelectorAll("[data-lightbox]")];
+        if (!triggers.length || !dialog.showModal) return;
+        let index = 0;
+
+        function open(i) {
+          index = (i + triggers.length) % triggers.length;
+          const trigger = triggers[index];
+          const base = trigger.dataset.lightbox;
+          const thumb = trigger.querySelector("img");
+          // AVIF onde houver suporte, JPEG como rede de seguranca
+          img.src = `${base}.avif`;
+          img.onerror = () => {
+            img.onerror = null;
+            img.src = `${base}.jpg`;
+          };
+          img.alt = thumb?.alt || "";
+          cap.textContent =
+            trigger.closest("figure")?.querySelector("figcaption")?.textContent.trim() || "";
+          if (!dialog.open) dialog.showModal();
+        }
+
+        triggers.forEach((t, i) => t.addEventListener("click", () => open(i)));
+        dialog.addEventListener("click", (e) => {
+          const action = e.target.closest("[data-lb]")?.dataset.lb;
+          if (action === "close") dialog.close();
+          else if (action === "next") open(index + 1);
+          else if (action === "prev") open(index - 1);
+          else if (e.target === dialog) dialog.close(); // clique no backdrop
+        });
+        dialog.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") open(index + 1);
+          if (e.key === "ArrowLeft") open(index - 1);
+        });
+        dialog.addEventListener("close", () => {
+          img.removeAttribute("src");
+          triggers[index]?.focus();
+        });
+      })();
+
+      /* ---------- facade do mapa ---------- */
+      document.getElementById("mapLoad").addEventListener("click", () => {
+        const map = document.getElementById("map");
+        const frame = document.createElement("iframe");
+        frame.src =
+          "https://www.google.com/maps?q=Av.+del+Golf+117,+30506+Molina+de+Segura,+Murcia&output=embed";
+        frame.title = map.dataset.mapTitle || "LEVSPORT Altorreal";
+        frame.loading = "lazy";
+        frame.referrerPolicy = "no-referrer-when-downgrade";
+        map.replaceChildren(frame);
+        map.classList.add("map--loaded");
+      });
+
+      /* ---------- formulario ---------- */
+      (() => {
+        const form = document.getElementById("contactForm");
+        const msg = document.getElementById("formMsg");
+        const WHATSAPP = "34635437530";
+        const T = JSON.parse(document.getElementById("i18n").textContent);
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+          if (form.elements["bot-field"].value) return; // bot
+
+          const data = new FormData(form);
+          const submit = form.querySelector("[type=submit]");
+          submit.disabled = true;
+          msg.className = "form__msg";
+          msg.textContent = T.sending;
+
+          try {
+            const res = await fetch(form.action, {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: new URLSearchParams(data).toString(),
+            });
+            // fetch nao rejeita em 404/500 -- sem este teste um lead se perde
+            // em silencio atras de uma mensagem de sucesso falsa
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            form.reset();
+            msg.className = "form__msg form__msg--ok";
+            msg.textContent = T.ok;
+          } catch (err) {
+            // sem backend: em vez de perder o contato, leva para o WhatsApp
+            // com a mensagem ja montada
+            msg.className = "form__msg form__msg--err";
+            msg.textContent = T.fallback;
+            const text = encodeURIComponent(
+              `${data.get("nombre")} (${data.get("email")}): ${data.get("mensaje")}`
+            );
+            window.open(
+              `https://wa.me/${WHATSAPP}?text=${text}`,
+              "_blank",
+              "noopener"
+            );
+          } finally {
+            submit.disabled = false;
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

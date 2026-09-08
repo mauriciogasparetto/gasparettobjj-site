@@ -1,0 +1,2565 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GASPA Brazilian Jiu-Jitsu | Clases en Murcia</title>
+    <meta
+      name="description"
+      content="Mauricio Gasparetto Fonseca, cinturón negro en Murcia. Método Hélio Gracie. Clases particulares, Jiu-Jitsu Gi y No-Gi, Kids y defensa personal."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="GASPA Brazilian Jiu-Jitsu | Murcia" />
+    <meta
+      property="og:description"
+      content="Jiu-Jitsu para todos: adultos, niños, defensa personal, No-Gi y preparación para competiciones."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/img/logos/logo_circular.png" />
+    <meta property="og:url" content="/" />
+
+    <!-- Favicons / Manifest -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/img/logos/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/img/logos/favicon-96x96.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/img/logos/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="assets/site.webmanifest" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      :root {
+        --brand: #e30613;
+        --brand-dark: #be0a14;
+        --header-h: 100px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Outfit", system-ui, -apple-system, Segoe UI, Roboto;
+        background: #fff;
+        color: #0a0a0a;
+      }
+      .container-p {
+        max-width: 1140px;
+      }
+      .shadow-soft {
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      }
+      section[id] {
+        scroll-margin-top: calc(var(--header-h) + 16px);
+      }
+
+      /* Botões: 60% preto + 30% vermelho + 10% preto */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1.15rem;
+        border-radius: 0.9rem;
+        font-weight: 700;
+        transition: transform 0.16s ease, box-shadow 0.16s ease;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(
+          90deg,
+          #000 0 60%,
+          var(--brand) 60% 90%,
+          #000 90% 100%
+        );
+        border: 1px solid rgba(0, 0, 0, 0.12);
+      }
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+      }
+      .btn-ghost {
+        border: 1px solid rgba(0, 0, 0, 0.12);
+      }
+      .btn-ghost:hover {
+        background: #f6f6f6;
+        transform: translateY(-1px);
+      }
+
+      /* Header / menu */
+      header .topbar {
+        padding: 0.4rem 0;
+      }
+      .main-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .spacer {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+      .main-menu {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1rem;
+        font-size: 0.95rem;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        min-width: 0;
+      }
+      .main-menu a {
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        transition: color 0.15s ease;
+      }
+      .main-menu a:hover {
+        color: #000;
+      }
+      .lang-es .main-menu {
+        font-size: 0.9rem;
+        gap: 0.9rem;
+      }
+      .lang-es .lang-pill button {
+        font-size: 0.8rem;
+      }
+
+      /* Idiomas */
+      .lang-es [data-lang="pt"],
+      .lang-es [data-lang="en"] {
+        display: none;
+      }
+      .lang-pt [data-lang="es"],
+      .lang-pt [data-lang="en"] {
+        display: none;
+      }
+      .lang-en [data-lang="es"],
+      .lang-en [data-lang="pt"] {
+        display: none;
+      }
+
+      /* Seletor idioma */
+      .lang-pill {
+        display: flex;
+        padding: 0.25rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 9999px;
+        background: #fff;
+      }
+      .lang-pill button {
+        padding: 0.35rem 0.65rem;
+        border-radius: 9999px;
+        font-weight: 800;
+        font-size: 0.85rem;
+        color: #374151;
+        transition: background 0.16s ease, color 0.16s ease;
+      }
+      .lang-pill button.active {
+        background: var(--brand);
+        color: #fff;
+      }
+
+      /* Cards Método (Saiba mais) */
+      .service-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid #e5e7eb;
+        background: #fff;
+        border-radius: 1rem;
+        padding: 1.25rem;
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+          border-color 0.18s ease;
+        min-height: 220px;
+      }
+      .service-card:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+        border-color: #e1e1e1;
+      }
+      .service-card h3 {
+        font-weight: 800;
+        letter-spacing: 0.01em;
+      }
+      .service-card .teaser {
+        color: #3f3f46;
+      }
+      .service-card .more {
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.28s ease, opacity 0.28s ease;
+      }
+      .service-card:hover .more,
+      .service-card.open .more {
+        max-height: 500px;
+        opacity: 1;
+      }
+      .service-card .actions {
+        margin-top: 1rem;
+      }
+
+      /* Lightbox (galeria) */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 60;
+      }
+      .lightbox.open {
+        display: flex;
+      }
+      .lightbox-inner {
+        position: relative;
+        max-width: min(92vw, 1100px);
+        max-height: 86vh;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .lightbox img {
+        max-width: 100%;
+        max-height: 78vh;
+        object-fit: contain;
+        border-radius: 0.5rem;
+      }
+      .lightbox .caption {
+        color: #f3f4f6;
+        font-size: 0.95rem;
+        text-align: center;
+      }
+      .lightbox .close,
+      .lightbox .prev,
+      .lightbox .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #fff;
+        padding: 0.6rem 0.8rem;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        backdrop-filter: blur(2px);
+      }
+      .lightbox .close {
+        top: 0;
+        right: 0;
+        transform: none;
+        margin: 0.5rem;
+      }
+      .lightbox .prev {
+        left: -3.2rem;
+      }
+      .lightbox .next {
+        right: -3.2rem;
+      }
+      @media (max-width: 768px) {
+        .lightbox .prev {
+          left: 0.5rem;
+        }
+        .lightbox .next {
+          right: 0.5rem;
+        }
+      }
+
+      /* História — caixa expansível */
+      .history-box {
+        position: relative;
+        border: 1px solid #e5e7eb;
+        background: #fff;
+        border-radius: 1rem;
+        padding: 1.25rem;
+        transition: box-shadow 0.18s ease, border-color 0.18s ease;
+      }
+      .history-content {
+        overflow: hidden;
+        max-height: 320px;
+        opacity: 1;
+        transition: max-height 0.6s ease, opacity 0.6s ease;
+      }
+      .history-box.expanded .history-content {
+        max-height: 3000px;
+        opacity: 1;
+      }
+      .history-box.collapsing .history-content {
+        opacity: 0;
+      }
+
+      .history-box.expanded .history-content {
+        max-height: 3000px;
+        transition: max-height 0.8s ease-in-out;
+      }
+
+      .history-fade {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 64px;
+        height: 64px;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0),
+          #fff 70%
+        );
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.2s ease;
+      }
+      .history-box.expanded .history-fade {
+        opacity: 0;
+      }
+
+      /* Carrossel de Mestres (1 por vez) */
+      .carousel {
+        position: relative;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #fff;
+        overflow: hidden;
+      }
+      .slide {
+        display: none;
+        padding: 12px;
+      }
+      .slide.active {
+        display: block;
+      }
+      .slide .imgbox {
+        width: 100%;
+        height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+      }
+      .slide img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+      .legend {
+        padding: 0.5rem 0.75rem 0.8rem;
+        text-align: center;
+      }
+      .legend .title {
+        display: block;
+        font-weight: 700;
+        color: #111827;
+      }
+      .legend .sub {
+        display: block;
+        font-size: 0.85rem;
+        color: #6b7280;
+        line-height: 1.25rem;
+      }
+
+      .c-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0.25rem;
+        pointer-events: none;
+      }
+      .c-btn {
+        pointer-events: auto;
+        background: #111827;
+        color: #fff;
+        border: none;
+        border-radius: 0.75rem;
+        padding: 0.45rem 0.65rem;
+        opacity: 0.9;
+      }
+      .c-btn:hover {
+        opacity: 1;
+      }
+      .c-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.4rem;
+        padding: 0.5rem 0 0.8rem;
+      }
+      .c-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 9999px;
+        background: #d1d5db;
+      }
+      .c-dot.active {
+        background: var(--brand);
+      }
+    </style>
+  </head>
+  <body class="lang-es">
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 bg-white/90 border-b border-zinc-200 backdrop-blur"
+    >
+      <div class="topbar mx-auto container-p px-4">
+        <div class="main-row">
+          <a href="#inicio" class="flex items-center gap-4 py-2 shrink-0">
+            <img
+              src="assets/img/logos/logo_circular.png"
+              alt="Logo GASPA"
+              class="h-24 sm:h-28 md:h-32 lg:h-36 w-auto"
+              loading="eager"
+            />
+          </a>
+
+          <div class="spacer"></div>
+
+          <nav class="main-menu hidden md:flex">
+            <!-- ES -->
+            <a href="#inicio" data-lang="es">Inicio</a>
+            <a href="#metodo" data-lang="es">Método de Enseñanza</a>
+            <a href="#historia" data-lang="es">Historia del Jiu-Jitsu</a>
+            <a href="#galeria" data-lang="es">Trayectoria & Certificados</a>
+            <a href="#agenda" data-lang="es">Agenda & Ubicación</a>
+            <a href="#contacto" data-lang="es">Contacto</a>
+            <!-- PT -->
+            <a href="#inicio" data-lang="pt">Início</a>
+            <a href="#metodo" data-lang="pt">Método de Ensino</a>
+            <a href="#historia" data-lang="pt">História do Jiu-Jitsu</a>
+            <a href="#galeria" data-lang="pt">Trajetória & Certificados</a>
+            <a href="#agenda" data-lang="pt">Agenda & Local</a>
+            <a href="#contacto" data-lang="pt">Contato</a>
+            <!-- EN -->
+            <a href="#inicio" data-lang="en">Home</a>
+            <a href="#metodo" data-lang="en">Teaching Method</a>
+            <a href="#historia" data-lang="en">Jiu-Jitsu History</a>
+            <a href="#galeria" data-lang="en">Journey & Certificates</a>
+            <a href="#agenda" data-lang="en">Schedule & Location</a>
+            <a href="#contacto" data-lang="en">Contact</a>
+
+            <div class="lang-pill ml-3">
+              <button id="btn-es" data-code="lang-es">ES</button>
+              <button id="btn-pt" data-code="lang-pt">PT</button>
+              <button id="btn-en" data-code="lang-en">EN</button>
+            </div>
+          </nav>
+
+          <button
+            id="menuBtn"
+            class="md:hidden p-2 rounded border border-zinc-300"
+            aria-label="Abrir menú"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        id="mobileMenu"
+        class="md:hidden hidden border-t border-zinc-200 bg-white"
+      >
+        <nav class="container-p mx-auto px-4 py-4 grid gap-3 text-base">
+          <div class="lang-pill w-fit">
+            <button id="m-es" data-code="lang-es">ES</button>
+            <button id="m-pt" data-code="lang-pt">PT</button>
+            <button id="m-en" data-code="lang-en">EN</button>
+          </div>
+          <div class="grid gap-2 mt-3">
+            <a href="#inicio" data-lang="es">Inicio</a>
+            <a href="#metodo" data-lang="es">Método de Enseñanza</a>
+            <a href="#historia" data-lang="es">Historia del Jiu-Jitsu</a>
+            <a href="#galeria" data-lang="es">Trayectoria & Certificados</a>
+            <a href="#agenda" data-lang="es">Agenda & Ubicación</a>
+            <a href="#contacto" data-lang="es">Contacto</a>
+
+            <a href="#inicio" data-lang="pt">Início</a>
+            <a href="#metodo" data-lang="pt">Método de Ensino</a>
+            <a href="#historia" data-lang="pt">História do Jiu-Jitsu</a>
+            <a href="#galeria" data-lang="pt">Trajetória & Certificados</a>
+            <a href="#agenda" data-lang="pt">Agenda & Local</a>
+            <a href="#contacto" data-lang="pt">Contato</a>
+
+            <a href="#inicio" data-lang="en">Home</a>
+            <a href="#metodo" data-lang="en">Teaching Method</a>
+            <a href="#historia" data-lang="en">Jiu-Jitsu History</a>
+            <a href="#galeria" data-lang="en">Journey & Certificates</a>
+            <a href="#agenda" data-lang="en">Schedule & Location</a>
+            <a href="#contacto" data-lang="en">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- INICIO -->
+    <section id="inicio" class="mx-auto container-p px-4 py-12 md:py-16">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div
+          class="rounded-2xl overflow-hidden shadow-soft border border-zinc-200 transform-gpu md:scale-[0.9] md:origin-center"
+        >
+          <img
+            src="assets/img/logos/mau_world_cup_2025.jpg"
+            alt="Mauricio Gasparetto — Campeón del Mundo"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        <div>
+          <!-- TÍTULO + PARÁGRAFOS (PT / ES / EN) -->
+          <h1
+            class="text-3xl md:text-4xl font-extrabold leading-tight text-zinc-900"
+            data-lang="pt"
+          >
+            Descubra o Jiu-Jitsu — a arte que transforma vidas.
+          </h1>
+          <h1
+            class="text-3xl md:text-4xl font-extrabold leading-tight text-zinc-900"
+            data-lang="es"
+          >
+            Descubre el Jiu-Jitsu — el arte que transforma vidas.
+          </h1>
+          <h1
+            class="text-3xl md:text-4xl font-extrabold leading-tight text-zinc-900"
+            data-lang="en"
+          >
+            Discover Jiu-Jitsu — the art that transforms lives.
+          </h1>
+
+          <!-- PT -->
+          <p class="mt-4 text-zinc-700" data-lang="pt">
+            Sou <strong>Mauricio Gasparetto Fonseca</strong>, faixa-preta
+            graduado no Brasil pelo mestre <strong>Guga Fraga</strong>, e hoje
+            atuo como professor na <strong>Central Training Murcia</strong>, na
+            Espanha, onde sigo treinando e evoluindo ao lado de
+            <strong>Rafael Dos Santos (Rafa)</strong> e
+            <strong>Sergio Corradi (Serjão)</strong>.
+          </p>
+          <p class="mt-4 text-zinc-700" data-lang="pt">
+            Para mim, o Jiu-Jitsu é a arte que ensina confiança, segurança e
+            defesa pessoal. A arte que desenvolve foco, disciplina e controle. A
+            arte onde aprendemos a cair e levantar, a ganhar e a perder. É a
+            arte da aceitação — que equilibra o mais fraco fisicamente diante do
+            mais forte. A arte marcial que superou todas as outras quando o
+            mundo ainda nem a conhecia. O Jiu-Jitsu é mais do que um esporte — é
+            um <em>lifestyle</em>, um propósito de vida.
+          </p>
+          <p class="mt-4 text-zinc-700" data-lang="pt">
+            Meu mestre sempre me disse:
+            <em>“Os detalhes fazem o Jiu-Jitsu.”</em>
+            É com essa filosofia que ensino e vivo a arte suave todos os dias —
+            porque são os detalhes que transformam, inspiram e formam pessoas
+            dentro e fora dos tatames.
+          </p>
+
+          <!-- ES -->
+          <p class="mt-4 text-zinc-700" data-lang="es">
+            Soy <strong>Mauricio Gasparetto Fonseca</strong>, cinturón negro
+            formado en Brasil por el maestro <strong>Guga Fraga</strong>, y hoy
+            actúo como profesor en <strong>Central Training Murcia</strong>, en
+            España, donde continúo entrenando y evolucionando junto a
+            <strong>Rafael Dos Santos (Rafa)</strong> y
+            <strong>Sergio Corradi (Serjão)</strong>.
+          </p>
+          <p class="mt-4 text-zinc-700" data-lang="es">
+            Para mí, el Jiu-Jitsu es el arte que enseña confianza, seguridad y
+            defensa personal. El arte que desarrolla enfoque, disciplina y
+            control. El arte en el que aprendemos a caer y levantarnos, a ganar
+            y a perder. Es el arte de la aceptación — que equilibra al más débil
+            físicamente frente al más fuerte. El arte marcial que superó a todas
+            las demás cuando el mundo aún ni la conocía. El Jiu-Jitsu es más que
+            un deporte — es un <em>estilo de vida</em>, un propósito.
+          </p>
+          <p class="mt-4 text-zinc-700" data-lang="es">
+            Mi maestro siempre me dijo:
+            <em>«Los detalles hacen el Jiu-Jitsu.»</em>
+            Con esa filosofía enseño y vivo el arte suave cada día — porque son
+            los detalles los que transforman, inspiran y forman personas dentro
+            y fuera del tatami.
+          </p>
+
+          <!-- EN -->
+          <p class="mt-4 text-zinc-700" data-lang="en">
+            I’m <strong>Mauricio Gasparetto Fonseca</strong>, a black belt under
+            <strong>Guga Fraga</strong> (Brazil), and today I teach at
+            <strong>Central Training Murcia</strong> in Spain, where I keep
+            training and evolving alongside
+            <strong>Rafael Dos Santos (Rafa)</strong> and
+            <strong>Sergio Corradi (Serjão)</strong>.
+          </p>
+          <p class="mt-4 text-zinc-700" data-lang="en">
+            For me, Jiu-Jitsu is the art that teaches confidence, safety and
+            self-defense. The art that develops focus, discipline and control.
+            The art where we learn to fall and rise, to win and to lose. It is
+            the art of acceptance — balancing the physically weaker against the
+            stronger. The martial art that surpassed all others when the world
+            barely knew it. Jiu-Jitsu is more than a sport — it’s a
+            <em>lifestyle</em>, a purpose.
+          </p>
+          <p class="mt-4 text-zinc-700" data-lang="en">
+            My master always told me: <em>“Details make Jiu-Jitsu.”</em>
+            This is the philosophy I teach and live every day — because details
+            are what transform, inspire and shape people on and off the mats.
+          </p>
+
+          <div class="mt-6 text-zinc-800">
+            <!-- Linha 1 -->
+            <div class="mb-2">
+              •
+              <span data-lang="es"
+                >Cinturón negro desde <strong>2020</strong></span
+              >
+              <span data-lang="pt"
+                >Faixa-preta desde <strong>2020</strong></span
+              >
+              <span data-lang="en">Black belt since <strong>2020</strong></span>
+            </div>
+
+            <!-- Linha 2 -->
+            <div class="mb-2">
+              •
+              <span data-lang="es"
+                ><strong>20+ años</strong> en los tatamis</span
+              >
+              <span data-lang="pt"><strong>20+ anos</strong> nos tatames</span>
+              <span data-lang="en"><strong>20+ years</strong> on the mats</span>
+            </div>
+
+            <!-- Linha 3 -->
+            <div class="flex items-center gap-2 mt-[6px]">
+              <span>
+                •
+                <span data-lang="es">Profesor en</span>
+                <span data-lang="pt">Professor na</span>
+                <span data-lang="en">Coach at</span>
+                <strong>Central Training Murcia</strong>
+              </span>
+              <a
+                href="https://murciajiujitsu.com/"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  src="assets/img/logos/logoCT_Murcia.png"
+                  alt="Central Training Murcia"
+                  class="h-[34px] w-auto opacity-90 hover:opacity-100 transition"
+                />
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#metodo" class="btn btn-primary" data-lang="es"
+              >Conocer el método</a
+            >
+            <a href="#metodo" class="btn btn-primary" data-lang="pt"
+              >Conhecer o método</a
+            >
+            <a href="#metodo" class="btn btn-primary" data-lang="en"
+              >See the method</a
+            >
+            <a href="#contacto" class="btn btn-primary">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÉTODO DE ENSINO -->
+    <section id="metodo" class="mx-auto container-p px-4 py-16 md:py-24">
+      <h2 class="text-2xl md:text-3xl font-bold text-zinc-900" data-lang="es">
+        Método de Enseñanza
+      </h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-zinc-900" data-lang="pt">
+        Método de Ensino
+      </h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-zinc-900" data-lang="en">
+        Teaching Method
+      </h2>
+
+      <p class="text-zinc-700" data-lang="pt">
+        Eficiência, segurança e atenção aos detalhes. Meu trabalho no Jiu-Jitsu
+        é guiado por uma didática clara, fundamentada nos princípios da arte
+        suave: técnica precisa, progresso inteligente e compreensão real dos
+        movimentos. Cada aula, independente da modalidade, segue essa filosofia
+        — respeitando o ritmo, a evolução e o propósito de cada aluno.
+      </p>
+
+      <p class="text-zinc-700" data-lang="es">
+        Eficiencia, seguridad y atención a los detalles. Mi trabajo en el
+        Jiu-Jitsu se guía por una didáctica clara, basada en los principios del
+        arte suave: técnica precisa, progreso inteligente y comprensión real de
+        los movimientos. Cada clase, independientemente de la modalidad, sigue
+        esta filosofía — respetando el ritmo, la evolución y el propósito de
+        cada alumno.
+      </p>
+
+      <p class="text-zinc-700" data-lang="en">
+        Efficiency, safety, and attention to detail. My Jiu-Jitsu teaching is
+        guided by a clear methodology rooted in the principles of the gentle
+        art: precise technique, intelligent progression, and real understanding
+        of movement. Every class, regardless of the modality, follows this
+        philosophy — respecting each student’s pace, evolution, and purpose.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <!-- 1) Defensa Personal Femenina -->
+        <article class="service-card">
+          <div>
+            <h3 data-lang="es">Defensa Personal Femenina</h3>
+            <h3 data-lang="pt">Defesa Pessoal Feminina</h3>
+            <h3 data-lang="en">Women’s Self-Defense</h3>
+
+            <!-- TEASER (curto) -->
+            <p class="teaser mt-2" data-lang="es">
+              Aprende a reconocer, evitar y neutralizar situaciones de riesgo
+              con técnicas simples y eficientes.
+            </p>
+            <p class="teaser mt-2" data-lang="pt">
+              Aprenda a reconhecer, evitar e neutralizar situações de risco com
+              técnicas simples e eficientes.
+            </p>
+            <p class="teaser mt-2" data-lang="en">
+              Learn to identify, avoid and neutralize risk situations with
+              simple and efficient techniques.
+            </p>
+
+            <!-- TEXTO COMPLETO (expandido) -->
+            <div class="more mt-3">
+              <!-- ES -->
+              <p data-lang="es">
+                La Defensa Personal Femenina está pensada para situaciones
+                reales, donde lo importante no es la fuerza, sino la estrategia,
+                la lectura del riesgo y la respuesta eficiente incluso contra
+                alguien más grande o fuerte.
+                <br /><br />
+                En clase trabajamos:
+                <br />• identificar riesgos antes de que se vuelvan amenazas
+                <br />• mantener postura y distancia seguras <br />• escapar de
+                agarres e inmovilizaciones <br />• neutralizar ataques usando
+                palanca, no fuerza <br />• actuar con confianza y claridad
+                emocional <br /><br />
+                El objetivo es simple: que te sientas preparada, capaz y en
+                control de tu propia seguridad.
+              </p>
+
+              <!-- PT -->
+              <p data-lang="pt">
+                A Defesa Pessoal Feminina é pensada para situações reais, onde o
+                importante não é força, mas estratégia, leitura de risco e
+                resposta eficiente mesmo contra alguém maior ou mais forte.
+                <br /><br />
+                Nas aulas você aprende:
+                <br />• identificar riscos antes que se tornem ameaças <br />•
+                manter postura e distância seguras <br />• escapar de agarrões e
+                imobilizações <br />• neutralizar ataques usando alavanca, não
+                força <br />• agir com confiança e clareza emocional
+                <br /><br />
+                O objetivo é simples: que você se sinta preparada, capaz e no
+                controle da própria segurança.
+              </p>
+
+              <!-- EN -->
+              <p data-lang="en">
+                Women’s Self-Defense is designed for real-life situations, where
+                strength matters less than strategy, situational awareness and
+                efficient responses — even against someone bigger or stronger.
+                <br /><br />
+                In class you learn to:
+                <br />• identify risks before they become threats <br />•
+                maintain safe posture and distance <br />• escape grabs and
+                holds <br />• neutralize attacks using leverage, not strength
+                <br />• act with confidence and emotional clarity <br /><br />
+                The goal is simple: to help you feel prepared, capable and in
+                control of your own safety.
+              </p>
+            </div>
+          </div>
+
+          <!-- BOTÕES – permanecem iguais -->
+          <div class="actions">
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle5"
+              data-lang="es"
+            >
+              Saber más
+            </a>
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle5"
+              data-lang="pt"
+            >
+              Saiba mais
+            </a>
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle5"
+              data-lang="en"
+            >
+              Learn more
+            </a>
+          </div>
+
+          <!-- BLOCO EXPANDIDO (repete o texto completo) -->
+          <div id="detalle5" class="detalle-servicio hidden mt-3">
+            <!-- ES -->
+            <p data-lang="es">
+              La Defensa Personal Femenina está pensada para situaciones reales,
+              donde lo importante no es la fuerza, sino la estrategia, la
+              lectura del riesgo y la respuesta eficiente incluso contra alguien
+              más grande o más fuerte.
+              <br /><br />
+              En clase trabajamos:
+              <br />• identificar riesgos antes de que se vuelvan amenazas
+              <br />• mantener postura y distancia seguras <br />• escapar de
+              agarres e inmovilizaciones <br />• neutralizar ataques usando
+              palanca, no fuerza <br />• actuar con confianza y claridad
+              emocional <br /><br />
+              El objetivo es simple: que te sientas preparada, capaz y en
+              control de tu propia seguridad.
+            </p>
+
+            <!-- PT -->
+            <p data-lang="pt">
+              A Defesa Pessoal Feminina é pensada para situações reais, onde o
+              importante não é força, mas estratégia, leitura de risco e
+              resposta eficiente mesmo contra alguém maior ou mais forte.
+              <br /><br />
+              Nas aulas você aprende:
+              <br />• identificar riscos antes que se tornem ameaças <br />•
+              manter postura e distância seguras <br />• escapar de agarrões e
+              imobilizações <br />• neutralizar ataques usando alavanca, não
+              força <br />• agir com confiança e clareza emocional <br /><br />
+              O objetivo é simples: que você se sinta preparada, capaz e no
+              controle da própria segurança.
+            </p>
+
+            <!-- EN -->
+            <p data-lang="en">
+              Women’s Self-Defense is designed for real-life situations, where
+              strength matters less than strategy, situational awareness and
+              efficient responses — even against someone bigger or stronger.
+              <br /><br />
+              In class you learn to:
+              <br />• identify risks before they become threats <br />• maintain
+              safe posture and distance <br />• escape grabs and holds <br />•
+              neutralize attacks using leverage, not strength <br />• act with
+              confidence and emotional clarity <br /><br />
+              The goal is simple: to help you feel prepared, capable and in
+              control of your own safety.
+            </p>
+          </div>
+        </article>
+
+        <!-- 2) Defesa Pessoal (Geral) -->
+        <article class="service-card">
+          <div>
+            <h3 data-lang="es">
+              Defensa Personal – Jiu-Jitsu para la Vida Real
+            </h3>
+            <h3 data-lang="pt">Defesa Pessoal – Jiu-Jitsu Para a Vida Real</h3>
+            <h3 data-lang="en">Self-Defense – Real-Life Jiu-Jitsu</h3>
+
+            <!-- TEASER (curto) -->
+            <p class="teaser mt-2" data-lang="es">
+              La base del Jiu-Jitsu brasileño: técnica, palanca y control
+              emocional en situaciones reales.
+            </p>
+            <p class="teaser mt-2" data-lang="pt">
+              O fundamento do Jiu-Jitsu brasileiro: técnica, alavanca e controle
+              emocional para situações reais.
+            </p>
+            <p class="teaser mt-2" data-lang="en">
+              The foundation of Brazilian Jiu-Jitsu: technique, leverage and
+              emotional control for real situations.
+            </p>
+
+            <!-- TEXTO COMPLETO (expandido) -->
+            <div class="more mt-3">
+              <!-- ES -->
+              <p data-lang="es">
+                La Defensa Personal es el origen del Jiu-Jitsu. Sus técnicas
+                fueron creadas para permitir que cualquier persona —
+                independientemente de fuerza o tamaño — pueda protegerse con
+                eficiencia.
+                <br /><br />
+                En clase trabajamos:
+                <br />• palancas y posicionamiento <br />• técnicas simples
+                aplicables al día a día <br />• control de distancia y lectura
+                de ambiente <br />• neutralización y escapes de ataques comunes
+                <br />• uso inteligente de la fuerza, sin impacto innecesario
+                <br /><br />
+                El enfoque es desarrollar seguridad, conciencia y estabilidad
+                emocional para reaccionar con eficiencia — dentro y fuera del
+                tatami.
+              </p>
+
+              <!-- PT -->
+              <p data-lang="pt">
+                A Defesa Pessoal é a base do Jiu-Jitsu. Suas técnicas foram
+                criadas para permitir que qualquer pessoa — independentemente de
+                força ou tamanho — possa se proteger com eficiência.
+                <br /><br />
+                Nas aulas trabalhamos:
+                <br />• alavancas e posicionamento <br />• técnicas simples e
+                aplicáveis ao dia a dia <br />• controle de distância e leitura
+                de ambiente <br />• neutralização e escapes de ataques comuns
+                <br />• uso inteligente da força, sem impacto desnecessário
+                <br /><br />
+                O foco é desenvolver segurança, consciência e estabilidade
+                emocional para reagir com eficiência — dentro e fora do tatame.
+              </p>
+
+              <!-- EN -->
+              <p data-lang="en">
+                Self-Defense is the foundation of Jiu-Jitsu. Its techniques were
+                designed so that anyone — regardless of strength or size — can
+                protect themselves effectively.
+                <br /><br />
+                In class we work on:
+                <br />• leverage and positioning <br />• simple techniques
+                applicable to daily life <br />• distance management and
+                situational awareness <br />• neutralizing and escaping common
+                attacks <br />• intelligent use of strength without unnecessary
+                impact <br /><br />
+                The focus is to build confidence, awareness and emotional
+                stability to react efficiently — on and off the mats.
+              </p>
+            </div>
+          </div>
+
+          <!-- BOTÕES — idênticos às outras caixas -->
+          <div class="actions">
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle4"
+              data-lang="es"
+            >
+              Saber más
+            </a>
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle4"
+              data-lang="pt"
+            >
+              Saiba mais
+            </a>
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle4"
+              data-lang="en"
+            >
+              Learn more
+            </a>
+          </div>
+
+          <!-- BLOCO EXPANDIDO -->
+          <div id="detalle4" class="detalle-servicio hidden mt-3">
+            <!-- ES -->
+            <p data-lang="es">
+              La Defensa Personal es el origen del Jiu-Jitsu. Sus técnicas
+              fueron creadas para permitir que cualquier persona —
+              independientemente de fuerza o tamaño — pueda protegerse con
+              eficiencia.
+              <br /><br />
+              En clase trabajamos:
+              <br />• palancas y posicionamiento <br />• técnicas simples
+              aplicables al día a día <br />• control de distancia y lectura de
+              ambiente <br />• neutralización y escapes de ataques comunes
+              <br />• uso inteligente de la fuerza, sin impacto innecesario
+              <br /><br />
+              El enfoque es desarrollar seguridad, conciencia y estabilidad
+              emocional para reaccionar con eficiencia — dentro y fuera del
+              tatami.
+            </p>
+
+            <!-- PT -->
+            <p data-lang="pt">
+              A Defesa Pessoal é a base do Jiu-Jitsu. Suas técnicas foram
+              criadas para permitir que qualquer pessoa — independentemente de
+              força ou tamanho — possa se proteger com eficiência.
+              <br /><br />
+              Nas aulas trabalhamos:
+              <br />• alavancas e posicionamento <br />• técnicas simples e
+              aplicáveis ao dia a dia <br />• controle de distância e leitura de
+              ambiente <br />• neutralização e escapes de ataques comuns <br />•
+              uso inteligente da força, sem impacto desnecessário <br /><br />
+              O foco é desenvolver segurança, consciência e estabilidade
+              emocional para reagir com eficiência — dentro e fora do tatame.
+            </p>
+
+            <!-- EN -->
+            <p data-lang="en">
+              Self-Defense is the foundation of Jiu-Jitsu. Its techniques were
+              designed so that anyone — regardless of strength or size — can
+              protect themselves effectively.
+              <br /><br />
+              In class we work on:
+              <br />• leverage and positioning <br />• simple techniques
+              applicable to daily life <br />• distance management and
+              situational awareness <br />• neutralizing and escaping common
+              attacks <br />• intelligent use of strength without unnecessary
+              impact <br /><br />
+              The focus is to build confidence, awareness and emotional
+              stability to react efficiently — on and off the mats.
+            </p>
+          </div>
+        </article>
+
+        <!-- Gi -->
+        <article class="service-card">
+          <div>
+            <h3>Jiu-Jitsu Gi</h3>
+
+            <!-- TEASER (curto) -->
+            <p class="teaser mt-2" data-lang="es">
+              Técnica completa: base, postura, agarres, transiciones y
+              finalizaciones con progresión clara.
+            </p>
+            <p class="teaser mt-2" data-lang="pt">
+              Construção técnica completa: base, postura, pegadas, quedas e
+              finalizações com progressão clara.
+            </p>
+            <p class="teaser mt-2" data-lang="en">
+              Complete technical development: base, posture, grips, takedowns
+              and submissions with clear progression.
+            </p>
+
+            <!-- TEXTO EXPANDIDO (completo) -->
+            <div class="more mt-3">
+              <p data-lang="es">
+                El Jiu-Jitsu con kimono es donde el arte gana profundidad. Aquí,
+                cada detalle importa — del agarre correcto a la postura precisa
+                — y el kimono se convierte en una herramienta estratégica para
+                defensa, control y finalización.
+                <br /><br />
+                En clase trabajamos:
+                <br />• base, equilibrio y postura sólida <br />• agarres
+                técnicos y eficientes <br />• guardias, reposiciones y
+                transiciones <br />• paso de guardia con estabilidad <br />•
+                finalizaciones con control y seguridad <br /><br />
+                El entrenamiento está estructurado para principiantes,
+                intermedios y avanzados, respetando el ritmo de cada persona sin
+                perder la esencia del Jiu-Jitsu real: técnica consistente,
+                estudio, aplicación práctica y evolución continua.
+              </p>
+
+              <p data-lang="pt">
+                O Jiu-Jitsu com kimono é onde a arte ganha profundidade. Aqui,
+                cada detalhe importa — da pegada certa ao posicionamento preciso
+                — e o kimono se torna uma ferramenta estratégica para defesa,
+                controle e finalização.
+                <br /><br />
+                Nas aulas trabalhamos:
+                <br />• base, equilíbrio e postura sólida <br />• pegadas
+                técnicas e eficientes <br />• guardas, reposições e transições
+                <br />• passagem de guarda com estabilidade <br />• finalizações
+                com controle e segurança <br /><br />
+                O treino é estruturado para iniciantes, intermediários e
+                avançados, sempre respeitando o ritmo de cada pessoa, sem perder
+                a essência do Jiu-Jitsu real: técnica consistente, estudo,
+                aplicação prática e evolução contínua.
+              </p>
+
+              <p data-lang="en">
+                Gi Jiu-Jitsu is where the art gains depth. Every detail matters
+                — from the correct grip to the precise positioning — and the gi
+                becomes a strategic tool for defense, control and submissions.
+                <br /><br />
+                In class we work on:
+                <br />• solid base, balance and posture <br />• technical,
+                efficient grips <br />• guards, transitions and recoveries
+                <br />• stable, precise guard passing <br />• controlled, safe
+                submissions <br /><br />
+                Training is structured for beginners, intermediates and advanced
+                students, always respecting each person's pace while maintaining
+                the essence of real Jiu-Jitsu: consistent technique, study,
+                practical application and continuous evolution.
+              </p>
+            </div>
+          </div>
+
+          <!-- BOTÕES — permanecem os mesmos -->
+          <div class="actions">
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle2"
+              data-lang="es"
+            >
+              Saber más
+            </a>
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle2"
+              data-lang="pt"
+            >
+              Saiba mais
+            </a>
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle2"
+              data-lang="en"
+            >
+              Learn more
+            </a>
+          </div>
+
+          <div id="detalle2" class="detalle-servicio hidden mt-3">
+            <!-- Mesmo texto completo repetido aqui -->
+            <p data-lang="es">
+              El Jiu-Jitsu con kimono es donde el arte gana profundidad. Aquí,
+              cada detalle importa — del agarre correcto a la postura precisa —
+              y el kimono se convierte en una herramienta estratégica para
+              defensa, control y finalización.
+              <br /><br />
+              En clase trabajamos:
+              <br />• base, equilibrio y postura sólida <br />• agarres técnicos
+              y eficientes <br />• guardias, reposiciones y transiciones <br />•
+              paso de guardia con estabilidad <br />• finalizaciones con control
+              y seguridad <br /><br />
+              El entrenamiento está estructurado para principiantes, intermedios
+              y avanzados, respetando el ritmo de cada persona sin perder la
+              esencia del Jiu-Jitsu real: técnica consistente, estudio,
+              aplicación práctica y evolución continua.
+            </p>
+
+            <p data-lang="pt">
+              O Jiu-Jitsu com kimono é onde a arte ganha profundidade. Aqui,
+              cada detalhe importa — da pegada certa ao posicionamento preciso —
+              e o kimono se torna uma ferramenta estratégica para defesa,
+              controle e finalização.
+              <br /><br />
+              Nas aulas trabalhamos:
+              <br />• base, equilíbrio e postura sólida <br />• pegadas técnicas
+              e eficientes <br />• guardas, reposições e transições <br />•
+              passagem de guarda com estabilidade <br />• finalizações com
+              controle e segurança <br /><br />
+              O treino é estruturado para iniciantes, intermediários e
+              avançados, sempre respeitando o ritmo de cada pessoa, sem perder a
+              essência do Jiu-Jitsu real: técnica consistente, estudo, aplicação
+              prática e evolução contínua.
+            </p>
+
+            <p data-lang="en">
+              Gi Jiu-Jitsu is where the art gains depth. Every detail matters —
+              from the correct grip to the precise positioning — and the gi
+              becomes a strategic tool for defense, control and submissions.
+              <br /><br />
+              In class we work on:
+              <br />• solid base, balance and posture <br />• technical,
+              efficient grips <br />• guards, transitions and recoveries <br />•
+              stable, precise guard passing <br />• controlled, safe submissions
+              <br /><br />
+              Training is structured for beginners, intermediates and advanced
+              students, always respecting each person's pace while maintaining
+              the essence of real Jiu-Jitsu: consistent technique, study,
+              practical application and continuous evolution.
+            </p>
+          </div>
+        </article>
+
+        <!-- No‑Gi -->
+        <article class="service-card">
+          <div>
+            <h3>Jiu‑Jitsu No‑Gi</h3>
+            <p class="teaser mt-2" data-lang="es">
+              Entradas, derribos, control de cadera y sumisiones sin kimono.
+            </p>
+            <p class="teaser mt-2" data-lang="pt">
+              Entradas, quedas, controle de quadril e finalizações sem kimono.
+            </p>
+            <p class="teaser mt-2" data-lang="en">
+              Entries, takedowns, hip control and submissions without gi.
+            </p>
+            <div class="more mt-3">
+              <p data-lang="es">
+                Enfoque en clinch, scrambles y control del cuerpo con
+                finalizaciones eficientes.
+              </p>
+              <p data-lang="pt">
+                Foco em clinch, scrambles e controle corporal com finalizações
+                eficientes.
+              </p>
+              <p data-lang="en">
+                Focus on clinch, scrambles and body control with efficient
+                finishes.
+              </p>
+            </div>
+          </div>
+          <div class="actions">
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle3"
+              data-lang="es"
+            >
+              Saber más
+            </a>
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle3"
+              data-lang="pt"
+            >
+              Saiba mais
+            </a>
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle3"
+              data-lang="en"
+            >
+              Learn more
+            </a>
+          </div>
+          <div id="detalle3" class="detalle-servicio hidden mt-3">
+            <p data-lang="es">
+              Detalles adicionales sobre Jiu‑Jitsu No‑Gi: trabajo de entradas,
+              derribos sin gi, control dinámico de cadera y finalizaciones
+              versátiles.
+            </p>
+            <p data-lang="pt">
+              Detalhes adicionais sobre Jiu‑Jitsu No‑Gi: entradas, quedas sem
+              gi, controle dinâmico de quadril e finalizações versáteis.
+            </p>
+            <p data-lang="en">
+              Additional details about Jiu‑Jitsu No‑Gi: entries, gi‑free
+              takedowns, dynamic hip control and versatile finishes.
+            </p>
+          </div>
+        </article>
+
+        <!-- 5) Kids -->
+        <article class="service-card">
+          <div>
+            <h3>Jiu-Jitsu Kids</h3>
+            <p class="teaser mt-2" data-lang="es">
+              Coordinación, juegos de base, respeto y disciplina con seguridad
+              total.
+            </p>
+            <p class="teaser mt-2" data-lang="pt">
+              Coordenação, jogos de base, respeito e disciplina com segurança
+              total.
+            </p>
+            <p class="teaser mt-2" data-lang="en">
+              Coordination, base games, respect and discipline with full safety.
+            </p>
+            <div class="more mt-3">
+              <p data-lang="es">
+                Clases lúdicas que desarrollan motricidad, trabajo en pareja,
+                caídas seguras y autocontrol.
+              </p>
+              <p data-lang="pt">
+                Aulas lúdicas que desenvolvem motricidade, trabalho em dupla,
+                quedas seguras e autocontrole.
+              </p>
+              <p data-lang="en">
+                Playful sessions building motor skills, partner work, safe falls
+                and self-control.
+              </p>
+            </div>
+          </div>
+          <div class="actions">
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle1"
+              data-lang="es"
+              >Saber más</a
+            >
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle1"
+              data-lang="pt"
+              >Saiba mais</a
+            >
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle1"
+              data-lang="en"
+              >Learn more</a
+            >
+          </div>
+          <div id="detalle1" class="detalle-servicio hidden mt-3">
+            <p data-lang="es">
+              Detalles adicionales sobre Jiu-Jitsu Kids: desarrollo de
+              motricidad, juego cooperativo, integración de valores y técnicas
+              básicas.
+            </p>
+            <p data-lang="pt">
+              Detalhes adicionais sobre Jiu-Jitsu Kids: desenvolvimento de
+              motricidade, jogo cooperativo, integração de valores e técnicas
+              básicas.
+            </p>
+            <p data-lang="en">
+              Additional details about Jiu-Jitsu Kids: motor-skills development,
+              cooperative play, value integration and basic techniques.
+            </p>
+          </div>
+        </article>
+
+        <!-- 6) Aulas Particulares -->
+        <article class="service-card">
+          <div>
+            <h3 data-lang="es">Clases Particulares</h3>
+            <h3 data-lang="pt">Aulas Particulares</h3>
+            <h3 data-lang="en">Private Lessons</h3>
+            <p class="teaser mt-2" data-lang="es">
+              Plan 1:1, análisis de sparrings y periodización semanal.
+            </p>
+            <p class="teaser mt-2" data-lang="pt">
+              Plano 1:1, análise de rolas e periodização semanal.
+            </p>
+            <p class="teaser mt-2" data-lang="en">
+              1:1 plan, sparring analysis and weekly periodization.
+            </p>
+            <div class="more mt-3">
+              <p data-lang="es">
+                Correcciones específicas, seguimiento y metas claras para
+                acelerar tu progreso.
+              </p>
+              <p data-lang="pt">
+                Correções específicas, acompanhamento e metas claras para
+                acelerar seu progresso.
+              </p>
+              <p data-lang="en">
+                Specific corrections, tracking and clear goals to accelerate
+                your progress.
+              </p>
+            </div>
+          </div>
+          <div class="actions">
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle6"
+              data-lang="es"
+              >Saber más</a
+            >
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle6"
+              data-lang="pt"
+              >Saiba mais</a
+            >
+            <a
+              href="javascript:void(0);"
+              class="btn btn-primary saber-mas-btn"
+              data-target="detalle6"
+              data-lang="en"
+              >Learn more</a
+            >
+          </div>
+          <div id="detalle6" class="detalle-servicio hidden mt-3">
+            <p data-lang="es">
+              Detalles adicionales sobre Clases Particulares: plan 1:1, análisis
+              de vídeo, seguimiento personalizado y metas de rendimiento.
+            </p>
+            <p data-lang="pt">
+              Detalhes adicionais sobre Aulas Particulares: plano 1:1, análise
+              de vídeo, acompanhamento personalizado e metas de desempenho.
+            </p>
+            <p data-lang="en">
+              Additional details about Private Lessons: day-by-day plan 1:1,
+              video analysis, personalized tracking and performance goals.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- HISTÓRIA DO JIU-JITSU -->
+    <section id="historia" class="mx-auto container-p px-4 py-16 md:py-24">
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <!-- Texto -->
+        <div>
+          <h2
+            class="text-2xl md:text-3xl font-bold text-zinc-900"
+            data-lang="es"
+          >
+            Historia del Jiu-Jitsu
+          </h2>
+          <h2
+            class="text-2xl md:text-3xl font-bold text-zinc-900"
+            data-lang="pt"
+          >
+            História do Jiu-Jitsu
+          </h2>
+          <h2
+            class="text-2xl md:text-3xl font-bold text-zinc-900"
+            data-lang="en"
+          >
+            History of Jiu-Jitsu
+          </h2>
+
+          <div id="historyBox" class="history-box mt-4">
+            <div class="history-content" id="historyContent">
+              <!-- PT -->
+              <div data-lang="pt">
+                <p class="text-zinc-700">
+                  <strong
+                    >A História do Jiu-Jitsu: Das Montanhas da Índia ao Mundo
+                    com o Gracie Jiu-Jitsu</strong
+                  >
+                </p>
+                <p class="mt-3 text-zinc-700">
+                  A origem do jiu-jitsu remonta a cerca de 2.500 anos atrás, nas
+                  montanhas da Índia, onde monges budistas desenvolveram
+                  técnicas de defesa pessoal baseadas em equilíbrio, alavanca e
+                  uso inteligente da energia do oponente. Essas práticas se
+                  espalharam pela China e, posteriormente, chegaram ao Japão,
+                  onde a arte marcial encontrou o ambiente ideal para se refinar
+                  e evoluir.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>A Evolução no Japão</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  No Japão, o jiu-jitsu foi amplamente praticado por samurais
+                  como forma de combate desarmado. No século XIX, o mestre
+                  Jigorō Kanō (1860–1938) destacou-se ao sistematizar e
+                  aperfeiçoar as técnicas tradicionais, criando o Judô e
+                  fundando a Kōdōkan. Kanō priorizou quedas e técnicas de
+                  controle no solo, introduzindo uma abordagem mais científica e
+                  educacional às artes marciais.
+                </p>
+                <p class="mt-3 text-zinc-700">
+                  Entre seus alunos estava Mitsuyo Maeda (1878–1941), conhecido
+                  como Conde Koma, que também aprendeu com Mataemon Tanabe
+                  (1869–1942) — especialista do Fusen-ryū, célebre pelo trabalho
+                  de chão. A convivência entre Maeda, Kanō e Tanabe fez com que
+                  Maeda dominasse tanto as projeções quanto o solo,
+                  características que mais tarde seriam transmitidas no Brasil.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>A Chegada ao Brasil</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  No início do século XX, o mestre japonês Mitsuyo Maeda,
+                  conhecido como Conde Koma, veio à América do Sul e se
+                  estabeleceu em Belém do Pará, no norte do Brasil. Ali, ele
+                  conheceu Gastão Gracie, um respeitado homem de negócios e
+                  figura influente da região.
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Gastão ajudou Maeda a se fixar em Belém e, em gratidão por
+                  essa ajuda, Maeda decidiu ensinar sua arte marcial ao filho
+                  mais velho de Gastão, Carlos Gracie.
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Carlos, então um jovem curioso e determinado, logo se
+                  apaixonou pelo jiu-jitsu. Encantado com a eficiência e a
+                  filosofia por trás da arte, dedicou toda a sua energia e
+                  disciplina ao aprendizado.
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Anos depois, já no Rio de Janeiro, Carlos passou a ensinar o
+                  jiu-jitsu como fonte de renda adicional. Ele aproveitou essa
+                  oportunidade para ganhar dinheiro com o que mais gostava:
+                  ensinar jiu-jitsu. Para firmar a credibilidade de seus
+                  ensinamentos, Carlos liderou seus irmãos em uma série de
+                  desafios.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>O Surgimento do Gracie Jiu-Jitsu</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Entre os irmãos Gracie, o mais novo, Hélio Gracie, era
+                  fisicamente mais frágil e enfrentava limitações de saúde desde
+                  criança. Por recomendação médica, ele ficou afastado de
+                  atividades físicas e passou anos apenas observando as aulas de
+                  seus irmãos.
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Certo dia, aos 16 anos, quando Carlos Gracie — seu irmão mais
+                  velho e instrutor — se atrasou para uma aula, Hélio se
+                  ofereceu para começar o treino no lugar dele.
+                  Surpreendentemente, conduziu a aula com tanta calma e clareza
+                  que o aluno, ao final, disse ter gostado muito e pediu para
+                  continuar treinando com Hélio dali em diante.
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Esse episódio marcou o início de sua jornada como professor e
+                  o nascimento de uma nova forma de praticar jiu-jitsu. Ao
+                  ensinar, Hélio percebeu que não conseguia executar algumas
+                  técnicas tradicionais com a mesma força e explosão dos demais.
+                  Determinado, começou a adaptar os movimentos, buscando maior
+                  eficiência por meio da alavanca, do posicionamento e do uso
+                  inteligente da energia.
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Com o tempo, essas adaptações deram origem a um estilo
+                  completamente novo — mais técnico, estratégico e acessível,
+                  capaz de permitir que uma pessoa menor e mais leve vencesse
+                  oponentes maiores e mais fortes. Assim nascia o Gracie
+                  Jiu-Jitsu, conhecido no mundo todo como o Jiu-Jitsu Brasileiro
+                  (BJJ).
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>Desafios e Expansão</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Nas décadas seguintes, a família Gracie desafiou atletas de
+                  outras modalidades, demonstrando a eficácia do sistema em
+                  combates reais e sem muitas restrições. Esses desafios
+                  públicos consolidaram sua reputação no Brasil e no exterior.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>Reconhecimento Global — O UFC</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Em 1993, o BJJ ganhou projeção mundial com o
+                  <em>Ultimate Fighting Championship</em> (UFC). Representando a
+                  família, Royce Gracie venceu o UFC 1, 2 e 4, superando
+                  adversários maiores com técnica, estratégia e controle. A
+                  partir daí, o Gracie Jiu-Jitsu se difundiu globalmente e
+                  tornou-se base do MMA moderno.
+                </p>
+              </div>
+
+              <!-- ES -->
+              <div data-lang="es">
+                <p class="text-zinc-700">
+                  <strong
+                    >La Historia del Jiu-Jitsu: De las montañas de la India al
+                    mundo con el Gracie Jiu-Jitsu</strong
+                  >
+                </p>
+                <p class="mt-3 text-zinc-700">
+                  El origen del jiu-jitsu se remonta a unos 2.500 años, en las
+                  montañas de la India, donde monjes budistas desarrollaron
+                  técnicas de defensa personal basadas en el equilibrio, la
+                  palanca y el uso inteligente de la energía del oponente. Estas
+                  prácticas se expandieron por China y, posteriormente, llegaron
+                  a Japón, donde el arte encontró el ambiente ideal para
+                  refinarse y evolucionar.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>La evolución en Japón</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  En Japón, el jiu-jitsu fue practicado por los samuráis como
+                  combate sin armas. En el siglo XIX, Jigorō Kanō (1860–1938)
+                  sistematizó y perfeccionó las técnicas tradicionales, creando
+                  el Judo y fundando el Kōdōkan. Kanō priorizó proyecciones y
+                  control en el suelo, introduciendo un enfoque más científico y
+                  educativo.
+                </p>
+                <p class="mt-3 text-zinc-700">
+                  Entre sus alumnos estuvo Mitsuyo Maeda (1878–1941), el “Conde
+                  Koma”, quien también aprendió con Mataemon Tanabe (1869–1942),
+                  especialista del Fusen-ryū y célebre por su trabajo de suelo.
+                  La convivencia entre Maeda, Kanō y Tanabe llevó a Maeda a
+                  dominar tanto las proyecciones como el grappling, rasgos que
+                  luego transmitiría en Brasil.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>La llegada a Brasil</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  A inicios del siglo XX, el maestro japonés Mitsuyo Maeda,
+                  conocido como Conde Koma, llegó a Sudamérica y se estableció
+                  en Belém do Pará, en el norte de Brasil. Allí conoció a Gastão
+                  Gracie, un respetado hombre de negocios e influencia local.
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Gastão ayudó a Maeda a asentarse en Belém y, en
+                  agradecimiento, Maeda decidió enseñar su arte marcial al hijo
+                  mayor de Gastão, Carlos Gracie.
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Carlos, entonces un joven curioso y determinado, pronto se
+                  enamoró del jiu-jitsu. Fascinado por la eficiencia y la
+                  filosofía del arte, dedicó toda su energía y disciplina al
+                  aprendizaje.
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Años después, ya en Río de Janeiro, Carlos comenzó a enseñar
+                  jiu-jitsu como una fuente adicional de ingresos — la
+                  oportunidad de ganar dinero haciendo lo que más amaba. Para
+                  reforzar la credibilidad de sus enseñanzas, lideró a sus
+                  hermanos en una serie de desafíos.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>El surgimiento del Gracie Jiu-Jitsu</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  El menor de los Gracie, Hélio, era físicamente más frágil y
+                  tuvo limitaciones de salud desde niño. Por recomendación
+                  médica, pasó años solo observando clases.
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  A los 16, sustituyó a Carlos en una clase y la condujo con
+                  calma y claridad; el alumno pidió seguir con él. Enseñando,
+                  Hélio empezó a adaptar técnicas para lograr eficiencia
+                  mediante palanca, posicionamiento y uso inteligente de la
+                  energía.
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Con el tiempo, esas adaptaciones dieron origen a un estilo más
+                  técnico, estratégico y accesible: el Gracie Jiu-Jitsu,
+                  conocido mundialmente como BJJ.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>Desafíos y expansión</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Durante décadas, la familia Gracie retó a otras disciplinas,
+                  probando la eficacia del sistema en combates reales. Esto
+                  consolidó su reputación.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>Reconocimiento global — El UFC</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  En 1993, el BJJ ganó visibilidad mundial con el UFC. Royce
+                  Gracie ganó el UFC 1, 2 y 4 frente a oponentes más grandes,
+                  demostrando técnica, estrategia y control.
+                </p>
+              </div>
+
+              <!-- EN -->
+              <div data-lang="en">
+                <p class="text-zinc-700">
+                  <strong
+                    >The History of Jiu-Jitsu: From India’s mountains to the
+                    world through Gracie Jiu-Jitsu</strong
+                  >
+                </p>
+                <p class="mt-3 text-zinc-700">
+                  Jiu-Jitsu’s origins trace back roughly 2,500 years to the
+                  mountains of India, where Buddhist monks developed
+                  self-defense methods based on balance, leverage, and
+                  redirecting an opponent’s energy. These practices spread
+                  through China and eventually reached Japan, where the art was
+                  refined and systematized.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>Evolution in Japan</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  In Japan, Jiu-Jitsu was practiced by samurai as unarmed
+                  combat. In the 19th century, Jigorō Kanō (1860–1938) organized
+                  and enhanced traditional methods, creating Judo and founding
+                  the Kōdōkan. Kanō emphasized throws and groundwork,
+                  introducing a more scientific, educational approach.
+                </p>
+                <p class="mt-3 text-zinc-700">
+                  Among his students was Mitsuyo Maeda (1878–1941), known as
+                  “Count Koma,” who also trained with Mataemon Tanabe
+                  (1869–1942) of Fusen-ryū, renowned for ground fighting.
+                  Exposure to Kanō and Tanabe led Maeda to master both throwing
+                  and ground skills — which he later passed on in Brazil.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>Arrival in Brazil</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  In the early 20th century, Mitsuyo Maeda settled in Belém do
+                  Pará, northern Brazil, where he met Gastão Gracie, who helped
+                  him establish himself. In gratitude, Maeda taught Jiu-Jitsu to
+                  Gastão’s eldest son, Carlos Gracie.
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  Carlos fell in love with the art and devoted himself to it.
+                  Later, in Rio de Janeiro, he began teaching as an extra income
+                  source and led his brothers in a series of challenge matches
+                  to build credibility.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>The rise of Gracie Jiu-Jitsu</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  The youngest brother, Hélio, faced health limitations and
+                  spent years observing. At 16, he started a class for Carlos
+                  and impressed the student. Teaching led him to adapt
+                  techniques for efficiency through leverage, positioning and
+                  smart energy use, giving birth to Gracie Jiu-Jitsu (BJJ).
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>Challenge matches and expansion</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  The Gracies publicly tested their system for decades,
+                  cementing their reputation.
+                </p>
+
+                <p class="mt-3 text-zinc-700">
+                  <strong>Global recognition — The UFC</strong>
+                </p>
+                <p class="mt-1 text-zinc-700">
+                  In 1993, Royce Gracie won UFC 1, 2 and 4, defeating larger
+                  opponents through technique, strategy and control, and BJJ
+                  went worldwide.
+                </p>
+              </div>
+            </div>
+
+            <div class="history-fade"></div>
+            <div class="mt-4 flex gap-2">
+              <button id="historyToggle" class="btn btn-ghost" data-lang="pt">
+                Ler mais
+              </button>
+              <button id="historyToggleES" class="btn btn-ghost" data-lang="es">
+                Leer más
+              </button>
+              <button id="historyToggleEN" class="btn btn-ghost" data-lang="en">
+                Read more
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carrossel de Mestres (agora com mt-4 para alinhar com a caixa de texto) -->
+        <div class="carousel mt-12" id="mastersCarousel">
+          <div class="c-nav">
+            <button class="c-btn" data-prev>‹</button>
+            <button class="c-btn" data-next>›</button>
+          </div>
+          <div class="slides"></div>
+          <div class="c-dots" id="dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" class="mx-auto container-p px-4 py-16 md:py-24">
+      <h2 class="text-2xl md:text-3xl font-bold text-zinc-900" data-lang="es">
+        Trayectoria & Certificados
+      </h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-zinc-900" data-lang="pt">
+        Trajetória & Certificados
+      </h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-zinc-900" data-lang="en">
+        Journey & Certificates
+      </h2>
+
+      <p class="mt-2 text-zinc-700" data-lang="es">
+        Resultados recientes, raíces en Brasil y formación continua.
+      </p>
+      <p class="mt-2 text-zinc-700" data-lang="pt">
+        Resultados recentes, raízes no Brasil e formação contínua.
+      </p>
+      <p class="mt-2 text-zinc-700" data-lang="en">
+        Recent results, Brazilian roots and ongoing education.
+      </p>
+
+      <div class="gallery grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+        <!-- FOTO 1 — Equipe Central Training Murcia -->
+        <figure class="rounded-xl overflow-hidden bg-white shadow-soft">
+          <img
+            src="assets/img/gallery/equipe_murcia_central.jpg"
+            alt="Equipe Central Training Murcia"
+            class="w-full h-52 object-cover cursor-zoom-in"
+            data-lb
+          />
+          <figcaption class="px-3 py-2" data-lang="es">
+            Equipo Central Training Murcia
+          </figcaption>
+          <figcaption class="px-3 py-2" data-lang="pt">
+            Equipe Central Training Murcia
+          </figcaption>
+          <figcaption class="px-3 py-2" data-lang="en">
+            Team Central Training Murcia
+          </figcaption>
+        </figure>
+
+        <!-- FOTO 2 — Campeonatos recentes -->
+        <figure class="rounded-xl overflow-hidden bg-white shadow-soft">
+          <img
+            src="assets/img/gallery/campeonatos_recientes.jpg"
+            alt="Campeonatos recientes"
+            class="w-full h-52 object-cover cursor-zoom-in"
+            data-lb
+          />
+          <figcaption class="px-3 py-2" data-lang="es">
+            Campeonatos recientes
+          </figcaption>
+          <figcaption class="px-3 py-2" data-lang="pt">
+            Campeonatos recentes
+          </figcaption>
+          <figcaption class="px-3 py-2" data-lang="en">
+            Recent championships
+          </figcaption>
+        </figure>
+
+        <!-- FOTO 3 — Meu primeiro grau (brasil_epoca.jpg) -->
+        <figure class="rounded-xl overflow-hidden bg-white shadow-soft">
+          <img
+            src="assets/img/gallery/brasil_epoca.jpg"
+            alt="Entrenos en Brasil"
+            class="w-full h-52 object-cover cursor-zoom-in"
+            data-lb
+          />
+          <figcaption class="px-3 py-2" data-lang="es">
+            Mi primer grado en el cinturón negro
+          </figcaption>
+          <figcaption class="px-3 py-2" data-lang="pt">
+            Meu primeiro grau na faixa preta
+          </figcaption>
+          <figcaption class="px-3 py-2" data-lang="en">
+            My first degree in the black belt
+          </figcaption>
+        </figure>
+
+        <!-- FOTO 4 — XCoach Team Pirituba -->
+        <figure class="rounded-xl overflow-hidden bg-white shadow-soft">
+          <img
+            src="assets/img/gallery/faixas_pretas_brasil.jpg"
+            alt="Faixas pretas no Brasil"
+            class="w-full h-52 object-cover cursor-zoom-in object-bottom"
+            data-lb
+          />
+          <figcaption class="px-3 py-2" data-lang="es">
+            XCoach Team Pirituba - Julio de 2025
+          </figcaption>
+          <figcaption class="px-3 py-2" data-lang="pt">
+            XCoach Team Pirituba - Julho 2025
+          </figcaption>
+          <figcaption class="px-3 py-2" data-lang="en">
+            XCoach Team Pirituba - July 2025
+          </figcaption>
+        </figure>
+
+        <!-- FOTO 5 — Certificado AJP -->
+        <figure class="rounded-xl overflow-hidden bg-white shadow-soft">
+          <img
+            src="assets/img/gallery/certificado_ajp.jpg"
+            alt="Certificado AJP"
+            class="w-full h-52 object-cover cursor-zoom-in"
+            data-lb
+          />
+          <figcaption class="px-3 py-2" data-lang="es">
+            Certificado AJP (cinturón negro)
+          </figcaption>
+          <figcaption class="px-3 py-2" data-lang="pt">
+            Certificado AJP (faixa-preta)
+          </figcaption>
+          <figcaption class="px-3 py-2" data-lang="en">
+            AJP Black Belt Certificate
+          </figcaption>
+        </figure>
+
+        <!-- FOTO 6 — Primeiro socorros -->
+        <figure class="rounded-xl overflow-hidden bg-white shadow-soft">
+          <img
+            src="assets/img/gallery/primeros_auxilios.jpg"
+            alt="Certificado de primeros auxilios"
+            class="w-full h-52 object-cover cursor-zoom-in"
+            data-lb
+          />
+          <figcaption class="px-3 py-2" data-lang="es">
+            Certificado de primeros auxilios
+          </figcaption>
+          <figcaption class="px-3 py-2" data-lang="pt">
+            Certificado de primeiros socorros
+          </figcaption>
+          <figcaption class="px-3 py-2" data-lang="en">
+            First aid certificate
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- AGENDA & UBICACIÓN -->
+    <section id="agenda" class="mx-auto container-p px-4 py-16 md:py-24">
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2
+            class="text-2xl md:text-3xl font-bold text-zinc-900"
+            data-lang="es"
+          >
+            Agenda & Ubicación
+          </h2>
+          <h2
+            class="text-2xl md:text-3xl font-bold text-zinc-900"
+            data-lang="pt"
+          >
+            Agenda & Local
+          </h2>
+          <h2
+            class="text-2xl md:text-3xl font-bold text-zinc-900"
+            data-lang="en"
+          >
+            Schedule & Location
+          </h2>
+
+          <p class="mt-3 text-zinc-700" data-lang="es">
+            <strong>Central Training Murcia</strong><br />C. Cuatro caminos, nº
+            74, 30007 Zarandona, Murcia – Parking gratuito disponible.
+          </p>
+          <p class="mt-3 text-zinc-700" data-lang="pt">
+            <strong>Central Training Murcia</strong><br />C. Cuatro caminhos, nº
+            74, 30007 Zarandona, Murcia – Estacionamento gratuito disponível.
+          </p>
+          <p class="mt-3 text-zinc-700" data-lang="en">
+            <strong>Central Training Murcia</strong><br />C. Cuatro caminos, nº
+            74, 30007 Zarandona, Murcia – Free parking available.
+          </p>
+
+          <div class="mt-6 p-4 rounded-xl border border-zinc-200 bg-white">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <div class="font-semibold" data-lang="es">
+                  Horarios populares
+                </div>
+                <div class="font-semibold" data-lang="pt">
+                  Horários populares
+                </div>
+                <div class="font-semibold" data-lang="en">Popular times</div>
+                <p class="text-sm text-zinc-600" data-lang="es">
+                  Mañanas (7–10h), Tardes (18–21h), Sábados
+                </p>
+                <p class="text-sm text-zinc-600" data-lang="pt">
+                  Manhãs (7–10h), Noites (18–21h), Sábados
+                </p>
+                <p class="text-sm text-zinc-600" data-lang="en">
+                  Mornings (7–10), Evenings (18–21), Saturdays
+                </p>
+              </div>
+              <a href="#contacto" class="btn btn-primary" data-lang="es"
+                >Reservar</a
+              >
+              <a href="#contacto" class="btn btn-primary" data-lang="pt"
+                >Reservar</a
+              >
+              <a href="#contacto" class="btn btn-primary" data-lang="en"
+                >Book</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="rounded-2xl overflow-hidden shadow-soft border border-zinc-200 h-[360px] bg-white"
+        >
+          <iframe
+            class="w-full h-full"
+            src="https://www.google.com/maps?q=C.+Cuatro+caminos,+74,+30007+Zarandona,+Murcia&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa Central Training Murcia"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="mx-auto container-p px-4 py-16 md:py-24">
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2
+            class="text-2xl md:text-3xl font-bold text-zinc-900"
+            data-lang="es"
+          >
+            ¿Entrenamos?
+          </h2>
+          <h2
+            class="text-2xl md:text-3xl font-bold text-zinc-900"
+            data-lang="pt"
+          >
+            Vamos treinar?
+          </h2>
+          <h2
+            class="text-2xl md:text-3xl font-bold text-zinc-900"
+            data-lang="en"
+          >
+            Shall we train?
+          </h2>
+          <p class="mt-3 text-zinc-700" data-lang="es">
+            Escríbeme y recibe un plan a medida.
+          </p>
+          <p class="mt-3 text-zinc-700" data-lang="pt">
+            Mande uma mensagem e receba um plano sob medida.
+          </p>
+          <p class="mt-3 text-zinc-700" data-lang="en">
+            Message me to get a tailored plan.
+          </p>
+          <div class="mt-6 space-y-3">
+            <a
+              id="waLink"
+              href="#"
+              target="_blank"
+              class="btn btn-primary w-full"
+              >WhatsApp</a
+            >
+            <a
+              id="emailLink"
+              href="mailto:gasparettojiujitsu@gmail.com?subject=Contacto%20desde%20el%20sitio%20web%20GASPA%20Jiu-Jitsu&body=Hola%20Mauricio%2C%0D%0A%0D%0AEscribo%20desde%20tu%20sitio%20web%20y%20me%20gustaría%20recibir%20más%20información%20sobre...%0D%0A%0D%0A¡Gracias!"
+              class="btn btn-primary w-full"
+              target="_blank"
+              rel="noopener"
+            >
+              Email
+            </a>
+          </div>
+        </div>
+        <form
+          class="p-6 rounded-2xl border border-zinc-200 bg-white space-y-4"
+          name="contacto"
+          method="POST"
+          data-netlify="true"
+          id="contactForm"
+        >
+          <input type="hidden" name="form-name" value="contacto" />
+          <div>
+            <label class="block text-sm text-zinc-600" data-lang="es"
+              >Nombre</label
+            >
+            <label class="block text-sm text-zinc-600" data-lang="pt"
+              >Nome</label
+            >
+            <label class="block text-sm text-zinc-600" data-lang="en"
+              >Name</label
+            >
+            <input
+              name="nombre"
+              class="mt-1 w-full px-4 py-3 rounded-xl bg-white border border-zinc-300"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-sm text-zinc-600">Email</label>
+            <input
+              type="email"
+              name="email"
+              class="mt-1 w-full px-4 py-3 rounded-xl bg-white border border-zinc-300"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-sm text-zinc-600" data-lang="es"
+              >Mensaje</label
+            >
+            <label class="block text-sm text-zinc-600" data-lang="pt"
+              >Mensagem</label
+            >
+            <label class="block text-sm text-zinc-600" data-lang="en"
+              >Message</label
+            >
+            <textarea
+              name="mensaje"
+              class="mt-1 w-full px-4 py-3 rounded-xl bg-white border border-zinc-300"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="w-full btn btn-primary" data-lang="es">
+            Enviar
+          </button>
+          <button type="submit" class="w-full btn btn-primary" data-lang="pt">
+            Enviar
+          </button>
+          <button type="submit" class="w-full btn btn-primary" data-lang="en">
+            Send
+          </button>
+
+          <!-- Mensagem de sucesso -->
+          <p
+            id="formSuccess"
+            class="hidden text-green-600 text-sm text-center mt-3 font-semibold"
+          >
+            ✅ Mensagem enviada com sucesso! Obrigado pelo contato.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-200 bg-white">
+      <div
+        class="mx-auto container-p px-4 py-10 text-sm text-zinc-600 flex flex-col md:flex-row gap-3 md:items-center md:justify-between"
+      >
+        <img
+          src="assets/img/logos/logo_horizontal.png"
+          alt="Logo GASPA"
+          class="h-10 w-auto"
+          loading="lazy"
+        />
+        <div>
+          © <span id="year"></span> GASPA Brazilian Jiu-Jitsu — Todos los
+          derechos reservados
+        </div>
+        <div class="flex items-center gap-5">
+          <!-- Instagram -->
+          <a
+            id="igLink"
+            href="#"
+            aria-label="Instagram"
+            class="hover:opacity-80"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              viewBox="0 0 24 24"
+              fill="#E4405F"
+            >
+              <path
+                d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 14.8 2.8 2.8 0 0 0 12 9.2zM17.8 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+              />
+            </svg>
+          </a>
+          <!-- YouTube -->
+          <a
+            id="ytLink"
+            href="#"
+            aria-label="YouTube"
+            class="hover:opacity-80"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              viewBox="0 0 24 24"
+              fill="#FF0000"
+            >
+              <path
+                d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c2.2.6 9.4.6 9.4.6s7.2 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.6V8.4L15.8 12l-6.1 3.6z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "GASPA Brazilian Jiu-Jitsu",
+        "image": "assets/img/logos/logo_circular.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "C. Cuatro caminos, 74",
+          "addressLocality": "Zarandona, Murcia",
+          "postalCode": "30007",
+          "addressCountry": "ES"
+        },
+        "areaServed": "Murcia",
+        "priceRange": "€€",
+        "sameAs": [
+          "https://www.instagram.com/mauricio_gasparetto",
+          "https://www.youtube.com/@gasparettojiujitsu"
+        ]
+      }
+    </script>
+
+    <!-- Scripts -->
+    <script>
+      // ========== 1) Carrossel (definições e helpers) ==========
+      const slidesData = [
+        {
+          src: "assets/img/logos/kano.jpg",
+          alt: "Jigorō Kanō",
+          pt: { title: "Jigorō Kanō", sub: "Fundador do Judô (Japão)" },
+          es: { title: "Jigorō Kanō", sub: "Fundador del Judo (Japón)" },
+          en: { title: "Jigorō Kanō", sub: "Founder of Judo (Japan)" },
+        },
+        {
+          src: "assets/img/logos/tanabe.jpg",
+          alt: "Mataemon Tanabe",
+          pt: {
+            title: "Mataemon Tanabe",
+            sub: "Mestre Fusen-ryū – precursor das técnicas de chão",
+          },
+          es: {
+            title: "Mataemon Tanabe",
+            sub: "Maestro Fusen-ryū – precursor de las técnicas de suelo",
+          },
+          en: {
+            title: "Mataemon Tanabe",
+            sub: "Fusen-ryū master – pioneer of ground techniques",
+          },
+        },
+        {
+          src: "assets/img/logos/maeda.jpg",
+          alt: "Mitsuyo Maeda (Conde Koma)",
+          pt: {
+            title: "Mitsuyo Maeda (Conde Koma)",
+            sub: "Aluno de Kanō e Tanabe – introdutor do Jiu-Jitsu no Brasil",
+          },
+          es: {
+            title: "Mitsuyo Maeda (Conde Koma)",
+            sub: "Alumno de Kanō y Tanabe – introductor del Jiu-Jitsu en Brasil",
+          },
+          en: {
+            title: "Mitsuyo Maeda (Count Koma)",
+            sub: "Student of Kanō & Tanabe – introduced Jiu-Jitsu to Brazil",
+          },
+        },
+        {
+          src: "assets/img/logos/helio_carlos_221x148.jfif",
+          alt: "Hélio & Carlos Gracie",
+          pt: {
+            title: "Hélio & Carlos Gracie",
+            sub: "Fundadores do Gracie Jiu-Jitsu (Brasil) — origem do BJJ (Brazilian Jiu-Jitsu)",
+          },
+          es: {
+            title: "Hélio & Carlos Gracie",
+            sub: "Fundadores del Gracie Jiu-Jitsu (Brasil) — origen del BJJ (Brazilian Jiu-Jitsu)",
+          },
+          en: {
+            title: "Hélio & Carlos Gracie",
+            sub: "Founders of Gracie Jiu-Jitsu (Brazil) — origin of BJJ (Brazilian Jiu-Jitsu)",
+          },
+        },
+      ];
+
+      const carousel = document.getElementById("mastersCarousel");
+      const slidesWrap = carousel.querySelector(".slides");
+      const dotsWrap = document.getElementById("dots");
+      const prevBtn = carousel.querySelector("[data-prev]");
+      const nextBtn = carousel.querySelector("[data-next]");
+      let cIndex = 0;
+      let autoTimer = null;
+
+      function currentLang() {
+        if (document.body.classList.contains("lang-pt")) return "pt";
+        if (document.body.classList.contains("lang-en")) return "en";
+        return "es";
+      }
+      function renderSlides() {
+        const lang = currentLang();
+        slidesWrap.innerHTML = "";
+        dotsWrap.innerHTML = "";
+        slidesData.forEach((s, i) => {
+          const slide = document.createElement("div");
+          slide.className = "slide" + (i === cIndex ? " active" : "");
+          slide.innerHTML = `
+            <div class="imgbox"><img src="${s.src}" alt="${s.alt}"></div>
+            <div class="legend">
+              <span class="title">${s[lang].title}</span>
+              <span class="sub">${s[lang].sub}</span>
+            </div>
+          `;
+          slidesWrap.appendChild(slide);
+
+          const dot = document.createElement("button");
+          dot.className = "c-dot" + (i === cIndex ? " active" : "");
+          dot.setAttribute("aria-label", "slide " + (i + 1));
+          dot.addEventListener("click", () => go(i));
+          dotsWrap.appendChild(dot);
+        });
+      }
+      function go(i) {
+        const total = slidesData.length;
+        cIndex = (i + total) % total;
+        renderSlides();
+      }
+      function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(() => go(cIndex + 1), 5000);
+      }
+      function stopAuto() {
+        if (autoTimer) clearInterval(autoTimer);
+        autoTimer = null;
+      }
+
+      prevBtn.addEventListener("click", () => go(cIndex - 1));
+      nextBtn.addEventListener("click", () => go(cIndex + 1));
+      carousel.addEventListener("mouseenter", stopAuto);
+      carousel.addEventListener("mouseleave", startAuto);
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) stopAuto();
+        else startAuto();
+      });
+
+      // ========== 2) Utilidades ==========
+      document.getElementById("year").textContent = new Date().getFullYear();
+      function setHeaderH() {
+        const h = document.querySelector("header")?.offsetHeight || 100;
+        document.documentElement.style.setProperty("--header-h", h + "px");
+      }
+      window.addEventListener("load", setHeaderH);
+      window.addEventListener("resize", setHeaderH);
+
+      // ========== 3) Idiomas (rodar ANTES do primeiro render do carrossel) ==========
+      const root = document.body;
+      function setLang(lang) {
+        root.classList.remove("lang-es", "lang-pt", "lang-en");
+        root.classList.add(lang);
+        localStorage.setItem("lang", lang);
+        document.querySelectorAll(".lang-pill button").forEach((b) => {
+          b.classList.toggle("active", b.dataset.code === lang);
+        });
+        setHeaderH();
+        renderSlides(); // renderiza carrossel no idioma atual
+      }
+      setLang(localStorage.getItem("lang") || "lang-es"); // idioma primeiro
+      startAuto(); // depois liga o autoplay
+
+      // botões desktop e mobile
+      document.querySelectorAll(".lang-pill button").forEach((btn) => {
+        btn.addEventListener("click", () => setLang(btn.dataset.code));
+      });
+      document
+        .querySelectorAll("#mobileMenu .lang-pill button")
+        .forEach((btn) => {
+          btn.addEventListener("click", () => {
+            setLang(btn.dataset.code);
+            document.getElementById("mobileMenu")?.classList.add("hidden");
+          });
+        });
+
+      // menu mobile
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuBtn?.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        setHeaderH();
+      });
+
+      // ========== 4) Contatos ==========
+      const WHATSAPP_NUMBER = "34635437530";
+      const EMAIL_ADDRESS = "gasparettojiujitsu@gmail.com";
+      const INSTAGRAM_URL = "https://www.instagram.com/mauricio_gasparetto";
+      const YOUTUBE_URL = "https://www.youtube.com/@gasparettojiujitsu";
+
+      const wa = document.getElementById("waLink");
+      if (WHATSAPP_NUMBER) wa.href = `https://wa.me/${WHATSAPP_NUMBER}`;
+      const em = document.getElementById("emailLink");
+      if (EMAIL_ADDRESS && EMAIL_ADDRESS.includes("@"))
+        em.href = `mailto:${EMAIL_ADDRESS}`;
+      const ig = document.getElementById("igLink");
+      if (ig && INSTAGRAM_URL) ig.href = INSTAGRAM_URL;
+      const yt = document.getElementById("ytLink");
+      if (yt && YOUTUBE_URL) yt.href = YOUTUBE_URL;
+
+      // ========== 5) “Saiba mais” (tap em mobile) ==========
+      document.querySelectorAll(".service-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          if (window.matchMedia("(hover: none)").matches) {
+            card.classList.toggle("open");
+          }
+        });
+      });
+
+      // ========== 6) Lightbox Galeria ==========
+      document.addEventListener("DOMContentLoaded", function initLightbox() {
+        const overlay = document.getElementById("lightbox");
+        const imgEl = document.getElementById("lb-img");
+        const capEl = document.getElementById("lb-cap");
+        const btnPrev = overlay?.querySelector("button.prev");
+        const btnNext = overlay?.querySelector("button.next");
+        const btnClose = overlay?.querySelector("button.close");
+
+        function getGalleryItems() {
+          return Array.from(
+            document.querySelectorAll("#galeria .gallery figure")
+          )
+            .map((fig) => {
+              const img = fig.querySelector("img[data-lb]");
+              const cap =
+                fig
+                  .querySelector(`figcaption[data-lang="${currentLang()}"]`)
+                  ?.textContent?.trim() || "";
+              return { img, cap };
+            })
+            .filter((x) => x.img);
+        }
+
+        if (!overlay) return;
+
+        let items = getGalleryItems();
+        if (items.length === 0) return;
+
+        let index = 0;
+
+        function open(i) {
+          items = getGalleryItems(); // atualiza lista/legendas no idioma ativo
+          index = (i + items.length) % items.length;
+          const { img, cap } = items[index];
+          imgEl.src = img.getAttribute("src");
+          imgEl.alt = img.getAttribute("alt") || "";
+          capEl.textContent = cap;
+          overlay.classList.add("open");
+          overlay.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        }
+
+        function close() {
+          overlay.classList.remove("open");
+          overlay.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+          imgEl.src = "";
+          capEl.textContent = "";
+        }
+
+        function next() {
+          open(index + 1);
+        }
+        function prev() {
+          open(index - 1);
+        }
+
+        function bindEvents() {
+          items = getGalleryItems();
+          items.forEach((it, i) => {
+            if (!it.img.dataset.lbBound) {
+              it.img.style.cursor = "zoom-in";
+              it.img.addEventListener("click", () => open(i));
+              it.img.dataset.lbBound = "1";
+            }
+          });
+        }
+
+        bindEvents();
+
+        btnClose?.addEventListener("click", close);
+        btnNext?.addEventListener("click", next);
+        btnPrev?.addEventListener("click", prev);
+
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) close();
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (!overlay.classList.contains("open")) return;
+          if (e.key === "Escape") close();
+          if (e.key === "ArrowRight") next();
+          if (e.key === "ArrowLeft") prev();
+        });
+      });
+
+      // ========== 7) História — Ler mais/menos ==========
+      (function () {
+        const box = document.getElementById("historyBox");
+        const btnPT = document.getElementById("historyToggle");
+        const btnES = document.getElementById("historyToggleES");
+        const btnEN = document.getElementById("historyToggleEN");
+
+        function toggle(e) {
+          // evita qualquer rolagem automática por clique
+          if (e && typeof e.preventDefault === "function") e.preventDefault();
+
+          const wasExpanded = box.classList.contains("expanded");
+
+          if (wasExpanded) {
+            // recolher com fade-out suave
+            box.classList.add("collapsing");
+            box.classList.remove("expanded");
+
+            // atualiza textos para estado recolhido
+            btnPT.textContent = "Ler mais";
+            btnES.textContent = "Leer más";
+            btnEN.textContent = "Read more";
+
+            // rola suavemente pro topo da caixa ao final
+            box.scrollIntoView({ behavior: "smooth", block: "start" });
+
+            // remove a classe de transição após o tempo da animação (CSS: 0.6s)
+            setTimeout(() => {
+              box.classList.remove("collapsing");
+            }, 600);
+          } else {
+            // expandir com fade-in suave
+            box.classList.add("expanded");
+
+            // atualiza textos para estado expandido
+            btnPT.textContent = "Ler menos";
+            btnES.textContent = "Leer menos";
+            btnEN.textContent = "Read less";
+          }
+        }
+
+        [btnPT, btnES, btnEN].forEach((b) =>
+          b.addEventListener("click", toggle)
+        );
+      })();
+    </script>
+
+    <script>
+      const contactForm = document.getElementById("contactForm");
+      const formSuccess = document.getElementById("formSuccess");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const formData = new FormData(contactForm);
+          try {
+            await fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: new URLSearchParams(formData).toString(),
+            });
+            contactForm.reset();
+            formSuccess.classList.remove("hidden");
+            formSuccess.scrollIntoView({ behavior: "smooth", block: "center" });
+          } catch (err) {
+            alert("Ocorreu um erro ao enviar o formulário. Tente novamente.");
+          }
+        });
+      }
+    </script>
+
+    <!-- Lightbox overlay (se quiser usar no futuro; não atrapalha caso fique sem itens) -->
+    <div
+      id="lightbox"
+      class="lightbox"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="image viewer"
+    >
+      <div class="lightbox-inner">
+        <button class="close" aria-label="Close">✕</button>
+        <img id="lb-img" alt="" />
+        <div id="lb-cap" class="caption"></div>
+        <button class="prev" aria-label="Previous">‹</button>
+        <button class="next" aria-label="Next">›</button>
+      </div>
+    </div>
+  </body>
+</html>

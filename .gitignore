@@ -1,0 +1,18 @@
+# --- Gerado pelo build (reconstrói com: python build.py) ---
+# dist/ é o site pronto para publicar; sai do build, não do editor.
+dist/
+# versões otimizadas das fotos; os originais em assets/img/{gallery,logos}
+# esses sim ficam versionados, porque são a fonte
+assets/img/opt/
+# hashes usados para detectar edição manual em dist/
+.build-manifest.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+
+# --- Sistema operacional / editor ---
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp

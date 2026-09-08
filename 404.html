@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Página no encontrada | Gasparetto BJJ</title>
+    <!-- uma pagina de erro nunca deve entrar no indice -->
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#e30613" />
+    <link rel="icon" href="/assets/img/logos/favicon.ico" sizes="48x48" />
+    <style>
+      @font-face {
+        font-family: "Outfit";
+        font-style: normal;
+        font-weight: 300 900;
+        font-display: swap;
+        src: url("/assets/fonts/outfit-latin.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+          U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        /* dvh e nao vh: no movel a barra de endereco cortava o conteudo */
+        display: grid;
+        min-height: 100dvh;
+        padding: 1.5rem;
+        font-family: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+        line-height: 1.6;
+        color: #0a0a0a;
+        background: #fff;
+        place-items: center;
+      }
+      .card {
+        max-width: 32.5rem;
+        padding: 2rem;
+        text-align: center;
+        border: 1px solid #e5e7eb;
+        border-radius: 1rem;
+      }
+      img {
+        width: 5rem;
+        height: 5rem;
+        margin: 0 auto 1rem;
+      }
+      h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1;
+        color: #e30613;
+      }
+      p {
+        margin-top: 0.75rem;
+        color: #3f3f46;
+      }
+      .home {
+        display: inline-flex;
+        margin-top: 1.5rem;
+        padding: 0.85rem 1.15rem;
+        font-weight: 700;
+        color: #fff;
+        text-decoration: none;
+        background: linear-gradient(
+          90deg,
+          #000 0 60%,
+          #e30613 60% 90%,
+          #000 90% 100%
+        );
+        border-radius: 0.9rem;
+      }
+      .langs {
+        margin-top: 1.25rem;
+        font-size: 0.875rem;
+      }
+      .langs a {
+        color: #6b7280;
+        text-decoration: underline;
+      }
+      :focus-visible {
+        outline: 3px solid #e30613;
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <picture>
+        <source type="image/avif" srcset="/assets/img/opt/logo_circular-384.avif" />
+        <source type="image/webp" srcset="/assets/img/opt/logo_circular-384.webp" />
+        <img
+          src="/assets/img/opt/logo_circular-384.png"
+          width="384"
+          height="384"
+          alt="Gasparetto BJJ"
+        />
+      </picture>
+      <h1>404</h1>
+      <p lang="es">Esta página no existe — pero el tatami sigue abierto.</p>
+      <a class="home" href="/">Volver al inicio</a>
+      <p class="langs">
+        <a href="/pt/" lang="pt" hreflang="pt">Português</a> ·
+        <a href="/en/" lang="en" hreflang="en">English</a>
+      </p>
+    </main>
+  </body>
+</html>
