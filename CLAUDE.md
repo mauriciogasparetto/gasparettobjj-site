@@ -16,7 +16,8 @@ Segura). Mauricio é autônomo em parceria e gestiona todo o jiu-jitsu do local.
 *Guga Fraga* é o mestre que graduou o Mauricio. Nunca trocar os dois.
 
 **A página não é funil de venda:** a matrícula acontece na recepção da LEVSPORT. A
-função do site é fazer a pessoa chegar decidida. CTA único: aula experimental grátis.
+função do site é fazer a pessoa chegar decidida. CTA único: **agendar a aula
+experimental** pelo WhatsApp — sempre agendada, e nunca anunciada como "grátis".
 
 **SEO local mira Molina de Segura / Altorreal**, com Murcia como termo secundário —
 são municípios diferentes.
