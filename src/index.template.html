@@ -583,6 +583,188 @@
         color: var(--brand);
       }
 
+
+      /* ================================================================
+         9b. Portas de entrada
+         Cada perfil se reconhece numa frase e vai direto para a sua aula.
+         ================================================================ */
+      .doors {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      @media (min-width: 40rem) {
+        .doors {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 64rem) {
+        .doors {
+          grid-template-columns: repeat(5, 1fr);
+        }
+      }
+      .door {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 1rem 1.1rem;
+        color: inherit;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--brand);
+        border-radius: var(--radius-sm);
+        transition: transform 0.16s ease, box-shadow 0.16s ease;
+      }
+      .door strong {
+        font-size: 1rem;
+        font-weight: 800;
+        line-height: 1.25;
+      }
+      .door span {
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+      .door::after {
+        content: "→";
+        margin-top: auto;
+        padding-top: 0.5rem;
+        font-weight: 800;
+        color: var(--brand);
+      }
+      @media (hover: hover) {
+        .door:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-hover);
+        }
+      }
+
+      /* ================================================================
+         9c. Programa para forcas de seguranca
+         Tom sobrio e separado do resto: quem usa isso no trabalho nao se
+         reconhece na mesma prateleira da turma infantil.
+         ================================================================ */
+      .pro {
+        padding: 1.75rem;
+        margin-top: 2.5rem;
+        color: #f4f1ee;
+        background: var(--ink);
+        border-radius: var(--radius-lg);
+      }
+      .pro__eyebrow {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #ff6b60;
+      }
+      .pro h3 {
+        margin-top: 0.5rem;
+        font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
+        font-weight: 800;
+        color: #fff;
+      }
+      .pro p {
+        margin-top: 0.75rem;
+        color: #cfc7c3;
+      }
+      .pro ul {
+        display: grid;
+        gap: 0.35rem;
+        margin-top: 1rem;
+      }
+      .pro li {
+        position: relative;
+        padding-left: 1rem;
+        color: #cfc7c3;
+      }
+      .pro li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--brand);
+      }
+      .pro__who {
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        color: #9a908b;
+      }
+      .pro .btn--ghost {
+        margin-top: 1.25rem;
+        color: #fff;
+        border-color: rgb(255 255 255 / 0.3);
+      }
+      @media (hover: hover) {
+        .pro .btn--ghost:hover {
+          background: rgb(255 255 255 / 0.1);
+        }
+      }
+      @media (min-width: 48rem) {
+        .pro {
+          padding: 2.25rem 2.5rem;
+        }
+        .pro__grid {
+          display: grid;
+          grid-template-columns: 1.1fr 1fr;
+          gap: 2.5rem;
+          align-items: start;
+        }
+      }
+
+      /* ================================================================
+         9d. Quem ensina + linhagem
+         ================================================================ */
+      @media (min-width: 64rem) {
+        .teacher {
+          grid-template-columns: 1fr 1fr;
+          gap: 2.5rem;
+          align-items: start;
+        }
+      }
+      .lineage {
+        display: grid;
+        padding: 1.25rem;
+        background: var(--surface-2);
+        border-radius: var(--radius);
+      }
+      .lineage__node {
+        position: relative;
+        padding-left: 1.75rem;
+      }
+      .lineage__node + .lineage__node {
+        margin-top: 1.1rem;
+      }
+      /* o tracinho vertical que liga um mestre ao seguinte */
+      .lineage__node::before {
+        content: "";
+        position: absolute;
+        left: 0.3rem;
+        top: 0.45rem;
+        width: 0.65rem;
+        height: 0.65rem;
+        background: var(--ink);
+        border-radius: 2px;
+      }
+      .lineage__node:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        left: 0.59rem;
+        top: 1.35rem;
+        bottom: -1.1rem;
+        width: 2px;
+        background: var(--line);
+      }
+      .lineage__node:last-child::before {
+        background: var(--brand);
+      }
+      .lineage__node b {
+        display: block;
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .lineage__node span {
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+
       /* ================================================================
          10. Historia + carrossel
          ================================================================ */
@@ -1013,10 +1195,12 @@
         <nav class="nav" aria-label="[[es:Navegación principal|pt:Navegação principal|en:Main navigation]]">
           <ul class="nav__list">
             <li><a href="#inicio">[[es:Inicio|pt:Início|en:Home]]</a></li>
-            <li><a href="#metodo">[[es:Método|pt:Método|en:Method]]</a></li>
-            <li><a href="#historia">[[es:Historia del Jiu-Jitsu|pt:História do Jiu-Jitsu|en:Jiu-Jitsu History]]</a></li>
+            <li><a href="#para-quien">[[es:Para quién|pt:Para quem|en:For whom]]</a></li>
+            <li><a href="#metodo">[[es:Clases|pt:Aulas|en:Classes]]</a></li>
+            <li><a href="#historia">[[es:Historia|pt:História|en:History]]</a></li>
+            <li><a href="#profesor">[[es:Profesor|pt:Professor|en:Coach]]</a></li>
             <li><a href="#galeria">[[es:Trayectoria|pt:Trajetória|en:Journey]]</a></li>
-            <li><a href="#agenda">[[es:Agenda y Ubicación|pt:Agenda e Local|en:Schedule &amp; Location]]</a></li>
+            <li><a href="#agenda">[[es:Agenda|pt:Agenda|en:Schedule]]</a></li>
             <li><a href="#contacto">[[es:Contacto|pt:Contato|en:Contact]]</a></li>
             <li>{{LANG_SWITCH}}</li>
           </ul>
@@ -1042,8 +1226,10 @@
       <nav id="menuMobile" class="menu-mobile wrap" hidden aria-label="[[es:Navegación|pt:Navegação|en:Navigation]]">
         {{LANG_SWITCH}}
         <a href="#inicio">[[es:Inicio|pt:Início|en:Home]]</a>
-        <a href="#metodo">[[es:Método de Enseñanza|pt:Método de Ensino|en:Teaching Method]]</a>
+        <a href="#para-quien">[[es:Para quién|pt:Para quem|en:For whom]]</a>
+        <a href="#metodo">[[es:Clases|pt:Aulas|en:Classes]]</a>
         <a href="#historia">[[es:Historia del Jiu-Jitsu|pt:História do Jiu-Jitsu|en:Jiu-Jitsu History]]</a>
+        <a href="#profesor">[[es:Quién enseña|pt:Quem ensina|en:Who teaches]]</a>
         <a href="#galeria">[[es:Trayectoria y Certificados|pt:Trajetória e Certificados|en:Journey &amp; Certificates]]</a>
         <a href="#agenda">[[es:Agenda y Ubicación|pt:Agenda e Local|en:Schedule &amp; Location]]</a>
         <a href="#contacto">[[es:Contacto|pt:Contato|en:Contact]]</a>
@@ -1085,87 +1271,52 @@
         </div>
 
         <div>
-          <h1 class="h1" data-lang="pt">
-            Descubra o Jiu-Jitsu — a arte que transforma vidas.
-          </h1>
           <h1 class="h1" data-lang="es">
-            Descubre el Jiu-Jitsu — el arte que transforma vidas.
+            Brazilian Jiu-Jitsu en Altorreal — el arte que transforma vidas.
+          </h1>
+          <h1 class="h1" data-lang="pt">
+            Brazilian Jiu-Jitsu em Altorreal — a arte que transforma vidas.
           </h1>
           <h1 class="h1" data-lang="en">
-            Discover Jiu-Jitsu — the art that transforms lives.
+            Brazilian Jiu-Jitsu in Altorreal — the art that transforms lives.
           </h1>
 
-          <p class="lead" data-lang="pt">
-            Sou <strong>Mauricio Gasparetto Fonseca</strong>, faixa-preta
-            graduado no Brasil pelo mestre <strong>Guga Fraga</strong>, e hoje
-            represento a <strong>XCOACH</strong> — equipe fundada por
-            <strong>Celsinho Venicius</strong> — aqui na Espanha, à frente do
-            <strong>Gasparetto BJJ</strong>, na academia
-            <strong>LEVSPORT Altorreal</strong>, em Molina de Segura.
+          <p class="lead" data-lang="es">
+            <strong>Gasparetto BJJ</strong> es la representación de
+            <strong>XCOACH</strong> en España — el equipo fundado por
+            <strong>Celsinho Venicius</strong>. Entrenamos dentro de
+            <strong>LEVSPORT Altorreal</strong>, en Molina de Segura, con el
+            profesor Mauricio Gasparetto.
           </p>
-          <p class="lead" data-lang="pt">
-            Para mim, o Jiu-Jitsu é a arte que ensina confiança, segurança e
-            defesa pessoal. A arte que desenvolve foco, disciplina e controle. A
-            arte onde aprendemos a cair e levantar, a ganhar e a perder. É a
-            arte da aceitação — que equilibra o mais fraco fisicamente diante do
-            mais forte. A arte marcial que superou todas as outras quando o
-            mundo ainda nem a conhecia. O Jiu-Jitsu é mais do que um esporte — é
-            um <em>lifestyle</em>, um propósito de vida.
-          </p>
-          <p class="lead" data-lang="pt">
-            Meu mestre sempre me disse:
-            <em>“Os detalhes fazem o Jiu-Jitsu.”</em>
-            É com essa filosofia que ensino e vivo a arte suave todos os dias —
-            porque são os detalhes que transformam, inspiram e formam pessoas
-            dentro e fora dos tatames.
+          <p class="lead" data-lang="es">
+            No hace falta estar en forma ni haber entrenado nunca. Hay clases
+            para quien empieza de cero, para niños, para mujeres que quieren
+            sentirse seguras y para quien ya entrena y quiere evolucionar.
           </p>
 
-          <p class="lead" data-lang="es">
-            Soy <strong>Mauricio Gasparetto Fonseca</strong>, cinturón negro
-            formado en Brasil por el maestro <strong>Guga Fraga</strong>, y hoy
-            represento a <strong>XCOACH</strong> — el equipo fundado por
-            <strong>Celsinho Venicius</strong> — aquí en España, al frente de
-            <strong>Gasparetto BJJ</strong>, en el gimnasio
-            <strong>LEVSPORT Altorreal</strong>, en Molina de Segura.
+          <p class="lead" data-lang="pt">
+            O <strong>Gasparetto BJJ</strong> é a representação da
+            <strong>XCOACH</strong> na Espanha — equipe fundada por
+            <strong>Celsinho Venicius</strong>. Treinamos dentro da
+            <strong>LEVSPORT Altorreal</strong>, em Molina de Segura, com o
+            professor Mauricio Gasparetto.
           </p>
-          <p class="lead" data-lang="es">
-            Para mí, el Jiu-Jitsu es el arte que enseña confianza, seguridad y
-            defensa personal. El arte que desarrolla enfoque, disciplina y
-            control. El arte en el que aprendemos a caer y levantarnos, a ganar
-            y a perder. Es el arte de la aceptación — que equilibra al más débil
-            físicamente frente al más fuerte. El arte marcial que superó a todas
-            las demás cuando el mundo aún ni la conocía. El Jiu-Jitsu es más que
-            un deporte — es un <em>estilo de vida</em>, un propósito.
-          </p>
-          <p class="lead" data-lang="es">
-            Mi maestro siempre me dijo:
-            <em>«Los detalles hacen el Jiu-Jitsu.»</em>
-            Con esa filosofía enseño y vivo el arte suave cada día — porque son
-            los detalles los que transforman, inspiran y forman personas dentro
-            y fuera del tatami.
+          <p class="lead" data-lang="pt">
+            Não é preciso estar em forma nem ter treinado antes. Há aulas para
+            quem começa do zero, para crianças, para mulheres que querem se
+            sentir seguras e para quem já treina e quer evoluir.
           </p>
 
           <p class="lead" data-lang="en">
-            I’m <strong>Mauricio Gasparetto Fonseca</strong>, a black belt under
-            <strong>Guga Fraga</strong> (Brazil). I represent
-            <strong>XCOACH</strong> — the team founded by
-            <strong>Celsinho Venicius</strong> — here in Spain, leading
-            <strong>Gasparetto BJJ</strong> at
-            <strong>LEVSPORT Altorreal</strong>, in Molina de Segura.
+            <strong>Gasparetto BJJ</strong> represents <strong>XCOACH</strong>
+            in Spain — the team founded by <strong>Celsinho Venicius</strong>.
+            We train inside <strong>LEVSPORT Altorreal</strong>, in Molina de
+            Segura, with coach Mauricio Gasparetto.
           </p>
           <p class="lead" data-lang="en">
-            For me, Jiu-Jitsu is the art that teaches confidence, safety and
-            self-defense. The art that develops focus, discipline and control.
-            The art where we learn to fall and rise, to win and to lose. It is
-            the art of acceptance — balancing the physically weaker against the
-            stronger. The martial art that surpassed all others when the world
-            barely knew it. Jiu-Jitsu is more than a sport — it’s a
-            <em>lifestyle</em>, a purpose.
-          </p>
-          <p class="lead" data-lang="en">
-            My master always told me: <em>“Details make Jiu-Jitsu.”</em>
-            This is the philosophy I teach and live every day — because details
-            are what transform, inspire and shape people on and off the mats.
+            You don't need to be fit, and you don't need any experience. There
+            are classes for complete beginners, for children, for women who want
+            to feel safe, and for those already training who want to progress.
           </p>
 
           <ul class="facts">
@@ -1199,19 +1350,121 @@
           </ul>
 
           <div class="cta-row">
-            <a href="#metodo" class="btn btn--primary" data-lang="es">Conocer el método</a>
-            <a href="#metodo" class="btn btn--primary" data-lang="pt">Conhecer o método</a>
-            <a href="#metodo" class="btn btn--primary" data-lang="en">See the method</a>
             <a
               class="btn btn--primary"
-              href="https://wa.me/34635437530"
+              href="https://wa.me/34635437530?text=Hola%20Mauricio%2C%20quiero%20agendar%20una%20clase%20de%20prueba%20de%20Jiu-Jitsu."
               target="_blank"
               rel="noopener"
+              data-lang="es"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
-              WhatsApp
+              Agenda tu clase de prueba
             </a>
+            <a
+              class="btn btn--primary"
+              href="https://wa.me/34635437530?text=Ol%C3%A1%20Mauricio%2C%20quero%20agendar%20uma%20aula%20experimental%20de%20Jiu-Jitsu."
+              target="_blank"
+              rel="noopener"
+              data-lang="pt"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+              Agende sua aula experimental
+            </a>
+            <a
+              class="btn btn--primary"
+              href="https://wa.me/34635437530?text=Hi%20Mauricio%2C%20I%27d%20like%20to%20schedule%20a%20trial%20Jiu-Jitsu%20class."
+              target="_blank"
+              rel="noopener"
+              data-lang="en"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+              Book your trial class
+            </a>
+            <a href="#metodo" class="btn btn--ghost" data-lang="es">Ver las clases</a>
+            <a href="#metodo" class="btn btn--ghost" data-lang="pt">Ver as aulas</a>
+            <a href="#metodo" class="btn btn--ghost" data-lang="en">See the classes</a>
           </div>
+        </div>
+      </section>
+
+      <!-- ===================== PORTAS DE ENTRADA =====================
+           Cada perfil se reconhece numa frase e vai direto para a sua aula:
+           e o que faz a pagina falar com todos sem ficar morna. -->
+      <section id="para-quien" class="section wrap">
+        <h2 class="h2" data-lang="es">¿Cuál es tu caso?</h2>
+        <h2 class="h2" data-lang="pt">Qual é o seu caso?</h2>
+        <h2 class="h2" data-lang="en">Which one are you?</h2>
+        <p class="lead" data-lang="es">
+          El Jiu-Jitsu se adapta a la persona, no al revés. Elige por dónde empezar.
+        </p>
+        <p class="lead" data-lang="pt">
+          O Jiu-Jitsu se adapta à pessoa, não o contrário. Escolha por onde começar.
+        </p>
+        <p class="lead" data-lang="en">
+          Jiu-Jitsu adapts to the person, not the other way around. Pick where to start.
+        </p>
+
+        <div class="grid doors mt-2">
+          <a class="door" href="#clase-defensa" data-lang="es">
+            <strong>Nunca he entrenado nada</strong>
+            <span>Empezar de cero, sin condición física previa</span>
+          </a>
+          <a class="door" href="#clase-defensa" data-lang="pt">
+            <strong>Nunca treinei nada</strong>
+            <span>Começar do zero, sem preparo físico prévio</span>
+          </a>
+          <a class="door" href="#clase-defensa" data-lang="en">
+            <strong>I've never trained</strong>
+            <span>Start from zero, no fitness required</span>
+          </a>
+          <a class="door" href="#clase-kids" data-lang="es">
+            <strong>Es para mi hijo</strong>
+            <span>Disciplina, respeto y respuesta al acoso</span>
+          </a>
+          <a class="door" href="#clase-kids" data-lang="pt">
+            <strong>É para o meu filho</strong>
+            <span>Disciplina, respeito e resposta ao bullying</span>
+          </a>
+          <a class="door" href="#clase-kids" data-lang="en">
+            <strong>It's for my child</strong>
+            <span>Discipline, respect and an answer to bullying</span>
+          </a>
+          <a class="door" href="#clase-defensa" data-lang="es">
+            <strong>Quiero sentirme segura</strong>
+            <span>Salir de agarres y del suelo con técnica</span>
+          </a>
+          <a class="door" href="#clase-defensa" data-lang="pt">
+            <strong>Quero me sentir segura</strong>
+            <span>Sair de agarrões e do chão com técnica</span>
+          </a>
+          <a class="door" href="#clase-defensa" data-lang="en">
+            <strong>I want to feel safe</strong>
+            <span>Escaping grabs and pins with technique</span>
+          </a>
+          <a class="door" href="#clase-gi" data-lang="es">
+            <strong>Ya entreno y quiero más</strong>
+            <span>Gi, No-Gi, competición y clases particulares</span>
+          </a>
+          <a class="door" href="#clase-gi" data-lang="pt">
+            <strong>Já treino e quero mais</strong>
+            <span>Gi, No-Gi, competição e aulas particulares</span>
+          </a>
+          <a class="door" href="#clase-gi" data-lang="en">
+            <strong>I already train</strong>
+            <span>Gi, No-Gi, competition and private lessons</span>
+          </a>
+          <a class="door" href="#profesional" data-lang="es">
+            <strong>Lo uso en mi trabajo</strong>
+            <span>Programa para cuerpos de seguridad</span>
+          </a>
+          <a class="door" href="#profesional" data-lang="pt">
+            <strong>Uso isso no trabalho</strong>
+            <span>Programa para forças de segurança</span>
+          </a>
+          <a class="door" href="#profesional" data-lang="en">
+            <strong>I use it at work</strong>
+            <span>Programme for security professionals</span>
+          </a>
         </div>
       </section>
 
@@ -1221,32 +1474,42 @@
         <h2 class="h2" data-lang="pt">Método de Ensino</h2>
         <h2 class="h2" data-lang="en">Teaching Method</h2>
 
-        <p class="lead" data-lang="pt">
-          Eficiência, segurança e atenção aos detalhes. Meu trabalho no Jiu-Jitsu
-          é guiado por uma didática clara, fundamentada nos princípios da arte
-          suave: técnica precisa, progresso inteligente e compreensão real dos
-          movimentos. Cada aula, independente da modalidade, segue essa filosofia
-          — respeitando o ritmo, a evolução e o propósito de cada aluno.
+        <p class="lead" data-lang="es">
+          En tu primera clase no vas a competir con nadie. Vas a aprender a caer
+          sin hacerte daño, a mantener la distancia y a respirar. El resto viene
+          después, a tu ritmo.
         </p>
         <p class="lead" data-lang="es">
-          Eficiencia, seguridad y atención a los detalles. Mi trabajo en el
-          Jiu-Jitsu se guía por una didáctica clara, basada en los principios del
-          arte suave: técnica precisa, progreso inteligente y comprensión real de
-          los movimientos. Cada clase, independientemente de la modalidad, sigue
-          esta filosofía — respetando el ritmo, la evolución y el propósito de
-          cada alumno.
+          Cada clase sigue el mismo principio: técnica precisa, progresión
+          inteligente y comprensión real del movimiento — sea cual sea la
+          modalidad y el nivel con el que llegues.
+        </p>
+
+        <p class="lead" data-lang="pt">
+          Na sua primeira aula você não vai competir com ninguém. Vai aprender a
+          cair sem se machucar, a manter a distância e a respirar. O resto vem
+          depois, no seu ritmo.
+        </p>
+        <p class="lead" data-lang="pt">
+          Cada aula segue o mesmo princípio: técnica precisa, progressão
+          inteligente e compreensão real do movimento — qualquer que seja a
+          modalidade e o nível com que você chegue.
+        </p>
+
+        <p class="lead" data-lang="en">
+          In your first class you won't compete with anyone. You'll learn to fall
+          without hurting yourself, to keep your distance and to breathe. The
+          rest comes later, at your own pace.
         </p>
         <p class="lead" data-lang="en">
-          Efficiency, safety, and attention to detail. My Jiu-Jitsu teaching is
-          guided by a clear methodology rooted in the principles of the gentle
-          art: precise technique, intelligent progression, and real understanding
-          of movement. Every class, regardless of the modality, follows this
-          philosophy — respecting each student’s pace, evolution, and purpose.
+          Every class follows the same principle: precise technique, intelligent
+          progression and real understanding of movement — whatever the modality
+          and whatever level you arrive at.
         </p>
 
         <div class="grid cards mt-2">
           <!-- 1. Defensa Personal (unificada: geral, mujeres, ninos, profesional) -->
-          <article class="card">
+          <article class="card" id="clase-defensa">
             <h3 data-lang="es">Defensa Personal</h3>
             <h3 data-lang="pt">Defesa Pessoal</h3>
             <h3 data-lang="en">Self-Defense</h3>
@@ -1424,7 +1687,7 @@
           </article>
 
           <!-- 3. Gi -->
-          <article class="card">
+          <article class="card" id="clase-gi">
             <h3>Jiu-Jitsu Gi</h3>
             <p class="card__teaser" data-lang="es">
               Técnica completa: base, postura, agarres, transiciones y
@@ -1516,7 +1779,7 @@
           </article>
 
           <!-- 4. No-Gi -->
-          <article class="card">
+          <article class="card" id="clase-nogi">
             <h3>Jiu-Jitsu No-Gi</h3>
             <p class="card__teaser" data-lang="es">
               Entradas, derribos, control de cadera y sumisiones sin kimono.
@@ -1559,7 +1822,7 @@
           </article>
 
           <!-- 5. Kids -->
-          <article class="card">
+          <article class="card" id="clase-kids">
             <h3>Jiu-Jitsu Kids</h3>
             <p class="card__teaser" data-lang="es">
               Coordinación, juegos de base, respeto y disciplina con seguridad
@@ -1604,7 +1867,7 @@
           </article>
 
           <!-- 6. Clases particulares -->
-          <article class="card">
+          <article class="card" id="clase-particulares">
             <h3 data-lang="es">Clases Particulares</h3>
             <h3 data-lang="pt">Aulas Particulares</h3>
             <h3 data-lang="en">Private Lessons</h3>
@@ -1647,6 +1910,174 @@
               </div>
             </details>
           </article>
+        </div>
+
+        <!-- Programa profissional: tom sobrio e bloco proprio -- quem usa isso
+             no trabalho nao se reconhece na prateleira da turma infantil. -->
+        <section id="profesional" class="pro">
+        <div data-lang="es">
+          <div class="pro__grid">
+            <div>
+              <p class="pro__eyebrow">Programa profesional</p>
+              <h3>Jiu-Jitsu para cuerpos de seguridad</h3>
+              <p>El control de una persona detenida no debería depender de la fuerza ni terminar en lesión — ni para el agente ni para el detenido. El Jiu-Jitsu resuelve exactamente ese problema: posición, palanca y control, con uso proporcional de la fuerza.</p>
+              <p class="pro__who">Policía Local, Guardia Civil, Policía Nacional, bomberos y seguridad privada. Posibilidad de horario cerrado para el grupo — los turnos no son regulares.</p>
+            </div>
+            <div>
+              <ul>
+              <li>control y reducción sin golpes</li>
+              <li>salida de inmovilizaciones en el suelo</li>
+              <li>gestión de la distancia y del espacio</li>
+              <li>trabajo en pareja y con compañero de patrulla</li>
+              <li>calma bajo presión: respiración y lectura de la situación</li>
+              </ul>
+              <a class="btn btn--ghost" href="https://wa.me/34635437530?text=Hola%20Mauricio%2C%20soy%20de%20cuerpos%20de%20seguridad%20y%20quiero%20informaci%C3%B3n%20del%20programa." target="_blank" rel="noopener">Consulta condiciones</a>
+            </div>
+          </div>
+        </div>
+        <div data-lang="pt">
+          <div class="pro__grid">
+            <div>
+              <p class="pro__eyebrow">Programa profissional</p>
+              <h3>Jiu-Jitsu para forças de segurança</h3>
+              <p>O controle de uma pessoa detida não deveria depender de força nem terminar em lesão — nem para o agente nem para o detido. O Jiu-Jitsu resolve exatamente esse problema: posição, alavanca e controle, com uso proporcional da força.</p>
+              <p class="pro__who">Policía Local, Guardia Civil, Policía Nacional, bombeiros e segurança privada. Possibilidade de horário fechado para o grupo — os turnos não são regulares.</p>
+            </div>
+            <div>
+              <ul>
+              <li>controle e contenção sem golpes</li>
+              <li>saída de imobilizações no chão</li>
+              <li>gestão da distância e do espaço</li>
+              <li>trabalho em dupla e com o parceiro de patrulha</li>
+              <li>calma sob pressão: respiração e leitura da situação</li>
+              </ul>
+              <a class="btn btn--ghost" href="https://wa.me/34635437530?text=Ol%C3%A1%20Mauricio%2C%20sou%20das%20for%C3%A7as%20de%20seguran%C3%A7a%20e%20quero%20informa%C3%A7%C3%A3o%20do%20programa." target="_blank" rel="noopener">Consulte as condições</a>
+            </div>
+          </div>
+        </div>
+        <div data-lang="en">
+          <div class="pro__grid">
+            <div>
+              <p class="pro__eyebrow">Professional programme</p>
+              <h3>Jiu-Jitsu for security professionals</h3>
+              <p>Restraining someone shouldn't depend on strength or end in injury — for the officer or the person being held. Jiu-Jitsu solves exactly that problem: position, leverage and control, with proportional use of force.</p>
+              <p class="pro__who">Policía Local, Guardia Civil, Policía Nacional, firefighters and private security. A closed time slot for the group is possible — shift work is irregular.</p>
+            </div>
+            <div>
+              <ul>
+              <li>control and restraint without strikes</li>
+              <li>escaping pins on the ground</li>
+              <li>managing distance and space</li>
+              <li>working in pairs and with a patrol partner</li>
+              <li>composure under pressure: breathing and situational reading</li>
+              </ul>
+              <a class="btn btn--ghost" href="https://wa.me/34635437530?text=Hi%20Mauricio%2C%20I%20work%20in%20security%20and%20I%27d%20like%20information%20about%20the%20programme." target="_blank" rel="noopener">Ask about conditions</a>
+            </div>
+          </div>
+        </div>
+        </section>
+      </section>
+
+      <!-- ===================== QUEM ENSINA =====================
+           Recebe a biografia que saiu do hero: aqui a primeira pessoa e
+           apropriada, porque a secao e sobre o professor. -->
+      <section id="profesor" class="section wrap grid teacher">
+        <div data-lang="es">
+          <h2 class="h2">Quién enseña</h2>
+          <p class="lead">Soy <strong>Mauricio Gasparetto Fonseca</strong>, cinturón negro
+            formado en Brasil por el maestro <strong>Guga Fraga</strong>. Hoy
+            represento a <strong>XCOACH</strong> en España, al frente de
+            Gasparetto BJJ.</p>
+          <p class="lead">Para mí, el Jiu-Jitsu es el arte que enseña confianza, seguridad y
+            defensa personal. El arte que desarrolla enfoque, disciplina y
+            control. El arte en el que aprendemos a caer y levantarnos, a ganar y
+            a perder. Es el arte de la aceptación — que equilibra al más débil
+            físicamente frente al más fuerte.</p>
+          <p class="lead">Mi maestro siempre me dijo: <em>«Los detalles hacen el
+            Jiu-Jitsu.»</em> Con esa filosofía enseño cada día — porque son los
+            detalles los que transforman, inspiran y forman personas dentro y
+            fuera del tatami.</p>
+        </div>
+        <div data-lang="es">
+          <p class="eyebrow-lineage muted mt-2"><strong>La corriente que llega hasta Altorreal</strong></p>
+          <div class="lineage mt-1">
+            <div class="lineage__node">
+              <b>Celsinho Venicius</b>
+              <span>Fundador de XCOACH. Tricampeón mundial de Jiu-Jitsu.</span>
+            </div>
+            <div class="lineage__node">
+              <b>Guga Fraga</b>
+              <span>Mi maestro. Cinturón negro 5.º grado, más de 25 años enseñando.</span>
+            </div>
+            <div class="lineage__node">
+              <b>Mauricio Gasparetto</b>
+              <span>XCOACH España — Gasparetto BJJ, en Altorreal.</span>
+            </div>
+          </div>
+        </div>
+        <div data-lang="pt">
+          <h2 class="h2">Quem ensina</h2>
+          <p class="lead">Sou <strong>Mauricio Gasparetto Fonseca</strong>, faixa-preta
+            graduado no Brasil pelo mestre <strong>Guga Fraga</strong>. Hoje
+            represento a <strong>XCOACH</strong> na Espanha, à frente do
+            Gasparetto BJJ.</p>
+          <p class="lead">Para mim, o Jiu-Jitsu é a arte que ensina confiança, segurança e
+            defesa pessoal. A arte que desenvolve foco, disciplina e controle. A
+            arte onde aprendemos a cair e levantar, a ganhar e a perder. É a arte
+            da aceitação — que equilibra o mais fraco fisicamente diante do mais
+            forte.</p>
+          <p class="lead">Meu mestre sempre me disse: <em>“Os detalhes fazem o
+            Jiu-Jitsu.”</em> É com essa filosofia que ensino todos os dias —
+            porque são os detalhes que transformam, inspiram e formam pessoas
+            dentro e fora dos tatames.</p>
+        </div>
+        <div data-lang="pt">
+          <p class="eyebrow-lineage muted mt-2"><strong>A corrente que chega até Altorreal</strong></p>
+          <div class="lineage mt-1">
+            <div class="lineage__node">
+              <b>Celsinho Venicius</b>
+              <span>Fundador da XCOACH. Tricampeão mundial de Jiu-Jitsu.</span>
+            </div>
+            <div class="lineage__node">
+              <b>Guga Fraga</b>
+              <span>Meu mestre. Faixa-preta 5.º grau, mais de 25 anos ensinando.</span>
+            </div>
+            <div class="lineage__node">
+              <b>Mauricio Gasparetto</b>
+              <span>XCOACH Espanha — Gasparetto BJJ, em Altorreal.</span>
+            </div>
+          </div>
+        </div>
+        <div data-lang="en">
+          <h2 class="h2">Who teaches</h2>
+          <p class="lead">I'm <strong>Mauricio Gasparetto Fonseca</strong>, a black belt
+            under <strong>Guga Fraga</strong> in Brazil. Today I represent
+            <strong>XCOACH</strong> in Spain, leading Gasparetto BJJ.</p>
+          <p class="lead">For me, Jiu-Jitsu is the art that teaches confidence, safety and
+            self-defense. The art that develops focus, discipline and control.
+            The art where we learn to fall and rise, to win and to lose. It is
+            the art of acceptance — balancing the physically weaker against the
+            stronger.</p>
+          <p class="lead">My master always told me: <em>“Details make Jiu-Jitsu.”</em> This
+            is the philosophy I teach every day — because details are what
+            transform, inspire and shape people on and off the mats.</p>
+        </div>
+        <div data-lang="en">
+          <p class="eyebrow-lineage muted mt-2"><strong>The lineage that reaches Altorreal</strong></p>
+          <div class="lineage mt-1">
+            <div class="lineage__node">
+              <b>Celsinho Venicius</b>
+              <span>Founder of XCOACH. Three-time Jiu-Jitsu world champion.</span>
+            </div>
+            <div class="lineage__node">
+              <b>Guga Fraga</b>
+              <span>My master. 5th-degree black belt, over 25 years teaching.</span>
+            </div>
+            <div class="lineage__node">
+              <b>Mauricio Gasparetto</b>
+              <span>XCOACH Spain — Gasparetto BJJ, in Altorreal.</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -2157,16 +2588,23 @@
           </p>
 
           <div class="panel">
-            <div class="panel__row">
-              <div>
-                <p><strong data-lang="es">Horarios populares</strong><strong data-lang="pt">Horários populares</strong><strong data-lang="en">Popular times</strong></p>
-                <p class="muted" data-lang="es">Mañanas (7–10 h), tardes (18–21 h) y sábados</p>
-                <p class="muted" data-lang="pt">Manhãs (7–10 h), noites (18–21 h) e sábados</p>
-                <p class="muted" data-lang="en">Mornings (7–10), evenings (18–21) and Saturdays</p>
-              </div>
-              <a href="#contacto" class="btn btn--primary" data-lang="es">Reservar</a>
-              <a href="#contacto" class="btn btn--primary" data-lang="pt">Reservar</a>
-              <a href="#contacto" class="btn btn--primary" data-lang="en">Book</a>
+            <p><strong data-lang="es">Horarios de las clases</strong><strong data-lang="pt">Horários das aulas</strong><strong data-lang="en">Class schedule</strong></p>
+            <p class="muted mt-1" data-lang="es">
+              Escríbeme por WhatsApp y te digo los horarios de tu modalidad y el
+              día que mejor te encaja para la clase de prueba.
+            </p>
+            <p class="muted mt-1" data-lang="pt">
+              Fale comigo pelo WhatsApp e eu passo os horários da sua modalidade
+              e o melhor dia para a aula experimental.
+            </p>
+            <p class="muted mt-1" data-lang="en">
+              Message me on WhatsApp and I'll tell you the times for your class
+              and the best day for your trial session.
+            </p>
+            <div class="stack mt-1">
+              <a class="btn btn--primary" href="https://wa.me/34635437530?text=Hola%20Mauricio%2C%20quiero%20agendar%20una%20clase%20de%20prueba%20de%20Jiu-Jitsu." target="_blank" rel="noopener" data-lang="es">Agenda tu clase de prueba</a>
+              <a class="btn btn--primary" href="https://wa.me/34635437530?text=Ol%C3%A1%20Mauricio%2C%20quero%20agendar%20uma%20aula%20experimental%20de%20Jiu-Jitsu." target="_blank" rel="noopener" data-lang="pt">Agende sua aula experimental</a>
+              <a class="btn btn--primary" href="https://wa.me/34635437530?text=Hi%20Mauricio%2C%20I%27d%20like%20to%20schedule%20a%20trial%20Jiu-Jitsu%20class." target="_blank" rel="noopener" data-lang="en">Book your trial class</a>
             </div>
           </div>
         </div>
@@ -2215,19 +2653,49 @@
           <h2 class="h2" data-lang="es">¿Entrenamos?</h2>
           <h2 class="h2" data-lang="pt">Vamos treinar?</h2>
           <h2 class="h2" data-lang="en">Shall we train?</h2>
-          <p class="lead" data-lang="es">Escríbeme y recibe un plan a medida.</p>
-          <p class="lead" data-lang="pt">Mande uma mensagem e receba um plano sob medida.</p>
-          <p class="lead" data-lang="en">Message me to get a tailored plan.</p>
+          <p class="lead" data-lang="es">
+            Agenda tu clase de prueba por WhatsApp — te confirmo el horario y te
+            explico qué llevar. Si prefieres, escríbeme por el formulario.
+          </p>
+          <p class="lead" data-lang="pt">
+            Agende sua aula experimental pelo WhatsApp — eu confirmo o horário e
+            explico o que levar. Se preferir, use o formulário.
+          </p>
+          <p class="lead" data-lang="en">
+            Book your trial class on WhatsApp — I'll confirm the time and tell
+            you what to bring. Or write through the form if you prefer.
+          </p>
 
           <div class="stack mt-2">
             <a
               class="btn btn--primary btn--block"
-              href="https://wa.me/34635437530"
+              href="https://wa.me/34635437530?text=Hola%20Mauricio%2C%20quiero%20agendar%20una%20clase%20de%20prueba%20de%20Jiu-Jitsu."
               target="_blank"
               rel="noopener"
+              data-lang="es"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
-              WhatsApp
+              Agenda tu clase de prueba
+            </a>
+            <a
+              class="btn btn--primary btn--block"
+              href="https://wa.me/34635437530?text=Ol%C3%A1%20Mauricio%2C%20quero%20agendar%20uma%20aula%20experimental%20de%20Jiu-Jitsu."
+              target="_blank"
+              rel="noopener"
+              data-lang="pt"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+              Agende sua aula experimental
+            </a>
+            <a
+              class="btn btn--primary btn--block"
+              href="https://wa.me/34635437530?text=Hi%20Mauricio%2C%20I%27d%20like%20to%20schedule%20a%20trial%20Jiu-Jitsu%20class."
+              target="_blank"
+              rel="noopener"
+              data-lang="en"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+              Book your trial class
             </a>
             <a
               class="btn btn--primary btn--block"

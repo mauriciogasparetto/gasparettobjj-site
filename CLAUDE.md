@@ -75,11 +75,20 @@ python -m http.server 8000 --directory dist    # visualização local
 ## Estado do reposicionamento
 - **Fase 1 concluída** (endereço, mapa, JSON-LD, nome da marca, remoção do link para
   murciajiujitsu.com, SEO local para Molina de Segura).
-- Pendentes: F2 marca e linhagem (precisa do logo XCOACH), F3 reescrita em 2ª pessoa
-  e portas de entrada, F4 reordenação das seções, F5 fotografia.
+- **Fase 3 concluída**: hero de escola, seção "Para quién" com 5 portas de entrada,
+  textos em 2ª pessoa, bloco `#profesional` para forças de segurança, seção
+  `#profesor` com a corrente da linhagem, e chamada única de agendamento.
+- Pendentes: F2 marca e linhagem visual (precisa do logo XCOACH), F4 reordenação das
+  seções (a História ainda ocupa lugar nobre), F5 fotografia.
+
+**Regra de copy:** nunca usar "grátis/gratis/free" para a aula experimental — a
+chamada é *agendar*, não *ganhar*. ("Parking gratuito" na localização é outra coisa
+e pode ficar.)
 
 ## Pendências para o dono do site
-- **Horários das aulas** por modalidade e dia — a seção de agenda segue genérica.
+- **Horários das aulas** por modalidade e dia. O bloco "Horarios populares" herdado
+  da Central Training foi removido — hoje a agenda remete ao WhatsApp. Assim que a
+  grade real chegar, vira uma tabela dia × modalidade × hora.
 - **Aval do Celsinho Venicius** para usar a marca XCOACH na Espanha, e o logo oficial
   da equipe em alta resolução.
 - **Perfil no Google Empresas** com nome/endereço/telefone idênticos aos do site —
