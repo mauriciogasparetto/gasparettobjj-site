@@ -225,9 +225,9 @@ def og_alt_locales(lang: str) -> str:
 def json_ld(lang: str, site_url: str) -> str:
     """LocalBusiness + Person.
 
-    PENDENTE (so o dono tem os dados exatos): "geo" com latitude/longitude e
-    "openingHoursSpecification" com a agenda oficial. Nao foram inventados de
-    proposito -- dado errado em JSON-LD prejudica mais que a ausencia dele.
+    PENDENTE (so o dono tem os dados exatos): "geo" com latitude/longitude.
+    Nao foi inventado de proposito -- dado errado em JSON-LD prejudica mais
+    que a ausencia dele. openingHoursSpecification vem de src/horarios.json.
     """
     business_id = f"{site_url}/#business"
     person_id = f"{site_url}/#mauricio"
@@ -292,6 +292,8 @@ def json_ld(lang: str, site_url: str) -> str:
                     {"@type": "City", "name": "Molina de Segura"},
                     {"@type": "City", "name": "Murcia"},
                 ],
+                # gerado de src/horarios.json -- edita la, nao aqui
+                "openingHoursSpecification": opening_hours(),
                 "sameAs": [INSTAGRAM, YOUTUBE],
                 "employee": {"@id": person_id},
                 "hasOfferCatalog": {
@@ -340,6 +342,126 @@ def json_ld(lang: str, site_url: str) -> str:
     }
     body = json.dumps(data, ensure_ascii=False, indent=2)
     return f'<script type="application/ld+json">\n{body}\n</script>'
+
+
+# ---------------------------------------------------------------------------
+# 3b. grade de horarios (src/horarios.json)
+# ---------------------------------------------------------------------------
+HORARIOS = ROOT / "src" / "horarios.json"
+
+DIAS = ["lun", "mar", "mie", "jue", "vie", "sab", "dom"]
+DIA_LABEL = {
+    "es": ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+    "pt": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"],
+    "en": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+}
+DIA_SCHEMA = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+              "Saturday", "Sunday"]
+TIPO = {
+    "gi":      {"es": ("Gi", "con kimono"),        "pt": ("Gi", "com kimono"),          "en": ("Gi", "with kimono")},
+    "nogi":    {"es": ("No-Gi", "sin kimono"),     "pt": ("No-Gi", "sem kimono"),       "en": ("No-Gi", "no kimono")},
+    "kids":    {"es": ("Kids", "niños y jóvenes"), "pt": ("Kids", "crianças e jovens"), "en": ("Kids", "children & teens")},
+    "defensa": {"es": ("Defensa", "personal"),     "pt": ("Defesa", "pessoal"),         "en": ("Self-", "defense")},
+}
+A_CONVENIR = {"es": "a convenir", "pt": "a combinar", "en": "by arrangement"}
+DESDE = {"es": "Horario semanal · desde el {d}", "pt": "Grade semanal · a partir de {d}",
+         "en": "Weekly schedule · from {d}"}
+LEGENDA = {
+    "es": [("gi", "Clase con kimono"), ("nogi", "No-Gi, sin kimono"),
+           ("kids", "Kids"), ("defensa", "Defensa personal, a convenir")],
+    "pt": [("gi", "Aula com kimono"), ("nogi", "No-Gi, sem kimono"),
+           ("kids", "Kids"), ("defensa", "Defesa pessoal, a combinar")],
+    "en": [("gi", "Class with kimono"), ("nogi", "No-Gi, no kimono"),
+           ("kids", "Kids"), ("defensa", "Self-defense, by arrangement")],
+}
+
+
+def load_schedule() -> dict:
+    return json.loads(HORARIOS.read_text(encoding="utf-8"))
+
+
+def _clases_por_dia(data: dict) -> dict:
+    """{dia: [(hora, tipo, a_convenir), ...]} so com os dias que tem aula."""
+    por_dia = {}
+    for c in data["clases"]:
+        for d in c["dias"].split():
+            if d not in DIAS:
+                raise ValueError(f"dia desconhecido em horarios.json: {d!r}")
+            por_dia.setdefault(d, []).append(
+                (c["hora"], c["tipo"], bool(c.get("a_convenir"))))
+    for lista in por_dia.values():
+        lista.sort()
+    return por_dia
+
+
+def render_schedule(lang: str) -> str:
+    data = load_schedule()
+    por_dia = _clases_por_dia(data)
+    dias_ativos = [d for d in DIAS if d in por_dia]
+    horas = sorted({h for lista in por_dia.values() for h, _, _ in lista})
+
+    # a data de inicio some sozinha depois que passa
+    inicio = date.fromisoformat(data["inicio"]) if data.get("inicio") else None
+    eyebrow = ""
+    if inicio and inicio >= date.today():
+        eyebrow = ('<p class="schedule__eyebrow">'
+                   + html.escape(DESDE[lang].format(d=inicio.strftime("%d.%m.%Y")))
+                   + "</p>")
+
+    head = "".join(
+        f'<th scope="col">{DIA_LABEL[lang][DIAS.index(d)]}</th>' for d in dias_ativos)
+    linhas = []
+    for h in horas:
+        celulas = []
+        for d in dias_ativos:
+            aula = next((a for a in por_dia[d] if a[0] == h), None)
+            rotulo = DIA_LABEL[lang][DIAS.index(d)]
+            if not aula:
+                celulas.append(f'<td data-day="{rotulo}"><span class="slot slot--free"></span></td>')
+                continue
+            _, tipo, conv = aula
+            nome, sub = TIPO[tipo][lang]
+            sub = A_CONVENIR[lang] if conv else sub
+            extra = " slot--conv" if conv else ""
+            celulas.append(
+                f'<td data-day="{rotulo}">'
+                f'<span class="slot slot--{tipo}{extra}"><b>{nome}</b><small>{html.escape(sub)}</small></span>'
+                "</td>")
+        linhas.append(f'<tr><th scope="row">{h}</th>{"".join(celulas)}</tr>')
+
+    legenda = "".join(
+        f'<li><i class="slot slot--{t}"></i>{html.escape(txt)}</li>'
+        for t, txt in LEGENDA[lang])
+    aviso = html.escape(data["aviso"][lang])
+
+    return (
+        f'<div class="schedule">{eyebrow}'
+        f'<div class="schedule__scroll"><table class="schedule__table">'
+        f'<thead><tr><th scope="col"><span class="sr-only">Hora</span></th>{head}</tr></thead>'
+        f'<tbody>{"".join(linhas)}</tbody></table></div>'
+        f'<ul class="schedule__legend">{legenda}</ul>'
+        f'<p class="schedule__note">{aviso}</p>'
+        "</div>"
+    )
+
+
+def opening_hours() -> list:
+    """openingHoursSpecification para o JSON-LD, uma entrada por aula fixa."""
+    data = load_schedule()
+    dur = int(data.get("duracion_min", 60))
+    specs = []
+    for c in data["clases"]:
+        if c.get("a_convenir"):
+            continue  # sem hora fixa nao entra como horario de abertura
+        hh, mm = map(int, c["hora"].split(":"))
+        fim = hh * 60 + mm + dur
+        specs.append({
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [DIA_SCHEMA[DIAS.index(d)] for d in c["dias"].split()],
+            "opens": c["hora"],
+            "closes": f"{fim // 60:02d}:{fim % 60:02d}",
+        })
+    return specs
 
 
 # ---------------------------------------------------------------------------
@@ -523,6 +645,7 @@ def build_pages(site_url: str, force: bool = False) -> None:
             "{{LANG_SWITCH}}": lang_switch(lang, site_url),
             "{{YEAR}}": str(date.today().year),
             "{{JSONLD}}": json_ld(lang, site_url),
+            "{{HORARIOS}}": render_schedule(lang),
             "{{I18N_JSON}}": json.dumps(
                 {k: UI[lang][k] for k in ("sending", "ok", "fallback")},
                 ensure_ascii=False,

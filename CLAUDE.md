@@ -64,6 +64,11 @@ Imagens: os originais ficam em `assets/img/{gallery,logos}`; o build gera as ver
 servidas em `assets/img/opt` (AVIF + WebP + fallback, em várias larguras). O HTML
 aponta sempre para `opt/`.
 
+**Horários:** `src/horarios.json` é a única fonte. O build gera a grade da seção
+Agenda (`{{HORARIOS}}`) e o `openingHoursSpecification` do JSON-LD a partir dele.
+Para mudar a agenda: editar o JSON e rodar `python build.py --pages`. Nunca escrever
+horário direto no template.
+
 ## Comandos de Build e Teste
 ```bash
 python build.py                      # imagens + páginas + sitemap -> dist/
@@ -87,9 +92,6 @@ chamada é *agendar*, não *ganhar*. ("Parking gratuito" na localização é out
 e pode ficar.)
 
 ## Pendências para o dono do site
-- **Horários das aulas** por modalidade e dia. O bloco "Horarios populares" herdado
-  da Central Training foi removido — hoje a agenda remete ao WhatsApp. Assim que a
-  grade real chegar, vira uma tabela dia × modalidade × hora.
 - **Aval do Celsinho Venicius** para usar a marca XCOACH na Espanha, e o logo oficial
   da equipe em alta resolução.
 - **Perfil no Google Empresas** com nome/endereço/telefone idênticos aos do site —
@@ -98,8 +100,10 @@ e pode ficar.)
   pessoa, não uma aula — é o maior gargalo de conversão.
 - Definir o domínio final e trocar `SITE_URL` no topo de `build.py` (hoje aponta para
   `https://www.gasparettojiujitsu.com`).
-- O JSON-LD não declara `geo` (latitude/longitude) nem `openingHoursSpecification`:
-  faltam os dados exatos. Ver o comentário em `build_pages.py`, função `json_ld`.
+- O JSON-LD não declara `geo` (latitude/longitude): falta o dado exato. Ver o
+  comentário em `build_pages.py`, função `json_ld`.
+- **Foto de Hélio & Carlos Gracie** tem só 221×148 px de origem; ampliada no
+  carrossel fica pixelada. Uma versão maior resolveria.
 - O formulário assume Netlify Forms. Em qualquer outra hospedagem ele detecta a falha
   e redireciona o contato para o WhatsApp — nenhum lead se perde, mas o ideal é
   confirmar o backend.

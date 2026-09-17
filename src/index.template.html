@@ -827,22 +827,40 @@
       .carousel__slide.is-active {
         display: block;
       }
+      /* Quatro fotos historicas de tamanhos e tons diferentes (uma P&B, tres
+         sepia). O quadro e o mesmo para todas: fundo com a propria foto
+         desfocada e escurecida, e a foto nitida ao centro, em P&B, com
+         cantos arredondados e sombra. Fica coeso sem esticar nada. */
       .carousel__media {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         height: 20rem;
+        overflow: hidden;
+        background: #17110f;
+        border-radius: var(--radius-sm);
+        isolation: isolate;
       }
-      /* o <picture> fica transparente para o layout: assim o <img> e filho
-         direto do flex e o height:100% tem contra o que se medir */
+      .carousel__media::before {
+        content: "";
+        position: absolute;
+        inset: -10%;
+        background: var(--bg) center / cover no-repeat;
+        filter: blur(26px) grayscale(1) brightness(0.42);
+        z-index: -1;
+      }
       .carousel__media picture {
         display: contents;
       }
       .carousel__media img {
         width: auto;
-        max-width: 100%;
-        height: 100%;
+        max-width: 90%;
+        height: 17.5rem;
         object-fit: contain;
+        border-radius: 0.5rem;
+        box-shadow: 0 14px 36px rgb(0 0 0 / 0.55);
+        filter: grayscale(1) contrast(1.06);
       }
       .carousel__legend {
         padding: 0.5rem 0.75rem 0;
@@ -1061,6 +1079,135 @@
         height: 2.5rem;
         margin-inline: auto;
         color: var(--brand);
+      }
+
+
+      /* ================================================================
+         12b. Grade de horarios (gerada de src/horarios.json)
+         Reproduz a identidade do cartaz: preto = Gi, vermelho = No-Gi,
+         borda = Kids, tracejado = a convenir, hachura = faixa livre.
+         ================================================================ */
+      .schedule__eyebrow {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--brand);
+      }
+      .schedule__scroll {
+        margin-top: 0.75rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .schedule__table {
+        width: 100%;
+        min-width: 30rem;
+        border-collapse: separate;
+        border-spacing: 0.3rem;
+        font-variant-numeric: tabular-nums;
+      }
+      .schedule__table th {
+        padding: 0.25rem 0.2rem;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        text-align: center;
+      }
+      .schedule__table tbody th {
+        width: 3.25rem;
+        text-align: right;
+        padding-right: 0.5rem;
+        color: var(--muted);
+        letter-spacing: 0;
+        font-size: 0.8125rem;
+      }
+      .schedule__table td {
+        padding: 0;
+        vertical-align: middle;
+      }
+      .slot {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 3rem;
+        padding: 0.3rem 0.25rem;
+        line-height: 1.15;
+        text-align: center;
+        border-radius: 0.45rem;
+        border: 2px solid transparent;
+      }
+      .slot b {
+        font-size: 0.8125rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+      }
+      .slot small {
+        font-size: 0.6875rem;
+        opacity: 0.85;
+      }
+      .slot--gi {
+        color: #fff;
+        background: var(--ink);
+      }
+      .slot--nogi {
+        color: #fff;
+        background: var(--brand);
+      }
+      .slot--kids {
+        color: var(--ink);
+        background: var(--surface);
+        border-color: var(--ink);
+      }
+      .slot--defensa {
+        color: var(--ink);
+        background: var(--surface);
+        border-style: dashed;
+        border-color: var(--ink);
+      }
+      /* faixa livre: hachura discreta, como no cartaz */
+      .slot--free {
+        min-height: 3rem;
+        border: 0;
+        border-radius: 0.45rem;
+        background: repeating-linear-gradient(
+          135deg,
+          transparent 0 6px,
+          rgb(0 0 0 / 0.045) 6px 8px
+        );
+      }
+      .schedule__legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1.25rem;
+        margin-top: 0.9rem;
+        font-size: 0.8125rem;
+        color: var(--muted);
+      }
+      .schedule__legend li {
+        display: flex;
+        gap: 0.45rem;
+        align-items: center;
+      }
+      .schedule__legend .slot {
+        width: 1rem;
+        min-height: 1rem;
+        padding: 0;
+        border-radius: 3px;
+        border-width: 1.5px;
+      }
+      .schedule__note {
+        margin-top: 0.9rem;
+        font-size: 0.9375rem;
+        color: var(--ink-3);
+      }
+      @media (min-width: 64rem) {
+        /* a grade precisa de mais largura que o cartao do mapa */
+        .agenda-grid {
+          grid-template-columns: 1.45fr 1fr;
+        }
       }
 
       /* ================================================================
@@ -2376,7 +2523,7 @@
           data-label-pause="[[es:Pausar|pt:Pausar|en:Pause]]"
         >
           <div class="carousel__slide is-active" role="group" aria-label="1 / 4">
-            <div class="carousel__media">
+            <div class="carousel__media" style="--bg: url(/assets/img/opt/kano.webp)">
               <picture>
                 <source type="image/avif" srcset="/assets/img/opt/kano.avif" />
                 <source type="image/webp" srcset="/assets/img/opt/kano.webp" />
@@ -2392,7 +2539,7 @@
           </div>
 
           <div class="carousel__slide" role="group" aria-label="2 / 4">
-            <div class="carousel__media">
+            <div class="carousel__media" style="--bg: url(/assets/img/opt/tanabe.webp)">
               <picture>
                 <source type="image/avif" srcset="/assets/img/opt/tanabe.avif" />
                 <source type="image/webp" srcset="/assets/img/opt/tanabe.webp" />
@@ -2408,7 +2555,7 @@
           </div>
 
           <div class="carousel__slide" role="group" aria-label="3 / 4">
-            <div class="carousel__media">
+            <div class="carousel__media" style="--bg: url(/assets/img/opt/maeda.webp)">
               <picture>
                 <source type="image/avif" srcset="/assets/img/opt/maeda.avif" />
                 <source type="image/webp" srcset="/assets/img/opt/maeda.webp" />
@@ -2426,7 +2573,7 @@
           </div>
 
           <div class="carousel__slide" role="group" aria-label="4 / 4">
-            <div class="carousel__media">
+            <div class="carousel__media" style="--bg: url(/assets/img/opt/helio_carlos_221x148.webp)">
               <picture>
                 <source type="image/avif" srcset="/assets/img/opt/helio_carlos_221x148.avif" />
                 <source type="image/webp" srcset="/assets/img/opt/helio_carlos_221x148.webp" />
@@ -2576,74 +2723,58 @@
       </section>
 
       <!-- ============================ AGENDA ============================ -->
-      <section id="agenda" class="section wrap grid split">
-        <div>
-          <h2 class="h2" data-lang="es">Agenda y Ubicación</h2>
-          <h2 class="h2" data-lang="pt">Agenda e Local</h2>
-          <h2 class="h2" data-lang="en">Schedule &amp; Location</h2>
+      <section id="agenda" class="section wrap">
+        <h2 class="h2" data-lang="es">Horarios y ubicación</h2>
+        <h2 class="h2" data-lang="pt">Horários e local</h2>
+        <h2 class="h2" data-lang="en">Schedule &amp; location</h2>
 
-          <p class="lead">
-            <strong>LEVSPORT Altorreal</strong><br />
-            <span data-lang="es">C.C. Green Park, Av. del Golf, 117 — 30506 Molina de Segura, Murcia. Parking gratuito disponible.</span>
-            <span data-lang="pt">C.C. Green Park, Av. del Golf, 117 — 30506 Molina de Segura, Murcia. Estacionamento gratuito disponível.</span>
-            <span data-lang="en">C.C. Green Park, Av. del Golf, 117 — 30506 Molina de Segura, Murcia. Free parking available.</span>
-          </p>
-
-          <div class="panel">
-            <p><strong data-lang="es">Horarios de las clases</strong><strong data-lang="pt">Horários das aulas</strong><strong data-lang="en">Class schedule</strong></p>
-            <p class="muted mt-1" data-lang="es">
-              Escríbeme por WhatsApp y te digo los horarios de tu modalidad y el
-              día que mejor te encaja para la clase de prueba.
-            </p>
-            <p class="muted mt-1" data-lang="pt">
-              Fale comigo pelo WhatsApp e eu passo os horários da sua modalidade
-              e o melhor dia para a aula experimental.
-            </p>
-            <p class="muted mt-1" data-lang="en">
-              Message me on WhatsApp and I'll tell you the times for your class
-              and the best day for your trial session.
-            </p>
-            <div class="stack mt-1">
-              <a class="btn btn--primary" href="https://wa.me/34635437530?text=Hola%20Mauricio%2C%20quiero%20agendar%20una%20clase%20de%20prueba%20de%20Jiu-Jitsu." target="_blank" rel="noopener" data-lang="es">Agenda tu clase de prueba</a>
-              <a class="btn btn--primary" href="https://wa.me/34635437530?text=Ol%C3%A1%20Mauricio%2C%20quero%20agendar%20uma%20aula%20experimental%20de%20Jiu-Jitsu." target="_blank" rel="noopener" data-lang="pt">Agende sua aula experimental</a>
-              <a class="btn btn--primary" href="https://wa.me/34635437530?text=Hi%20Mauricio%2C%20I%27d%20like%20to%20schedule%20a%20trial%20Jiu-Jitsu%20class." target="_blank" rel="noopener" data-lang="en">Book your trial class</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- facade: o mapa do Google so carrega no clique -->
-        <div
-          class="map"
-          id="map"
-          data-map-title="[[es:Mapa de LEVSPORT Altorreal|pt:Mapa da LEVSPORT Altorreal|en:Map of LEVSPORT Altorreal]]"
-        >
+        <div class="grid split agenda-grid mt-2">
+          <!-- grade gerada de src/horarios.json: para mudar a agenda, edite
+               o JSON e rode o build -- nada aqui e manual -->
           <div>
-            <svg class="map__pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
-            </svg>
-            <p class="mt-1"><strong>LEVSPORT Altorreal</strong></p>
-            <p class="muted">C.C. Green Park, Av. del Golf, 117 — 30506 Molina de Segura, Murcia</p>
-            <div class="stack mt-1">
-              <button id="mapLoad" class="btn btn--primary" type="button">
-                <span data-lang="es">Ver el mapa aquí</span>
-                <span data-lang="pt">Ver o mapa aqui</span>
-                <span data-lang="en">Show the map here</span>
-              </button>
-              <p class="muted" style="font-size: 0.8125rem">
-                <span data-lang="es">Al cargar el mapa, Google puede instalar cookies.</span>
-                <span data-lang="pt">Ao carregar o mapa, o Google pode instalar cookies.</span>
-                <span data-lang="en">Loading the map may let Google set cookies.</span>
-              </p>
-              <a
-                class="btn btn--primary"
-                href="https://www.google.com/maps/dir/?api=1&destination=LEVSPORT+Altorreal,+Av.+del+Golf+117,+30506+Molina+de+Segura,+Murcia"
-                target="_blank"
-                rel="noopener"
-              >
-                <span data-lang="es">Cómo llegar</span>
-                <span data-lang="pt">Como chegar</span>
-                <span data-lang="en">Get directions</span>
-              </a>
+            {{HORARIOS}}
+          </div>
+
+          <!-- endereco aparece UMA vez, aqui. "Como llegar" abre o Google Maps
+               com a rota (o app, no celular); "Ver el mapa" embute o mapa na
+               pagina, e so carrega no clique para nao trazer 700 KB e cookies
+               do Google sem que a pessoa peca. -->
+          <div
+            class="map"
+            id="map"
+            data-map-title="[[es:Mapa de LEVSPORT Altorreal|pt:Mapa da LEVSPORT Altorreal|en:Map of LEVSPORT Altorreal]]"
+          >
+            <div>
+              <svg class="map__pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+              </svg>
+              <p class="mt-1"><strong>LEVSPORT Altorreal</strong></p>
+              <p class="muted">C.C. Green Park, Av. del Golf, 117<br />30506 Molina de Segura, Murcia</p>
+              <p class="muted" data-lang="es">Parking gratuito disponible.</p>
+              <p class="muted" data-lang="pt">Estacionamento gratuito disponível.</p>
+              <p class="muted" data-lang="en">Free parking available.</p>
+              <div class="stack mt-1">
+                <a
+                  class="btn btn--primary"
+                  href="https://www.google.com/maps/dir/?api=1&destination=LEVSPORT+Altorreal,+Av.+del+Golf+117,+30506+Molina+de+Segura,+Murcia"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span data-lang="es">Cómo llegar</span>
+                  <span data-lang="pt">Como chegar</span>
+                  <span data-lang="en">Get directions</span>
+                </a>
+                <button id="mapLoad" class="btn btn--primary" type="button">
+                  <span data-lang="es">Ver el mapa aquí</span>
+                  <span data-lang="pt">Ver o mapa aqui</span>
+                  <span data-lang="en">Show the map here</span>
+                </button>
+                <p class="muted" style="font-size: 0.8125rem">
+                  <span data-lang="es">Al cargar el mapa, Google puede instalar cookies.</span>
+                  <span data-lang="pt">Ao carregar o mapa, o Google pode instalar cookies.</span>
+                  <span data-lang="en">Loading the map may let Google set cookies.</span>
+                </p>
+              </div>
             </div>
           </div>
         </div>

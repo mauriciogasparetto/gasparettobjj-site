@@ -1,0 +1,27 @@
+{
+  "_como_editar": [
+    "Este arquivo alimenta a grade de horarios do site e os dados de horario do Google.",
+    "Para mudar a agenda: edite 'clases' e rode  python build.py --pages",
+    "dias: use  lun mar mie jue vie sab dom  separados por espaco",
+    "tipo: gi | nogi | kids | defensa  (as cores e os nomes em cada idioma ja estao no build)",
+    "a_convenir: true  = mostra em tracejado como 'a convenir', sem hora fixa",
+    "inicio: a data em que as aulas comecam; some do site sozinha depois que passar"
+  ],
+
+  "inicio": "2026-09-22",
+  "duracion_min": 60,
+
+  "clases": [
+    { "dias": "lun mar mie jue", "hora": "08:00", "tipo": "gi" },
+    { "dias": "vie",             "hora": "08:00", "tipo": "nogi" },
+    { "dias": "mar jue",         "hora": "11:00", "tipo": "defensa", "a_convenir": true },
+    { "dias": "lun mar mie jue", "hora": "17:00", "tipo": "kids" },
+    { "dias": "lun mar mie jue", "hora": "20:45", "tipo": "gi" }
+  ],
+
+  "aviso": {
+    "es": "¿Te encaja mejor a las 07:00 o a las 11:00? Dilo y abrimos grupo: las franjas libres están disponibles.",
+    "pt": "Prefere às 07:00 ou às 11:00? Fale comigo e abrimos turma: as faixas livres estão disponíveis.",
+    "en": "Would 07:00 or 11:00 suit you better? Say so and we'll open a group: the free slots are available."
+  }
+}
