@@ -687,15 +687,8 @@
         font-size: 0.875rem;
         color: #9a908b;
       }
-      .pro .btn--ghost {
+      .pro .btn {
         margin-top: 1.25rem;
-        color: #fff;
-        border-color: rgb(255 255 255 / 0.3);
-      }
-      @media (hover: hover) {
-        .pro .btn--ghost:hover {
-          background: rgb(255 255 255 / 0.1);
-        }
       }
       @media (min-width: 48rem) {
         .pro {
@@ -840,9 +833,15 @@
         justify-content: center;
         height: 20rem;
       }
+      /* o <picture> fica transparente para o layout: assim o <img> e filho
+         direto do flex e o height:100% tem contra o que se medir */
+      .carousel__media picture {
+        display: contents;
+      }
       .carousel__media img {
         width: auto;
-        max-height: 100%;
+        max-width: 100%;
+        height: 100%;
         object-fit: contain;
       }
       .carousel__legend {
@@ -953,6 +952,9 @@
       }
 
       .lightbox {
+        /* o reset "* { margin: 0 }" apagava o margin:auto que o navegador da
+           ao <dialog> -- sem ele a caixa vai parar no canto superior esquerdo */
+        margin: auto;
         width: min(92vw, 68.75rem);
         max-width: none;
         max-height: 92vh;
@@ -1380,9 +1382,9 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
               Book your trial class
             </a>
-            <a href="#metodo" class="btn btn--ghost" data-lang="es">Ver las clases</a>
-            <a href="#metodo" class="btn btn--ghost" data-lang="pt">Ver as aulas</a>
-            <a href="#metodo" class="btn btn--ghost" data-lang="en">See the classes</a>
+            <a href="#metodo" class="btn btn--primary" data-lang="es">Ver las clases</a>
+            <a href="#metodo" class="btn btn--primary" data-lang="pt">Ver as aulas</a>
+            <a href="#metodo" class="btn btn--primary" data-lang="en">See the classes</a>
           </div>
         </div>
       </section>
@@ -1931,7 +1933,7 @@
               <li>trabajo en pareja y con compañero de patrulla</li>
               <li>calma bajo presión: respiración y lectura de la situación</li>
               </ul>
-              <a class="btn btn--ghost" href="https://wa.me/34635437530?text=Hola%20Mauricio%2C%20soy%20de%20cuerpos%20de%20seguridad%20y%20quiero%20informaci%C3%B3n%20del%20programa." target="_blank" rel="noopener">Consulta condiciones</a>
+              <a class="btn btn--primary" href="https://wa.me/34635437530?text=Hola%20Mauricio%2C%20soy%20de%20cuerpos%20de%20seguridad%20y%20quiero%20informaci%C3%B3n%20del%20programa." target="_blank" rel="noopener">Consulta condiciones</a>
             </div>
           </div>
         </div>
@@ -1951,7 +1953,7 @@
               <li>trabalho em dupla e com o parceiro de patrulha</li>
               <li>calma sob pressão: respiração e leitura da situação</li>
               </ul>
-              <a class="btn btn--ghost" href="https://wa.me/34635437530?text=Ol%C3%A1%20Mauricio%2C%20sou%20das%20for%C3%A7as%20de%20seguran%C3%A7a%20e%20quero%20informa%C3%A7%C3%A3o%20do%20programa." target="_blank" rel="noopener">Consulte as condições</a>
+              <a class="btn btn--primary" href="https://wa.me/34635437530?text=Ol%C3%A1%20Mauricio%2C%20sou%20das%20for%C3%A7as%20de%20seguran%C3%A7a%20e%20quero%20informa%C3%A7%C3%A3o%20do%20programa." target="_blank" rel="noopener">Consulte as condições</a>
             </div>
           </div>
         </div>
@@ -1971,7 +1973,7 @@
               <li>working in pairs and with a patrol partner</li>
               <li>composure under pressure: breathing and situational reading</li>
               </ul>
-              <a class="btn btn--ghost" href="https://wa.me/34635437530?text=Hi%20Mauricio%2C%20I%20work%20in%20security%20and%20I%27d%20like%20information%20about%20the%20programme." target="_blank" rel="noopener">Ask about conditions</a>
+              <a class="btn btn--primary" href="https://wa.me/34635437530?text=Hi%20Mauricio%2C%20I%20work%20in%20security%20and%20I%27d%20like%20information%20about%20the%20programme." target="_blank" rel="noopener">Ask about conditions</a>
             </div>
           </div>
         </div>
@@ -2527,7 +2529,7 @@
               <picture>
                 <source type="image/avif" srcset="/assets/img/opt/faixas_pretas_brasil-380.avif 380w, /assets/img/opt/faixas_pretas_brasil-760.avif 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
                 <source type="image/webp" srcset="/assets/img/opt/faixas_pretas_brasil-380.webp 380w, /assets/img/opt/faixas_pretas_brasil-760.webp 760w" sizes="(min-width: 64rem) 348px, (min-width: 40rem) calc(50vw - 1.75rem), calc(100vw - 2rem)" />
-                <img src="/assets/img/opt/faixas_pretas_brasil-760.jpg" width="760" height="992" alt="[[es:Reunión de cinturones negros del XCoach Team Pirituba, Brasil|pt:Encontro de faixas-pretas do XCoach Team Pirituba, Brasil|en:Black belt gathering at XCoach Team Pirituba, Brazil]]" loading="lazy" decoding="async" />
+                <img src="/assets/img/opt/faixas_pretas_brasil-760.jpg" width="760" height="992" alt="[[es:Reunión de cinturones negros del XCoach Team Pirituba, Brasil|pt:Encontro de faixas-pretas do XCoach Team Pirituba, Brasil|en:Black belt gathering at XCoach Team Pirituba, Brazil]]" loading="lazy" decoding="async" style="object-position: bottom" />
               </picture>
             </button>
             <figcaption data-lang="es">XCoach Team Pirituba — julio de 2025</figcaption>
@@ -2622,7 +2624,7 @@
             <p class="mt-1"><strong>LEVSPORT Altorreal</strong></p>
             <p class="muted">C.C. Green Park, Av. del Golf, 117 — 30506 Molina de Segura, Murcia</p>
             <div class="stack mt-1">
-              <button id="mapLoad" class="btn btn--ghost" type="button">
+              <button id="mapLoad" class="btn btn--primary" type="button">
                 <span data-lang="es">Ver el mapa aquí</span>
                 <span data-lang="pt">Ver o mapa aqui</span>
                 <span data-lang="en">Show the map here</span>
