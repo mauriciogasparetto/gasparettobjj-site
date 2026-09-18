@@ -60,18 +60,21 @@ UI = {
         "sending": "Enviando…",
         "ok": "¡Mensaje enviado! Gracias por escribir.",
         "fallback": "No pudimos enviar el formulario. Abrimos WhatsApp con tu mensaje.",
+        "whatsapp": "Abrimos WhatsApp con tu mensaje listo para enviar.",
     },
     "pt": {
         "lang_group": "Idioma",
         "sending": "Enviando…",
         "ok": "Mensagem enviada! Obrigado pelo contato.",
         "fallback": "Não foi possível enviar o formulário. Abrimos o WhatsApp com sua mensagem.",
+        "whatsapp": "Abrimos o WhatsApp com sua mensagem pronta para enviar.",
     },
     "en": {
         "lang_group": "Language",
         "sending": "Sending…",
         "ok": "Message sent! Thanks for reaching out.",
         "fallback": "We couldn't send the form. We've opened WhatsApp with your message.",
+        "whatsapp": "We've opened WhatsApp with your message ready to send.",
     },
 }
 
@@ -647,7 +650,7 @@ def build_pages(site_url: str, force: bool = False) -> None:
             "{{JSONLD}}": json_ld(lang, site_url),
             "{{HORARIOS}}": render_schedule(lang),
             "{{I18N_JSON}}": json.dumps(
-                {k: UI[lang][k] for k in ("sending", "ok", "fallback")},
+                {k: UI[lang][k] for k in ("sending", "ok", "fallback", "whatsapp")},
                 ensure_ascii=False,
             ),
         }

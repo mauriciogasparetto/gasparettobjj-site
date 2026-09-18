@@ -2849,11 +2849,7 @@
           id="contactForm"
           class="form"
           name="contacto"
-          method="POST"
-          action="/"
-          data-netlify="true"
         >
-          <input type="hidden" name="form-name" value="contacto" />
           <p class="hp">
             <label for="bot-field">[[es:No rellenar|pt:Não preencher|en:Do not fill]]</label>
             <input id="bot-field" name="bot-field" tabindex="-1" autocomplete="off" />
@@ -3175,12 +3171,24 @@
         map.classList.add("map--loaded");
       });
 
-      /* ---------- formulario ---------- */
+      /* ---------- formulario ----------
+         A hospedagem (Vercel) nao processa formularios. Em vez de tentar um
+         envio que falharia, o formulario monta a mensagem e abre o WhatsApp
+         -- que e o canal de agendamento de qualquer forma. Se um dia houver
+         um backend (Formspree, Netlify Forms...), basta preencher FORM_ENDPOINT. */
       (() => {
         const form = document.getElementById("contactForm");
         const msg = document.getElementById("formMsg");
         const WHATSAPP = "34635437530";
+        const FORM_ENDPOINT = ""; // vazio = sem backend, vai direto ao WhatsApp
         const T = JSON.parse(document.getElementById("i18n").textContent);
+
+        const toWhatsApp = (data) => {
+          const text = encodeURIComponent(
+            `${data.get("nombre")} (${data.get("email")}): ${data.get("mensaje")}`
+          );
+          window.open(`https://wa.me/${WHATSAPP}?text=${text}`, "_blank", "noopener");
+        };
 
         form.addEventListener("submit", async (e) => {
           e.preventDefault();
@@ -3188,16 +3196,23 @@
           if (form.elements["bot-field"].value) return; // bot
 
           const data = new FormData(form);
+
+          if (!FORM_ENDPOINT) {
+            toWhatsApp(data);
+            msg.className = "form__msg form__msg--ok";
+            msg.textContent = T.whatsapp;
+            return;
+          }
+
           const submit = form.querySelector("[type=submit]");
           submit.disabled = true;
           msg.className = "form__msg";
           msg.textContent = T.sending;
-
           try {
-            const res = await fetch(form.action, {
+            const res = await fetch(FORM_ENDPOINT, {
               method: "POST",
-              headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: new URLSearchParams(data).toString(),
+              headers: { Accept: "application/json" },
+              body: data,
             });
             // fetch nao rejeita em 404/500 -- sem este teste um lead se perde
             // em silencio atras de uma mensagem de sucesso falsa
@@ -3206,18 +3221,9 @@
             msg.className = "form__msg form__msg--ok";
             msg.textContent = T.ok;
           } catch (err) {
-            // sem backend: em vez de perder o contato, leva para o WhatsApp
-            // com a mensagem ja montada
             msg.className = "form__msg form__msg--err";
             msg.textContent = T.fallback;
-            const text = encodeURIComponent(
-              `${data.get("nombre")} (${data.get("email")}): ${data.get("mensaje")}`
-            );
-            window.open(
-              `https://wa.me/${WHATSAPP}?text=${text}`,
-              "_blank",
-              "noopener"
-            );
+            toWhatsApp(data);
           } finally {
             submit.disabled = false;
           }

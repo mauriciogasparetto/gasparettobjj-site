@@ -51,9 +51,11 @@ A partir dele, `build.py` gera **tudo dentro de `dist/`** — `index.html` (ES),
 > edição manual (compara hashes em `.build-manifest.json`). Para descartar a
 > edição de propósito: `python build.py --pages --force`.
 
-**Publicar = subir a pasta `dist/` e nada mais.** Os originais de foto (8 MB em
-`assets/img/{gallery,logos}`), o `src/` e o `_backup_original/` ficam de fora.
-Em Netlify/Vercel, o *publish directory* é `dist`.
+**Publicação: Vercel, ligada ao repositório do GitHub.** A cada `git push` na
+`main`, a Vercel roda `pip install -r requirements.txt && python build.py` e publica
+`dist/` (config em `vercel.json`). Domínio: `www.gasparettojiujitsu.com` (o apex
+redireciona para www). Os originais de foto, o `src/` e o `_backup_original/` nunca
+vão para o ar.
 
 Convenções dentro do template:
 - `data-lang="es|pt|en"` — o build mantém só o idioma da página e descarta os outros.
@@ -108,6 +110,6 @@ e pode ficar.)
   `https://www.gasparettojiujitsu.com`).
 - O JSON-LD não declara `geo` (latitude/longitude): falta o dado exato. Ver o
   comentário em `build_pages.py`, função `json_ld`.
-- O formulário assume Netlify Forms. Em qualquer outra hospedagem ele detecta a falha
-  e redireciona o contato para o WhatsApp — nenhum lead se perde, mas o ideal é
-  confirmar o backend.
+- O formulário de contato abre o WhatsApp com a mensagem montada (a Vercel não
+  processa formulários). Se um dia quiser um backend (Formspree etc.), preencha
+  `FORM_ENDPOINT` no JS do template.
