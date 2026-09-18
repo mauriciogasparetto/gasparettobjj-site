@@ -79,14 +79,13 @@ SPEC: dict[str, list[int]] = {
     "logos/kano.jpg": [0],
     "logos/maeda.jpg": [0],
     "logos/tanabe.jpg": [0],
-    "logos/helio_carlos_221x148.jfif": [0],
+    "logos/helio_carlos.jpg": [520],  # 2x dos 260px de altura do carrossel
 }
 
-# Unica excecao a regra de "nunca ampliar": a foto de Helio & Carlos tem so
-# 221x148 px e e exibida a ~260 px de altura. O navegador amplia com filtro
-# bilinear e borra; LANCZOS + mascara de nitidez no build preserva bem mais
-# do detalhe. Fator 2x e o limite antes de virar artefato.
-UPSCALE = {"logos/helio_carlos_221x148.jfif": 2.0}
+# Excecoes a regra de "nunca ampliar": originais pequenos demais para o
+# tamanho em que sao exibidos. LANCZOS + mascara de nitidez no build
+# preserva mais detalhe que o filtro bilinear do navegador. Vazio hoje.
+UPSCALE: dict[str, float] = {}
 
 # arquivos sem nenhuma referencia no HTML -- vao para _unused em vez de
 # serem apagados (sao ativos de marca)
@@ -168,6 +167,15 @@ def optimize_images() -> None:
                     f"webp {out_webp.stat().st_size // 1024:>4} KB | "
                     f"{fb_ext[1:]} {out_fb.stat().st_size // 1024:>4} KB"
                 )
+
+    # saidas orfas: geradas de um original que ja nao esta no SPEC (foto
+    # trocada ou renomeada). Sem isto acumulam e vao parar no deploy.
+    validos = {Path(rel).stem for rel in SPEC}
+    for out in IMG_OUT.iterdir():
+        stem = out.stem.rsplit("-", 1)[0] if out.stem.rsplit("-", 1)[-1].isdigit() else out.stem
+        if stem not in validos:
+            out.unlink()
+            print(f"  removido (original nao existe mais): opt/{out.name}")
 
     unused_dir = IMG_SRC / "_unused"
     unused_dir.mkdir(parents=True, exist_ok=True)
