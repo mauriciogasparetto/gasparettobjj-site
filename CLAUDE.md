@@ -102,8 +102,9 @@ e pode ficar.)
   `https://www.gasparettojiujitsu.com`).
 - O JSON-LD não declara `geo` (latitude/longitude): falta o dado exato. Ver o
   comentário em `build_pages.py`, função `json_ld`.
-- **Foto de Hélio & Carlos Gracie** tem só 221×148 px de origem; ampliada no
-  carrossel fica pixelada. Uma versão maior resolveria.
+- **Foto de Hélio & Carlos Gracie** tem só 221×148 px de origem. O build a amplia
+  2× com LANCZOS + máscara de nitidez (`UPSCALE` em `build.py`), o que ajuda, mas
+  uma versão maior de verdade ainda seria melhor.
 - O formulário assume Netlify Forms. Em qualquer outra hospedagem ele detecta a falha
   e redireciona o contato para o WhatsApp — nenhum lead se perde, mas o ideal é
   confirmar o backend.

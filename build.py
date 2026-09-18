@@ -24,7 +24,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageOps
+from PIL import Image, ImageFilter, ImageOps
 
 ROOT = Path(__file__).parent
 IMG_SRC = ROOT / "assets" / "img"
@@ -82,6 +82,12 @@ SPEC: dict[str, list[int]] = {
     "logos/helio_carlos_221x148.jfif": [0],
 }
 
+# Unica excecao a regra de "nunca ampliar": a foto de Helio & Carlos tem so
+# 221x148 px e e exibida a ~260 px de altura. O navegador amplia com filtro
+# bilinear e borra; LANCZOS + mascara de nitidez no build preserva bem mais
+# do detalhe. Fator 2x e o limite antes de virar artefato.
+UPSCALE = {"logos/helio_carlos_221x148.jfif": 2.0}
+
 # arquivos sem nenhuma referencia no HTML -- vao para _unused em vez de
 # serem apagados (sao ativos de marca)
 UNUSED = ["logos/logo_aspas.png", "logos/logo_monograma.png"]
@@ -121,13 +127,19 @@ def optimize_images() -> None:
                 # w == 0 significa "tamanho nativo"; nunca fazer upscale
                 target = ow if w == 0 else min(w, ow)
                 suffix = "" if w == 0 else f"-{target}"
-                resized = (
-                    im
-                    if target == ow
-                    else im.resize(
+                if rel in UPSCALE and w == 0:
+                    target = round(ow * UPSCALE[rel])
+                    resized = im.resize(
                         (target, round(oh * target / ow)), Image.LANCZOS
+                    ).filter(ImageFilter.UnsharpMask(radius=1.2, percent=90, threshold=2))
+                else:
+                    resized = (
+                        im
+                        if target == ow
+                        else im.resize(
+                            (target, round(oh * target / ow)), Image.LANCZOS
+                        )
                     )
-                )
 
                 out_avif = IMG_OUT / f"{stem}{suffix}.avif"
                 out_webp = IMG_OUT / f"{stem}{suffix}.webp"
