@@ -169,12 +169,21 @@ def optimize_images() -> None:
 
     # saidas orfas: geradas de um original que ja nao esta no SPEC (foto
     # trocada ou renomeada). Sem isto acumulam e vao parar no deploy.
-    validos = {Path(rel).stem for rel in SPEC}
+    # nomes validos = stem + largura pedida (ou so o stem, para largura nativa)
+    validos = set()
+    for rel, widths in SPEC.items():
+        stem = Path(rel).stem
+        src = IMG_SRC / rel
+        ow = Image.open(src).size[0] if src.exists() else 0
+        for w in widths:
+            if w == 0:
+                validos.add(stem)
+            else:
+                validos.add(f"{stem}-{min(w, ow) if ow else w}")
     for out in IMG_OUT.iterdir():
-        stem = out.stem.rsplit("-", 1)[0] if out.stem.rsplit("-", 1)[-1].isdigit() else out.stem
-        if stem not in validos:
+        if out.stem not in validos:
             out.unlink()
-            print(f"  removido (original nao existe mais): opt/{out.name}")
+            print(f"  removido (nao esta mais no SPEC): opt/{out.name}")
 
     unused_dir = IMG_SRC / "_unused"
     unused_dir.mkdir(parents=True, exist_ok=True)
