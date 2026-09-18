@@ -645,10 +645,18 @@
       .pro {
         padding: 1.75rem;
         margin-top: 2.5rem;
-        color: #f4f1ee;
-        /* cinza medio quente: claro o bastante para o botao preto/vermelho
-           se destacar sozinho, escuro o bastante para o texto branco ler bem */
-        background: #605955;
+        color: var(--ink-3);
+        /* a hachura do cartaz de horarios, que ja marca as faixas livres da
+           grade: fundo claro com textura diagonal sutil, texto escuro, e o
+           botao preto/vermelho se destaca sem precisar de contorno */
+        background:
+          repeating-linear-gradient(
+            135deg,
+            transparent 0 7px,
+            rgb(23 17 15 / 0.055) 7px 9px
+          ),
+          var(--surface-2);
+        border: 1px solid var(--line);
         border-radius: var(--radius-lg);
       }
       .pro__eyebrow {
@@ -656,17 +664,17 @@
         font-weight: 700;
         letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: #ff6b60;
+        color: var(--brand);
       }
       .pro h3 {
         margin-top: 0.5rem;
         font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
         font-weight: 800;
-        color: #fff;
+        color: var(--ink);
       }
       .pro p {
         margin-top: 0.75rem;
-        color: #e8e2de;
+        color: var(--ink-3);
       }
       .pro ul {
         display: grid;
@@ -676,7 +684,7 @@
       .pro li {
         position: relative;
         padding-left: 1rem;
-        color: #e8e2de;
+        color: var(--ink-3);
       }
       .pro li::before {
         content: "•";
@@ -687,11 +695,10 @@
       .pro__who {
         margin-top: 1rem;
         font-size: 0.875rem;
-        color: #9a908b;
+        color: var(--muted);
       }
       .pro .btn {
         margin-top: 1.25rem;
-        border-color: transparent;
       }
       @media (min-width: 48rem) {
         .pro {
