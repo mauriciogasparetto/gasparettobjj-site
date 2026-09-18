@@ -74,7 +74,6 @@ SPEC: dict[str, list[int]] = {
     "logos/mau_world_cup_2025.jpg": [560, 760, 1120],
     "logos/logo_circular.png": [384],
     "logos/logo_horizontal.png": [356],
-    "logos/logoCT_Murcia.png": [136],
     # carrossel de mestres: originais ja sao pequenos, so converter
     "logos/kano.jpg": [0],
     "logos/maeda.jpg": [0],
