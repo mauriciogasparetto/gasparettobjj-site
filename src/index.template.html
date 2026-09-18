@@ -646,8 +646,9 @@
         padding: 1.75rem;
         margin-top: 2.5rem;
         color: #f4f1ee;
-        /* chumbo quente, nao preto: o botao preto/vermelho sumia no fundo */
-        background: #2e2926;
+        /* cinza medio quente: claro o bastante para o botao preto/vermelho
+           se destacar sozinho, escuro o bastante para o texto branco ler bem */
+        background: #514a46;
         border-radius: var(--radius-lg);
       }
       .pro__eyebrow {
@@ -690,7 +691,7 @@
       }
       .pro .btn {
         margin-top: 1.25rem;
-        box-shadow: 0 0 0 1px rgb(255 255 255 / 0.28);
+        border-color: transparent;
       }
       @media (min-width: 48rem) {
         .pro {
