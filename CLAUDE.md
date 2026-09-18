@@ -92,8 +92,9 @@ python -m http.server 8000 --directory dist    # visualização local
 - **Fase 3 concluída**: hero de escola, seção "Para quién" com 5 portas de entrada,
   textos em 2ª pessoa, bloco `#profesional` para forças de segurança, seção
   `#profesor` com a corrente da linhagem, e chamada única de agendamento.
-- Pendentes: F2 marca e linhagem visual (precisa do logo XCOACH), F4 reordenação das
-  seções (a História ainda ocupa lugar nobre), F5 fotografia.
+- **Fase 4 concluída**: galeria (provas) antes da História; ordem final inicio →
+  para-quien → metodo → profesional → profesor → galeria → historia → agenda → contacto.
+- Pendentes: F2 marca e linhagem visual (precisa do logo XCOACH), F5 fotografia.
 
 **Regra de copy:** nunca usar "grátis/gratis/free" para a aula experimental — a
 chamada é *agendar*, não *ganhar*. ("Parking gratuito" na localização é outra coisa
@@ -106,8 +107,6 @@ e pode ficar.)
   maior retorno por esforço para busca local.
 - **Fotos de aula** (turma, kids, tatame da LEVSPORT). Todo o acervo atual mostra uma
   pessoa, não uma aula — é o maior gargalo de conversão.
-- Definir o domínio final e trocar `SITE_URL` no topo de `build.py` (hoje aponta para
-  `https://www.gasparettojiujitsu.com`).
 - O JSON-LD não declara `geo` (latitude/longitude): falta o dado exato. Ver o
   comentário em `build_pages.py`, função `json_ld`.
 - O formulário de contato abre o WhatsApp com a mensagem montada (a Vercel não
